@@ -21,6 +21,12 @@
     <ClCompile Include="stb_image\stb_image.cpp">
       <Filter>stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="glsl.cpp">
+      <Filter>RaymarchingPractice</Filter>
+    </ClCompile>
+    <ClCompile Include="glew.cpp">
+      <Filter>RaymarchingPractice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -48,6 +54,15 @@
     <ClInclude Include="stb_image\stb_image.h">
       <Filter>stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="glsl.h">
+      <Filter>RaymarchingPractice</Filter>
+    </ClInclude>
+    <ClInclude Include="glew.h">
+      <Filter>RaymarchingPractice</Filter>
+    </ClInclude>
+    <ClInclude Include="wglew.h">
+      <Filter>RaymarchingPractice</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NextAPI">
@@ -55,6 +70,9 @@
     </Filter>
     <Filter Include="stb_image">
       <UniqueIdentifier>{61cfc19b-c57e-4021-b530-bac172fcba86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RaymarchingPractice">
+      <UniqueIdentifier>{7f0432d5-62dc-411d-a99b-d75c4e6e9b3f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

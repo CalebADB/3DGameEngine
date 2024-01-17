@@ -46,6 +46,7 @@ void Init()
 //------------------------------------------------------------------------
 void Update(float deltaTime)
 {
+	glutSolidRhombicDodecahedron();
 	//------------------------------------------------------------------------
 	// Example Sprite Code....
 	testSprite->Update(deltaTime);
