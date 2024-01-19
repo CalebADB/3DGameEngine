@@ -56,6 +56,7 @@ void Init()
 //------------------------------------------------------------------------
 void Update(float deltaTime)
 {
+	glutSolidRhombicDodecahedron();
 	//------------------------------------------------------------------------
 	// Game engine code
 	ge::GAMEWORLD->UpdateWorld(deltaTime);
