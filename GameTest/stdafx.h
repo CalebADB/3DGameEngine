@@ -11,5 +11,38 @@
 #include <tchar.h>
 
 
-
 // TODO: reference additional headers your program requires here
+#include "App/AppSettings.h"
+
+#include <Windows.h>
+#include <string>
+#include <iostream>
+#include <vector>
+#include <list>
+#include <algorithm>
+#include <type_traits>
+#include <fstream>
+#include <sstream>
+
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include "../glut/include/GL/freeglut.h"
+#include "glTape.h" // I MADE THIS BECAUSE IT DOESNT WORK AS WELL AS GLEW BUT IT GETS THE JOB DONE (DO YOU GET IT (GLUE vs TAPE))
+#include "glsl.h"
+
+#include "UtilitiesGlobals.h"
+#include "UtilitiesDebug.h"
+#include "UtilitiesMath.h"
+
+#include "Object.h"
+
+#include "Comp.h"
+#include "SceneComp.h"
+#include "CameraComp.h"
+#include "MeshComp.h"
+#include "EssentialMesh.h"
+
+#include "Actor.h"
+#include "World.h"
+#include "Player.h"
+#include "EssentialShape.h"

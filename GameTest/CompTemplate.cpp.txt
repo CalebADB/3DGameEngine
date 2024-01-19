@@ -1,0 +1,14 @@
+#include "stdafx.h"
+
+namespace ge
+{
+    void GComp::Update(float deltaTime)
+    {
+        debug::Output(debug::EOutputType::Update, "Updating GComp_%s ", GetCharName());
+    }
+    void GComp::Render()
+    {
+        debug::Output(debug::EOutputType::Render, "Rendering GComp_%s ", GetCharName());
+    }
+
+};

@@ -1,0 +1,18 @@
+#include "stdafx.h"
+
+namespace ge
+{
+    void A::Update(float deltaTime)
+    {
+        debug::Output(debug::EOutputType::Update, "Updating A_%s ", GetCharName());
+
+        AActor::Update(deltaTime);
+    }
+    void A::Render()
+    {
+        debug::Output(debug::EOutputType::Render, "Rendering A_%s ", GetCharName());
+
+        AActor::Render();
+    }
+
+};

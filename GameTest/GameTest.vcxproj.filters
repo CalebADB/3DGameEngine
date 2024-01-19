@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="App\app.cpp">
       <Filter>NextAPI</Filter>
@@ -20,6 +19,46 @@
     </ClCompile>
     <ClCompile Include="stb_image\stb_image.cpp">
       <Filter>stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>GameEngine\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Comp.cpp">
+      <Filter>GameEngine\Comp</Filter>
+    </ClCompile>
+    <ClCompile Include="glsl.cpp">
+      <Filter>GameEngine\Comp\Scene\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="glTape.cpp">
+      <Filter>GameEngine\Comp\Scene\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>GameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>GameEngine\Actor\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>GameEngine\Actor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraComp.cpp">
+      <Filter>GameEngine\Comp\Scene\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="GameTest.cpp" />
+    <ClCompile Include="SceneComp.cpp">
+      <Filter>GameEngine\Comp\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="UtilitiesMath.cpp">
+      <Filter>GameEngine\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshComp.cpp">
+      <Filter>GameEngine\Comp\Scene\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="EssentialMesh.cpp">
+      <Filter>GameEngine\Comp\Scene\Mesh\EssentialMesh</Filter>
+    </ClCompile>
+    <ClCompile Include="EssentialShape.cpp">
+      <Filter>GameEngine\Actor\EssentialShapes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +87,51 @@
     <ClInclude Include="stb_image\stb_image.h">
       <Filter>stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>GameEngine\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Comp.h">
+      <Filter>GameEngine\Comp</Filter>
+    </ClInclude>
+    <ClInclude Include="glsl.h">
+      <Filter>GameEngine\Comp\Scene\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="glTape.h">
+      <Filter>GameEngine\Comp\Scene\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>GameEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>GameEngine\Actor\World</Filter>
+    </ClInclude>
+    <ClInclude Include="UtilitiesDebug.h">
+      <Filter>GameEngine\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>GameEngine\Actor\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraComp.h">
+      <Filter>GameEngine\Comp\Scene\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneComp.h">
+      <Filter>GameEngine\Comp\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="UtilitiesMath.h">
+      <Filter>GameEngine\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshComp.h">
+      <Filter>GameEngine\Comp\Scene\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="EssentialMesh.h">
+      <Filter>GameEngine\Comp\Scene\Mesh\EssentialMesh</Filter>
+    </ClInclude>
+    <ClInclude Include="EssentialShape.h">
+      <Filter>GameEngine\Actor\EssentialShapes</Filter>
+    </ClInclude>
+    <ClInclude Include="UtilitiesGlobals.h">
+      <Filter>GameEngine\Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NextAPI">
@@ -56,10 +140,64 @@
     <Filter Include="stb_image">
       <UniqueIdentifier>{61cfc19b-c57e-4021-b530-bac172fcba86}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shader96">
+      <UniqueIdentifier>{2bab8071-c607-47c6-b612-9ba81da42f38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine">
+      <UniqueIdentifier>{17599d59-d2eb-428e-af0d-5f195795d9f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Utilities">
+      <UniqueIdentifier>{81d85014-d5a8-4472-8193-d962bd32bfcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor">
+      <UniqueIdentifier>{0ff29305-d781-4098-9b23-a4c2ab2903cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor\World">
+      <UniqueIdentifier>{1e6b2cc7-0427-4c5a-a614-a58b2d1e1aac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor\Player">
+      <UniqueIdentifier>{6b352e68-2d85-4bba-b8fa-fce981b59871}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Comp">
+      <UniqueIdentifier>{72b58063-82e4-4b9a-a17e-0201c13b3ad7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Comp\Scene">
+      <UniqueIdentifier>{c8f99fa3-cac4-45b0-91cf-bde5af161c2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Comp\Scene\Camera">
+      <UniqueIdentifier>{390d2970-5cba-4911-952a-7101f36e7fbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Comp\Scene\Mesh">
+      <UniqueIdentifier>{6833743b-00e2-48ab-a7d0-56658e3ae594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor\EssentialShapes">
+      <UniqueIdentifier>{caa509ee-fb45-4b5d-9839-13996562f5b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Comp\Scene\Mesh\EssentialMesh">
+      <UniqueIdentifier>{af78c3bf-a41c-4ab4-adb4-dd5e6ce8578b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt">
       <Filter>NextAPI</Filter>
+    </Text>
+    <Text Include="fragmentShader.txt">
+      <Filter>GameEngine\Comp\Scene\Camera</Filter>
+    </Text>
+    <Text Include="vertexShader.txt">
+      <Filter>GameEngine\Comp\Scene\Camera</Filter>
+    </Text>
+    <Text Include="ActorTemplate.h.txt">
+      <Filter>GameEngine\Actor</Filter>
+    </Text>
+    <Text Include="ActorTemplate.cpp.txt">
+      <Filter>GameEngine\Actor</Filter>
+    </Text>
+    <Text Include="CompTemplate.cpp.txt">
+      <Filter>GameEngine\Comp</Filter>
+    </Text>
+    <Text Include="CompTemplate.h.txt">
+      <Filter>GameEngine\Comp</Filter>
     </Text>
   </ItemGroup>
 </Project>

@@ -1,0 +1,9 @@
+Warning Meaning:
+Use of code for unintended purpose. Program should continue without failure
+Warning Example:
+-Redundant Action
+-Bad style
+-Abstract class default is unchanged
+
+Error Meaning:
+Use code in a way that will lead to program failure.

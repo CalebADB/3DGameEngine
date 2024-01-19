@@ -1,0 +1,19 @@
+#ifndef _GCOMP_H
+#define _GCOMP_H
+
+namespace ge
+{
+	class GComp : public GComp
+	{
+	private:
+
+	public:
+		GComp(const std::string& Name) : GComp(Name, , ) {};
+
+	protected:
+		virtual void Update(float deltaTime);
+		virtual void Render();
+	};
+};
+
+#endif //_GCOMP_H

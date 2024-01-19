@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -173,26 +173,58 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="ActorTemplate.cpp.txt" />
+    <Text Include="ActorTemplate.h.txt" />
+    <Text Include="CompTemplate.cpp.txt" />
+    <Text Include="CompTemplate.h.txt" />
+    <Text Include="fragmentShader.txt" />
     <Text Include="ReadMe.txt" />
+    <Text Include="vertexShader.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="App\app.h" />
     <ClInclude Include="App\AppSettings.h" />
     <ClInclude Include="App\main.h" />
     <ClInclude Include="App\SimpleController.h" />
     <ClInclude Include="App\SimpleSound.h" />
     <ClInclude Include="App\SimpleSprite.h" />
+    <ClInclude Include="CameraComp.h" />
+    <ClInclude Include="Comp.h" />
+    <ClInclude Include="EssentialMesh.h" />
+    <ClInclude Include="EssentialShape.h" />
+    <ClInclude Include="glsl.h" />
+    <ClInclude Include="glTape.h" />
+    <ClInclude Include="MeshComp.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="SceneComp.h" />
     <ClInclude Include="stb_image\stb_image.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="UtilitiesDebug.h" />
+    <ClInclude Include="UtilitiesGlobals.h" />
+    <ClInclude Include="UtilitiesMath.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="App\app.cpp" />
     <ClCompile Include="App\main.cpp" />
     <ClCompile Include="App\SimpleController.cpp" />
     <ClCompile Include="App\SimpleSound.cpp" />
     <ClCompile Include="App\SimpleSprite.cpp" />
+    <ClCompile Include="CameraComp.cpp" />
+    <ClCompile Include="Comp.cpp" />
+    <ClCompile Include="EssentialShape.cpp" />
     <ClCompile Include="GameTest.cpp" />
+    <ClCompile Include="glsl.cpp" />
+    <ClCompile Include="glTape.cpp" />
+    <ClCompile Include="MeshComp.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="EssentialMesh.cpp" />
+    <ClCompile Include="SceneComp.cpp" />
     <ClCompile Include="stb_image\stb_image.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -200,6 +232,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="UtilitiesMath.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
