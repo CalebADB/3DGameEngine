@@ -22,11 +22,15 @@ namespace ge
 
 		APlayer* Player;
 		std::list<GObject*> Objects;
+
+		// World Level
+		AEssentialShape* MajorBody = nullptr;
+		AOrbitingBody* OrbitingBody = nullptr;
 	public:
 		AWorld(const std::string& Name) 
 			: 
 			AActor(Name) 
-		{};
+		{}
 
 		void BeginWorld();
 		void UpdateWorld(float deltaTime);
@@ -38,10 +42,52 @@ namespace ge
 
 	public:
 		template <typename AActorSubclass>
-		AActorSubclass* SpawnActor(const std::string& Name, AActor* Owner, math::MVector3 Position, math::MQuaternion Rotation);
+		AActorSubclass* SpawnActor(const std::string& Name, AActor* Owner, math::MVector3 Position, math::MQuaternion Rotation)
+		{
+			static_assert(std::is_base_of<AActor, AActorSubclass>::value, "AActorSubclass must be a derived class of AActor");
+			math::MTransformData TransformData = math::MTransformData(Position, Rotation, math::MVector3::OneVector());
+			AActorSubclass* ActorInstance = new AActorSubclass(Name);
 
+			if (ActorInstance == nullptr)
+			{
+				debug::Output(debug::EOutputType::Always, "Error: SpawnActor created a nullptr");
+
+				return nullptr;
+			}
+
+			Owner->AttachActor(ActorInstance);
+
+			Objects.push_back(ActorInstance);
+
+			ActorInstance->Begin();
+			ActorInstance->TransformData.Position = Position;
+			ActorInstance->TransformData.Rotation = Rotation;
+
+			return ActorInstance;
+		}
 		template <typename GCompSubclass>
-		GCompSubclass* NewComp(const std::string& Name);
+		GCompSubclass* NewComp(const std::string& Name)
+		{
+			static_assert(std::is_base_of<GComp, GCompSubclass>::value, "GCompSubclass must be a derived class of GComp");
+
+			GCompSubclass* CompInstance = new GCompSubclass(Name);
+
+			if (CompInstance == nullptr)
+			{
+			    debug::Output(debug::EOutputType::Always, "Error: NewComp created a nullptr");
+			    
+			    return nullptr;
+			}
+
+			Objects.push_back(CompInstance);
+
+			CompInstance->Begin();
+
+			return CompInstance;
+
+			return nullptr;
+		}
+
 	};
 };
 

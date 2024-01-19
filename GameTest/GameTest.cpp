@@ -59,7 +59,8 @@ void Update(float deltaTime)
 	glutSolidRhombicDodecahedron();
 	//------------------------------------------------------------------------
 	// Game engine code
-	ge::GAMEWORLD->UpdateWorld(deltaTime);
+	float throttledDeltaTime = min(0.5f, deltaTime / 1000.0f);
+	ge::GAMEWORLD->UpdateWorld(throttledDeltaTime);
 
 	//------------------------------------------------------------------------
 	// Example Sprite Code....

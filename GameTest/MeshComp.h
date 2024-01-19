@@ -15,7 +15,7 @@ namespace ge
 
 	protected:
 		virtual void Update(float deltaTime);
-		virtual void ApplySceneData();
+		virtual void RenderSceneData();
 
 	private:
 		bool LoadMeshDataFromFile(const std::string& filename, std::vector<float>& vertices, std::vector<unsigned int>& indices);

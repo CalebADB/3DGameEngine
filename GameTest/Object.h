@@ -15,11 +15,11 @@ namespace ge
 		GObject()
 			:
 			Name(std::string("NullName"))
-		{ debug::Output(debug::EOutputType::Initialize, "Warning: GObject default contstructor called"); };
+		{ debug::Output(debug::EOutputType::Always, "Error: GObject default contstructor called"); }
 		GObject(const std::string& Name)
 			:
 			Name(Name)
-		{};
+		{}
 
 	public:
 		virtual void Begin();

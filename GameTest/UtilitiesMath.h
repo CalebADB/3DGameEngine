@@ -5,6 +5,8 @@ namespace ge
 {
     namespace math
     {
+        class MQuaternion;
+
         class MVector3 
         {
         public:
@@ -19,9 +21,18 @@ namespace ge
 
             static MVector3 ZeroVector() { return MVector3(0, 0, 0); }
             static MVector3 OneVector() { return MVector3(1, 1, 1); }
+            static MVector3 UpVector() { return MVector3(0, 1, 0); }
 
-            MVector3 operator+(const MVector3& Q) const;
-            MVector3 operator*(const GLfloat& Q) const;
+            MVector3 operator+(const MVector3& V2) const;
+            MVector3 operator-(const MVector3& V2) const;
+            MVector3 operator*(const GLfloat& F) const;
+            MVector3 operator/(const GLfloat& F) const;
+            
+
+            GLfloat Magnitude() const;
+            void Normalize();
+            MVector3  Normalized() const;
+            MVector3 RotatedBy(const MQuaternion& Q) const;
         };
 
         class MMatrix4x4 
@@ -58,7 +69,12 @@ namespace ge
 
             MQuaternion operator*(const MQuaternion& Q) const;
 
+            MQuaternion Conjugate() const;
+
+            MQuaternion Inverse() const;
+
             MMatrix4x4 ToMatrix() const;
+
         };
 
         class MTransformData 

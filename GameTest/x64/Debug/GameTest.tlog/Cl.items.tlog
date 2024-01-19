@@ -12,8 +12,11 @@ C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glsl.cpp;C:\Users
 C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\glTape.obj
 C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\MeshComp.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\MeshComp.obj
 C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\Object.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\Object.obj
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\OrbitComp.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\OrbitComp.obj
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\OrbitingBody.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\OrbitingBody.obj
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\PhysicalComp.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\PhysicalComp.obj
 C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\Player.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\Player.obj
-C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\EssentialMesh.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\EssentialMesh.obj
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\EssentialMeshComp.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\EssentialMeshComp.obj
 C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\SceneComp.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\SceneComp.obj
 C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\stb_image\stb_image.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\stb_image.obj
 C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\stdafx.cpp;C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\x64\Debug\stdafx.obj

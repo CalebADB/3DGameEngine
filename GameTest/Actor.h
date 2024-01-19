@@ -13,7 +13,7 @@ namespace ge
 		AActor(const std::string& Name) 
 			:
 			GSceneComp(Name)
-		{ };
+		{}
 		
 	protected:
 		virtual void Update(float deltaTime);

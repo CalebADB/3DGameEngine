@@ -2,22 +2,6 @@
 
 namespace ge
 {
-	GComp::GComp()
-		:
-		bIsUpdateComp(false),
-		bIsRenderComp(false)
-	{
-		debug::Output(debug::EOutputType::Initialize, "Warning: GComp default contstructor called");
-	}
-	GComp::GComp(const std::string& Name, bool bIsUpdateComp, bool bIsRenderComp)
-		:
-		GObject(Name),
-		bIsUpdateComp(bIsUpdateComp),
-		bIsRenderComp(bIsRenderComp)
-	{
-
-	}
-
 	void GComp::Update(float deltaTime)
 	{
 		for (GComp* Comp : AttachedComps)

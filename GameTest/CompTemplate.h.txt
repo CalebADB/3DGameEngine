@@ -8,7 +8,7 @@ namespace ge
 	private:
 
 	public:
-		GComp(const std::string& Name) : GComp(Name, , ) {};
+		GComp(const std::string& Name) : GComp(Name) {};
 
 	protected:
 		virtual void Update(float deltaTime);

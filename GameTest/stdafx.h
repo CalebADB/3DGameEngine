@@ -40,9 +40,13 @@
 #include "SceneComp.h"
 #include "CameraComp.h"
 #include "MeshComp.h"
-#include "EssentialMesh.h"
+#include "EssentialMeshComp.h"
+#include "PhysicalComp.h"
+#include "OrbitComp.h"
 
 #include "Actor.h"
-#include "World.h"
 #include "Player.h"
 #include "EssentialShape.h"
+#include "OrbitingBody.h"
+
+#include "World.h"

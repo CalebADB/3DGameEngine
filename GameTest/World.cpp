@@ -87,11 +87,19 @@ namespace ge
 
         Player = GAMEWORLD->SpawnActor<APlayer>(std::string("Player1"), this, math::MVector3::ZeroVector(), math::MQuaternion::Identity());
 
-        GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape1"), this, math::MVector3(0.0, 0.0, 0.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Teapot, false);
-        GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape2"), this, math::MVector3(2.0, 0.0, 0.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Sphere, false);
-        GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape4"), this, math::MVector3(0.0, 0.0, 2.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Cube, false);
-        GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape3"), this, math::MVector3(-2.0, 0.0, 0.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Dodecahedron, false);
-        GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape5"), this, math::MVector3(0.0, 0.0, -2.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Cone, false);
+        //GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape1"), this, math::MVector3(0.0, 0.0, 0.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Cube, false);
+        //GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape2"), this, math::MVector3(4.0, 0.0, 0.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Sphere, true);
+        //GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape3"), this, math::MVector3(0.0, 0.0, 4.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Teapot, false);
+        //GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape4"), this, math::MVector3(-4.0, 0.0, 0.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Torus, false);
+        //GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape5"), this, math::MVector3(0.0, 0.0, -4.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Cone, false);
+
+        MajorBody = GAMEWORLD->SpawnActor<AEssentialShape>(std::string("MajorBody"), this, math::MVector3(0.0, 0.0, 0.0), math::MQuaternion::Identity());
+        MajorBody->SetEssentialShapeType(EEssentialShapeType::Sphere, false);
+
+        OrbitingBody = GAMEWORLD->SpawnActor<AOrbitingBody>(std::string("Shape1"), MajorBody, math::MVector3(0.0, 0.0, 0.0), math::MQuaternion::Identity());
+        OrbitingBody->Initialize(MajorBody, 5.0, 2.0);
+        OrbitingBody->SetEssentialShapeType(EEssentialShapeType::Cone, false);
+
     }
 
     void AWorld::UpdateWorld(float deltaTime)
@@ -100,7 +108,7 @@ namespace ge
 
         debug::Output(debug::EOutputType::Update, "____________");
         debug::Output(debug::EOutputType::Update, "Update_%05d ", frame);
-
+        MajorBody->TransformData.Position = MajorBody->TransformData.Position + math::MVector3(deltaTime, 0, 0);
         Update(deltaTime);
 	}
     void AWorld::RenderWorld()
@@ -115,19 +123,23 @@ namespace ge
         {
             glLoadIdentity();
             gluPerspective(100.0, (float)APP_VIRTUAL_WIDTH / (float)APP_VIRTUAL_HEIGHT, 0.2, 550.0);
-            gluLookAt((5.0 * timer010) + 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+            
+            glMatrixMode(GL_MODELVIEW);
+            gluLookAt(5.0, (10.0 * 1) + 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+            //gluLookAt((15.0 * 1) + 5.0, (10.0 * 1) + 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+            //gluLookAt((15.0 * timer010) + 5.0, (10.0 * timer010) + 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
             glPushMatrix();
             {
                 if (shader) shader->begin();
-                glRotatef(timer010 * 360, 0.5, 1.0f, 0.1f);
+                //glRotatef(timer010 * 360.0f, 0, 1.0f, 0);
                 Render();
                 if (shader) shader->end();
                 
                 glutSwapBuffers();
             }
             glPopMatrix();
-
+            glMatrixMode(GL_PROJECTION);
             glutSwapBuffers();
         }
         glPopMatrix();
@@ -204,50 +216,7 @@ namespace ge
     //    }
     //}
     */
-    template<typename AActorSubclass>
-    AActorSubclass* AWorld::SpawnActor(const std::string& Name, AActor* Owner, math::MVector3 Position, math::MQuaternion Rotation)
-    {
-        static_assert(std::is_base_of<AActor, AActorSubclass>::value, "AActorSubclass must be a derived class of AActor");
-        math::MTransformData TransformData = math::MTransformData(Position, Rotation, math::MVector3::OneVector());
-        AActorSubclass* ActorInstance = new AActorSubclass(Name);
 
-        if (ActorInstance == nullptr)
-        {
-            debug::Output(debug::EOutputType::Always, "Error: SpawnActor created a nullptr");
-            
-            return nullptr;
-        }
-
-        Owner->AttachActor(ActorInstance);
-
-        Objects.push_back(ActorInstance);
-
-        ActorInstance->Begin();
-
-        return ActorInstance;
-    }
     
-    template <typename GCompSubclass>
-    GCompSubclass* AWorld::NewComp(const std::string& Name)
-    {
-        //static_assert(std::is_base_of<GComp, GCompSubclass>::value, "GCompSubclass must be a derived class of GComp");
-
-        //GCompSubclass* CompInstance = new GCompSubclass(Name);
-
-        //if (CompInstance == nullptr)
-        //{
-        //    debug::Output(debug::EOutputType::Always, "Error: NewComp created a nullptr");
-        //    
-        //    return nullptr;
-        //}
-
-        //Objects.push_back(CompInstance);
-
-        //CompInstance->Begin();
-
-        //return CompInstance;
-
-        return nullptr;
-    }
 
 };

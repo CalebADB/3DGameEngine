@@ -4,6 +4,8 @@ namespace ge
 {
     void AActor::Update(float deltaTime)
     {
+        GSceneComp::Update(deltaTime);
+
         for (AActor* Actor : AttachedActors)
         {
             Actor->Update(deltaTime);
@@ -13,14 +15,18 @@ namespace ge
     {
         glPushMatrix();
         {
-            ApplySceneData();
-
+            debug::Output(debug::EOutputType::Render, "%s: Attached comps:", GetCharName());
             GSceneComp::Render();
+
+            debug::Output(debug::EOutputType::Render, "%s: Attached actors:", GetCharName());
+            RenderSceneData();
 
             for (AActor* Actor : AttachedActors)
             {
+                debug::Output(debug::EOutputType::Render, "%s: Render Begins: ", Actor->GetCharName());
                 Actor->Render();
             }
+            debug::Output(debug::EOutputType::Render, "%s: Render Ends: ", GetCharName());
         }
         glPopMatrix();
     }

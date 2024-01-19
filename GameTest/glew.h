@@ -1741,7 +1741,7 @@ extern "C" {
 	typedef void (GLAPIENTRY* PFNGLGETSHADERINFOLOGPROC) (GLuint shader, GLsizei bufSize, GLsizei* length, GLchar* infoLog);
 	typedef void (GLAPIENTRY* PFNGLGETSHADERSOURCEPROC) (GLint obj, GLsizei maxLength, GLsizei* length, GLchar* source);
 	typedef void (GLAPIENTRY* PFNGLGETSHADERIVPROC) (GLuint shader, GLenum pname, GLint* param);
-	typedef GLint(GLAPIENTRY* PFNGLGETUNIFORMLOCATIONPROC) (GLint programObj, const GLchar* name);
+	typedef GLint(GLAPIENTRY* PFNGLGETUNIFORMLOCATIONPROC) (GLuint program, const GLchar* name);
 	typedef void (GLAPIENTRY* PFNGLGETUNIFORMFVPROC) (GLuint program, GLint location, GLfloat* params);
 	typedef void (GLAPIENTRY* PFNGLGETUNIFORMIVPROC) (GLuint program, GLint location, GLint* params);
 	typedef void (GLAPIENTRY* PFNGLGETVERTEXATTRIBPOINTERVPROC) (GLuint, GLenum, GLvoid*);

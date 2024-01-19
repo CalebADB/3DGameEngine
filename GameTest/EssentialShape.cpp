@@ -4,10 +4,7 @@ namespace ge
 {
     void AEssentialShape::Begin()
     {
-        //GAMEWORLD->SpawnActor<AActor>(std::string("Shape1"), this, math::MVector3(0.0, 0.0, 0.0), math::MQuaternion::Identity());
-
-        //GAMEWORLD->NewComp<GComp>(std::string("EssentialMesh"));
-        //MeshComp = 
+        MeshComp = GAMEWORLD->NewComp<GEssentialMeshComp>(std::string("EssentialMeshComp"));
         AttachComp(this, MeshComp);
     }
 
@@ -24,9 +21,9 @@ namespace ge
         AActor::Render();
     }
 
-    void AEssentialShape::SetEssentialShapeType(EEssentialShapeType Type, bool bIsWired)
+    void AEssentialShape::SetEssentialShapeType(EEssentialShapeType Type, bool bIsSolid)
     {
-        MeshComp->SetEssentialShapeType(Type, bIsWired);
+        MeshComp->SetEssentialShapeType(Type, bIsSolid);
     }
 
 };

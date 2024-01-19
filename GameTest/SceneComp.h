@@ -5,19 +5,19 @@ namespace ge
 {
 	class GSceneComp : public GComp
 	{
-	private:
+	public:
 		math::MTransformData TransformData = math::MTransformData::Identity();
 
 	public:
 		GSceneComp(const std::string& Name) 
 			: 
-			GComp(Name, true, true)
-		{};
+			GComp(Name)
+		{}
 
 	protected:
 		virtual void Update(float deltaTime);
 		virtual void Render();
-		virtual void ApplySceneData();
+		virtual void RenderSceneData();
 	};
 };
 

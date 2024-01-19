@@ -6,9 +6,9 @@ namespace ge
 	{
 
 	}
-	void GMeshComp::ApplySceneData()
+	void GMeshComp::RenderSceneData()
 	{
-		GSceneComp::ApplySceneData();
+		GSceneComp::RenderSceneData();
 
 		// DrawMesh(GLuint VAO, int indexCount);
 	}

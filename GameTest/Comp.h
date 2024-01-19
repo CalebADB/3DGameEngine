@@ -5,16 +5,15 @@ namespace ge
 {
 	class GComp : public GObject
 	{
-	private:
-		const bool bIsUpdateComp;
-		const bool bIsRenderComp;
 	protected:
 		GComp* Root = nullptr;
 		std::list<GComp*> AttachedComps;
 
 	public:
-		GComp();
-		GComp(const std::string& Name, bool bIsUpdateComp, bool bIsRenderComp);
+		GComp::GComp(const std::string& Name)
+			:
+			GObject(Name)
+		{}
 
 	protected:
 		virtual void Update(float deltaTime);

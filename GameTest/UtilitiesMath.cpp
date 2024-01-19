@@ -8,9 +8,38 @@ namespace ge
         {
             return MVector3(X + V2.X, Y + V2.Y, Z + V2.Z);
         }
+        MVector3 MVector3::operator-(const MVector3& V2) const
+        {
+            return MVector3(X - V2.X, Y - V2.Y, Z - V2.Z);
+        }
         MVector3 MVector3::operator*(const GLfloat& F) const
         {
             return MVector3(X * F, Y * F, Z * F);
+        }
+        MVector3 MVector3::operator/(const GLfloat& F) const
+        {
+            return MVector3(X / F, Y / F, Z / F);
+        }
+        GLfloat MVector3::Magnitude() const
+        {
+            return sqrt(X * X + Y * Y + Z * Z);
+        }
+        void MVector3::Normalize()
+        {
+            GLfloat M = Magnitude();
+            X /= M;
+            Y /= M;
+            Z /= M;
+        }
+        MVector3 MVector3::Normalized() const
+        {
+            return MVector3(X, Y, Z) / Magnitude();
+        }
+        MVector3 MVector3::RotatedBy(const MQuaternion& Q) const
+        {
+            MQuaternion vecAsQuat(0, X, Y, Z);
+            MQuaternion resQuat = Q * vecAsQuat * Q.Conjugate();
+            return MVector3(resQuat.X, resQuat.Y, resQuat.Z) * Magnitude();
         }
 
         MQuaternion MQuaternion::Normalized() const
@@ -26,6 +55,20 @@ namespace ge
                 W * Q.Y - X * Q.Z + Y * Q.W + Z * Q.X,
                 W * Q.Z + X * Q.Y - Y * Q.X + Z * Q.W
             ).Normalized();
+        }
+        MQuaternion MQuaternion::Conjugate() const
+        {
+            return MQuaternion(W, -X, -Y, -Z);
+        }
+        MQuaternion MQuaternion::Inverse() const
+        {
+            GLfloat norm = W * W + X * X + Y * Y + Z * Z;
+            if (norm > 0.0)
+            {
+                GLfloat invNorm = 1.0 / norm;
+                return MQuaternion(W * invNorm, -X * invNorm, -Y * invNorm, -Z * invNorm);
+            }
+            return MQuaternion(0, 0, 0, 0); // Return zero quaternion if norm is zero
         }
         MMatrix4x4 MQuaternion::ToMatrix() const
         {

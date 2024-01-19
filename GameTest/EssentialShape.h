@@ -22,7 +22,7 @@ namespace ge
 		virtual void Render();
 	
 	public:
-		void SetEssentialShapeType(EEssentialShapeType Type, bool bIsWired);
+		void SetEssentialShapeType(EEssentialShapeType Type, bool bIsSolid);
 
 	};
 };
