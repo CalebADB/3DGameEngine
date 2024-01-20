@@ -2,9 +2,8 @@
 
 namespace ge
 {
-    void GOrbitComp::Initialize(GSceneComp* MajorBody, GLfloat Radius, GLfloat AngularSpeed, GLfloat AngularDistance, math::MVector3 Axis)
+    void GOrbitComp::Initialize(GLfloat Radius, GLfloat AngularSpeed, GLfloat AngularDistance, math::MVector3 Axis)
     {
-        this->MajorBody = MajorBody;
         this->Radius = Radius;
         this->AngularSpeed = AngularSpeed;
         this->AngularDistance = AngularDistance;

@@ -2,6 +2,19 @@
 
 namespace ge
 {
+    void AActor::Begin()
+    {
+        CalcGlobalTransformData();
+
+        GSceneComp::Begin();
+    }
+
+    void AActor::UpdateGlobalTransform()
+    {
+        CalcGlobalTransformData();
+
+        GSceneComp::UpdateGlobalTransform();
+    }
     void AActor::Update(float deltaTime)
     {
         GSceneComp::Update(deltaTime);
@@ -81,5 +94,15 @@ namespace ge
     AActor* AActor::GetOwner() const
     {
         return Owner;
+    }
+
+    void AActor::CalcGlobalTransformData()
+    {
+        if (GetOwner() == nullptr)
+        {
+            return;
+        }
+
+        GlobalTransformData = GetOwner()->GetGlobalTransformData().TransformedBy(LocalTransformData);
     }
 };

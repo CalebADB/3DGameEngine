@@ -195,18 +195,24 @@
     <ClInclude Include="EssentialShape.h" />
     <ClInclude Include="glsl.h" />
     <ClInclude Include="glTape.h" />
+    <ClInclude Include="Manager.h" />
     <ClInclude Include="MeshComp.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="OrbitComp.h" />
     <ClInclude Include="OrbitingBody.h" />
     <ClInclude Include="PhysicalComp.h" />
+    <ClInclude Include="PhysicsManager.h" />
+    <ClInclude Include="Planet.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Prop.h" />
     <ClInclude Include="SceneComp.h" />
+    <ClInclude Include="ShapeComp.h" />
     <ClInclude Include="stb_image\stb_image.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UtilitiesDebug.h" />
-    <ClInclude Include="UtilitiesGlobals.h" />
+    <ClInclude Include="UtilitiesGameGlobals.h" />
     <ClInclude Include="UtilitiesMath.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
@@ -223,14 +229,21 @@
     <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="glsl.cpp" />
     <ClCompile Include="glTape.cpp" />
+    <ClCompile Include="GravityWellComp.cpp" />
+    <ClCompile Include="Manager.cpp" />
     <ClCompile Include="MeshComp.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OrbitComp.cpp" />
     <ClCompile Include="OrbitingBody.cpp" />
     <ClCompile Include="PhysicalComp.cpp" />
+    <ClCompile Include="PhysicsManager.cpp" />
+    <ClCompile Include="Planet.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="EssentialMeshComp.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Prop.cpp" />
     <ClCompile Include="SceneComp.cpp" />
+    <ClCompile Include="ShapeComp.cpp" />
     <ClCompile Include="stb_image\stb_image.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -240,6 +253,9 @@
     </ClCompile>
     <ClCompile Include="UtilitiesMath.cpp" />
     <ClCompile Include="World.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GravityWellComp.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

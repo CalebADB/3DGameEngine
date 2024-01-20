@@ -30,19 +30,25 @@
 #include "glTape.h" // I MADE THIS BECAUSE IT DOESNT WORK AS WELL AS GLEW BUT IT GETS THE JOB DONE (DO YOU GET IT (GLUE vs TAPE))
 #include "glsl.h"
 
-#include "UtilitiesGlobals.h"
 #include "UtilitiesDebug.h"
 #include "UtilitiesMath.h"
+#include "UtilitiesGameGlobals.h"
 
 #include "Object.h"
 
 #include "Comp.h"
 #include "SceneComp.h"
-#include "CameraComp.h"
 #include "MeshComp.h"
 #include "EssentialMeshComp.h"
+#include "ShapeComp.h"
 #include "PhysicalComp.h"
+#include "GravityWellComp.h"
 #include "OrbitComp.h"
+#include "CameraComp.h"
+
+#include "Manager.h"
+#include "PhysicsManager.h"
+//#include "MemoryManager.h"
 
 #include "Actor.h"
 #include "Player.h"

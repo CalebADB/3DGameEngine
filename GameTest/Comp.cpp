@@ -2,6 +2,13 @@
 
 namespace ge
 {
+	void GComp::UpdateGlobalTransform()
+	{
+		for (GComp* Comp : AttachedComps)
+		{
+			Comp->UpdateGlobalTransform();
+		}
+	}
 	void GComp::Update(float deltaTime)
 	{
 		for (GComp* Comp : AttachedComps)
@@ -26,6 +33,15 @@ namespace ge
 		}
 
 		AttachedComps.push_back(Comp);		
+	}
+
+	math::MTransformData GComp::GetLocalTransformData()
+	{
+		return Root->GetLocalTransformData();
+	}
+	math::MTransformData GComp::GetGlobalTransformData()
+	{
+		return Root->GetGlobalTransformData();
 	}
 
 };

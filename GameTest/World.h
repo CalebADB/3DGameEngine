@@ -42,10 +42,9 @@ namespace ge
 
 	public:
 		template <typename AActorSubclass>
-		AActorSubclass* SpawnActor(const std::string& Name, AActor* Owner, math::MVector3 Position, math::MQuaternion Rotation)
+		AActorSubclass* SpawnActor(const std::string& Name, AActor* Owner, math::MVector3 LocalPosition, math::MQuaternion LocalRotation)
 		{
 			static_assert(std::is_base_of<AActor, AActorSubclass>::value, "AActorSubclass must be a derived class of AActor");
-			math::MTransformData TransformData = math::MTransformData(Position, Rotation, math::MVector3::OneVector());
 			AActorSubclass* ActorInstance = new AActorSubclass(Name);
 
 			if (ActorInstance == nullptr)
@@ -59,12 +58,12 @@ namespace ge
 
 			Objects.push_back(ActorInstance);
 
+			ActorInstance->SetLocalTransformData(math::MTransformData(LocalPosition, LocalRotation, math::MVector3::OneVector()));
 			ActorInstance->Begin();
-			ActorInstance->TransformData.Position = Position;
-			ActorInstance->TransformData.Rotation = Rotation;
 
 			return ActorInstance;
 		}
+
 		template <typename GCompSubclass>
 		GCompSubclass* NewComp(const std::string& Name)
 		{
@@ -84,8 +83,6 @@ namespace ge
 			CompInstance->Begin();
 
 			return CompInstance;
-
-			return nullptr;
 		}
 
 	};

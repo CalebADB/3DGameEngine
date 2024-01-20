@@ -14,8 +14,10 @@ namespace ge
 			:
 			GSceneComp(Name)
 		{}
-		
+
+		virtual void Begin();
 	protected:
+		virtual void UpdateGlobalTransform();
 		virtual void Update(float deltaTime);
 		virtual void Render();
 
@@ -23,6 +25,9 @@ namespace ge
 		bool AttachActor(AActor* Actor);
 		bool DettachActor(AActor* Actor);
 		AActor* GetOwner() const;
+
+	protected:
+		void CalcGlobalTransformData();
 	};
 };
 

@@ -9,13 +9,15 @@ namespace ge
         {
             Initialize,
             Update,
+            Physics,
             Render,
             Always
         };
         static bool PRINTDEBUGINITIALIZE = true;
         static bool PRINTDEBUGUPDATE = false; 
-        static bool PRINTDEBUGRENDER = true; 
-        static bool PRINTDEBUGALWAYS = true; 
+        static bool PRINTDEBUGPHYSICS = true;
+        static bool PRINTDEBUGRENDER = false;
+        static bool PRINTDEBUGALWAYS = true;
 
         template<typename... Args>
         void Output(EOutputType Type, const char* inString, Args... args)
@@ -27,6 +29,9 @@ namespace ge
                 break;
             case Update:
                 if (!PRINTDEBUGUPDATE) return;
+                break;
+            case Physics:
+                if (!PRINTDEBUGPHYSICS) return;
                 break;
             case Render:
                 if (!PRINTDEBUGRENDER) return;

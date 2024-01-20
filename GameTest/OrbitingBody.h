@@ -18,7 +18,7 @@ namespace ge
 
 	public:
 		virtual void Begin();
-		void Initialize(GSceneComp* MajorBody, GLfloat Radius, GLfloat AngularSpeed, GLfloat AngularDistance = 0.0f, math::MVector3 Axis = math::MVector3::UpVector());
+		void Initialize(GLfloat Radius, GLfloat AngularSpeed, GLfloat AngularDistance = 0.0f, math::MVector3 Axis = math::MVector3::UpVector());
 	protected:
 		virtual void Update(float deltaTime);
 		virtual void Render();

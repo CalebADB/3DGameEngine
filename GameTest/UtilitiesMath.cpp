@@ -37,9 +37,9 @@ namespace ge
         }
         MVector3 MVector3::RotatedBy(const MQuaternion& Q) const
         {
-            MQuaternion vecAsQuat(0, X, Y, Z);
-            MQuaternion resQuat = Q * vecAsQuat * Q.Conjugate();
-            return MVector3(resQuat.X, resQuat.Y, resQuat.Z) * Magnitude();
+            MQuaternion vecAsQ(0, X, Y, Z);
+            MQuaternion resQ = Q * vecAsQ * Q.Conjugate();
+            return MVector3(resQ.X, resQ.Y, resQ.Z) * Magnitude();
         }
 
         MQuaternion MQuaternion::Normalized() const
@@ -47,13 +47,13 @@ namespace ge
             GLfloat Len = sqrt(W * W + X * X + Y * Y + Z * Z);
             return MQuaternion(W / Len, X / Len, Y / Len, Z / Len);
         }
-        MQuaternion MQuaternion::operator*(const MQuaternion& Q) const
+        MQuaternion MQuaternion::operator*(const MQuaternion& Q2) const
         {
             return MQuaternion(
-                W * Q.W - X * Q.X - Y * Q.Y - Z * Q.Z,
-                W * Q.X + X * Q.W + Y * Q.Z - Z * Q.Y,
-                W * Q.Y - X * Q.Z + Y * Q.W + Z * Q.X,
-                W * Q.Z + X * Q.Y - Y * Q.X + Z * Q.W
+                W * Q2.W - X * Q2.X - Y * Q2.Y - Z * Q2.Z,
+                W * Q2.X + X * Q2.W + Y * Q2.Z - Z * Q2.Y,
+                W * Q2.Y - X * Q2.Z + Y * Q2.W + Z * Q2.X,
+                W * Q2.Z + X * Q2.Y - Y * Q2.X + Z * Q2.W
             ).Normalized();
         }
         MQuaternion MQuaternion::Conjugate() const
@@ -97,9 +97,17 @@ namespace ge
             return Matrix;
         }
 
+        MTransformData MTransformData::TransformedBy(MTransformData TransformData)
+        {
+            return MTransformData(
+                Position + TransformData.Position, 
+                Rotation * TransformData.Rotation, 
+                MVector3(Scale.X * TransformData.Scale.X, Scale.Y * TransformData.Scale.Y, Scale.Z * TransformData.Scale.Z)
+            );
+        }
         void MTransformData::Translate(MVector3 Displacement)
         {
-            Scale = Scale + Displacement;
+            Position = Position + Displacement;
         }
         void MTransformData::Rotate(MQuaternion Displacement)
         {
@@ -115,5 +123,5 @@ namespace ge
         {
             Scale = Scale * Displacement;
         }
-    }
+}
 };

@@ -84,10 +84,6 @@ namespace ge
             MQuaternion Rotation;
             MVector3 Scale;
 
-            MTransformData() 
-                : 
-                MTransformData(MTransformData::Identity())
-            {};
             MTransformData(MVector3 Position, MQuaternion Rotation, MVector3 Scale)
                 :
                 Position(Position), Rotation(Rotation), Scale(Scale)
@@ -95,6 +91,7 @@ namespace ge
 
             static MTransformData Identity() { return MTransformData(MVector3(0.0, 0.0, 0.0), MQuaternion::Identity(), MVector3(1.0, 1.0, 1.0)); }
 
+            MTransformData TransformedBy(MTransformData TransformData);
             void Translate(MVector3 Displacement);
             void Rotate(MQuaternion Displacement);
             void Stretch(MVector3 Displacement);

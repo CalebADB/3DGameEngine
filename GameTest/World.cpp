@@ -97,7 +97,7 @@ namespace ge
         MajorBody->SetEssentialShapeType(EEssentialShapeType::Sphere, false);
 
         OrbitingBody = GAMEWORLD->SpawnActor<AOrbitingBody>(std::string("Shape1"), MajorBody, math::MVector3(0.0, 0.0, 0.0), math::MQuaternion::Identity());
-        OrbitingBody->Initialize(MajorBody, 5.0, 2.0);
+        OrbitingBody->Initialize(5.0, 2.0);
         OrbitingBody->SetEssentialShapeType(EEssentialShapeType::Cone, false);
 
     }
@@ -108,11 +108,24 @@ namespace ge
 
         debug::Output(debug::EOutputType::Update, "____________");
         debug::Output(debug::EOutputType::Update, "Update_%05d ", frame);
-        MajorBody->TransformData.Position = MajorBody->TransformData.Position + math::MVector3(deltaTime, 0, 0);
+        math::MTransformData LocalTransformData = MajorBody->GetLocalTransformData();
+        LocalTransformData.Translate(math::MVector3(deltaTime, 0, 0));
+        MajorBody->SetLocalTransformData(LocalTransformData);
+
+        //
+        UpdateGlobalTransform();
         Update(deltaTime);
-	}
+        //Physics Displace;
+        UpdateGlobalTransform();
+        //Physics Collision;
+    }
     void AWorld::RenderWorld()
     {
+        //UpdateGlobalTransform();
+        //Render
+
+
+        //Old OpenGL
         debug::Output(debug::EOutputType::Render, "____________");
         debug::Output(debug::EOutputType::Render, "Render_%05d ", frame);
 

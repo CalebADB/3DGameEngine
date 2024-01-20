@@ -3,7 +3,7 @@
 
 namespace ge
 {
-	enum EEssentialShapeType
+	enum struct EEssentialShapeType
 	{
 		Sphere,
 		Cube,

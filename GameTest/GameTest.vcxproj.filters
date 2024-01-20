@@ -69,6 +69,27 @@
     <ClCompile Include="OrbitingBody.cpp">
       <Filter>GameEngine\Actor\OrbitingBody</Filter>
     </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>GameEngine\Comp\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsManager.cpp">
+      <Filter>GameEngine\Comp\Managers\PhysicsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Prop.cpp">
+      <Filter>GameEngine\Actor\Prop</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>GameEngine\Actor\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="Planet.cpp">
+      <Filter>GameEngine\Actor\Planet</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeComp.cpp">
+      <Filter>GameEngine\Comp\Scene\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="GravityWellComp.cpp">
+      <Filter>GameEngine\Comp\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -138,7 +159,7 @@
     <ClInclude Include="EssentialShape.h">
       <Filter>GameEngine\Actor\EssentialShapes</Filter>
     </ClInclude>
-    <ClInclude Include="UtilitiesGlobals.h">
+    <ClInclude Include="UtilitiesGameGlobals.h">
       <Filter>GameEngine\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="PhysicalComp.h">
@@ -149,6 +170,24 @@
     </ClInclude>
     <ClInclude Include="OrbitingBody.h">
       <Filter>GameEngine\Actor\OrbitingBody</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>GameEngine\Comp\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsManager.h">
+      <Filter>GameEngine\Comp\Managers\PhysicsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Prop.h">
+      <Filter>GameEngine\Actor\Prop</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>GameEngine\Actor\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="Planet.h">
+      <Filter>GameEngine\Actor\Planet</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeComp.h">
+      <Filter>GameEngine\Comp\Scene\Shape</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -169,9 +208,6 @@
     </Filter>
     <Filter Include="GameEngine\Actor\World">
       <UniqueIdentifier>{1e6b2cc7-0427-4c5a-a614-a58b2d1e1aac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="GameEngine\Actor\Player">
-      <UniqueIdentifier>{6b352e68-2d85-4bba-b8fa-fce981b59871}</UniqueIdentifier>
     </Filter>
     <Filter Include="GameEngine\Comp">
       <UniqueIdentifier>{72b58063-82e4-4b9a-a17e-0201c13b3ad7}</UniqueIdentifier>
@@ -194,8 +230,32 @@
     <Filter Include="GameEngine\Comp\Physics">
       <UniqueIdentifier>{2cafadb3-1cd2-4277-81fa-d2ef3b44bd20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameEngine\Comp\Managers">
+      <UniqueIdentifier>{36bbd178-29a1-419a-8bf4-54f65ca4074a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Comp\Managers\PhysicsManager">
+      <UniqueIdentifier>{95763c6e-0820-415a-a5ef-b1117ee230e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Comp\Managers\MemoryManager">
+      <UniqueIdentifier>{6af63ca4-02e3-475e-9c30-637c1160f791}</UniqueIdentifier>
+    </Filter>
     <Filter Include="GameEngine\Actor\OrbitingBody">
       <UniqueIdentifier>{c41c8896-3fb8-4660-9fc7-eb89e2bc0a6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor\Planet">
+      <UniqueIdentifier>{e7682059-1b8d-4eb3-88ee-276cea1e27a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor\Projectile">
+      <UniqueIdentifier>{c1e54aac-3d75-4dc7-89f8-0d9294c52bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor\Prop">
+      <UniqueIdentifier>{d6c3d1a2-d01d-4052-a396-007ec48a78c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor\Player">
+      <UniqueIdentifier>{6b352e68-2d85-4bba-b8fa-fce981b59871}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Comp\Scene\Shape">
+      <UniqueIdentifier>{4765a8c6-2536-484e-967c-862c59fe0b1a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -220,5 +280,10 @@
     <Text Include="CompTemplate.h.txt">
       <Filter>GameEngine\Comp</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GravityWellComp.h">
+      <Filter>GameEngine\Comp\Physics</Filter>
+    </None>
   </ItemGroup>
 </Project>

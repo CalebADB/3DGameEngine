@@ -6,6 +6,8 @@ namespace ge
     {
         MeshComp = GAMEWORLD->NewComp<GEssentialMeshComp>(std::string("EssentialMeshComp"));
         AttachComp(this, MeshComp);
+
+        AActor::Begin();
     }
 
     void AEssentialShape::Update(float deltaTime)

@@ -9,17 +9,21 @@ namespace ge
 
         OrbitComp = GAMEWORLD->NewComp<GOrbitComp>(std::string("OrbitComp"));
         AttachComp(this, OrbitComp);
+
+        AActor::Begin();
     }
 
-    void AOrbitingBody::Initialize(GSceneComp* MajorBody, GLfloat Radius, GLfloat AngularSpeed, GLfloat AngularDistance, math::MVector3 Axis)
+    void AOrbitingBody::Initialize(GLfloat Radius, GLfloat AngularSpeed, GLfloat AngularDistance, math::MVector3 Axis)
     {
-        OrbitComp->Initialize(MajorBody, Radius, AngularSpeed, AngularDistance, Axis);
+        OrbitComp->Initialize(Radius, AngularSpeed, AngularDistance, Axis);
     }
 
     void AOrbitingBody::Update(float deltaTime)
     {
-        TransformData.Position = OrbitComp->GetOrbitRelPosition();
-        TransformData.Rotation = OrbitComp->GetOrbitRelRotation();
+        math::MTransformData LocalTransformData = GetLocalTransformData();
+        LocalTransformData.Position = OrbitComp->GetOrbitRelPosition();
+        LocalTransformData.Rotation = OrbitComp->GetOrbitRelRotation();
+        SetLocalTransformData(LocalTransformData);
 
         AActor::Update(deltaTime);
     }
