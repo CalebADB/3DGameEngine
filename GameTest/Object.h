@@ -8,8 +8,9 @@ namespace ge
 	private:
 		const std::string Name;
 
+		bool bIsAlive = true;
+		bool bIsBegun = false;
 		bool bIsEnabled = false;
-		bool bIsDead = false;
 
 	public:
 		GObject()

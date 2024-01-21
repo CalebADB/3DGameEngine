@@ -7,30 +7,35 @@ namespace ge
 	{
 	private:
 		std::list<GPhysicalComp*> PhysicalComps;
+		std::list<GPlanetNavigationComp*> PlanetNavigationComps;
 		std::list<GGravityWellComp*> GravityWellComps;
+		GOctree* Octree = nullptr;
+
 	public:
 		GPhysicsManagerComp(const std::string& Name) 
 			: 
 			GManagerComp(Name) 
 		{}
 
-	protected:
-		virtual void Update(float deltaTime);
-		virtual void Render();
-
+		virtual void Begin();
 	public:
 		void AddPhysicalComp(GPhysicalComp* PhysicalComp);
+		void AddPlanetNavigationComp(GPlanetNavigationComp* PlanetNavigationComp);
 		void AddGravityWellComp(GGravityWellComp* GravityWellComp);
+		void HandleForces(float deltaTime);
+		void HandleDisplacement(float deltaTime);
+
+		void CheckCollisions();
 
 	private:
-		math::MVector3 GetGravityForceAtPosition(math::MVector3 Position);
+		math::MVector3 GetGravityAtPosition(math::MVector3 Position);
 
-		void CheckCollision();
-
-		bool QueuePlanetCollisionImpulse();
-		bool QueueProjectileCollisionImpulse();
-		bool QueuePropCollisionImpulse();
-		bool QueuePlayerCollisionImpulse();
+		void HandleCollision(GPhysicalComp* PhysicalComp1, GPhysicalComp* PhysicalComp2);
+		void HandlePlanetCollisionImpact(GPlanetPhysicalComp* TargetPhysicalComp);
+		void HandlePlayerCollisionImpact(GPlayerPhysicalComp* TargetPhysicalComp, GPhysicalComp* InstigatingPhysicalComp, math::MVector3 Impulse);
+		void HandlePressureWaveCollisionImpact(GPressureWavePhysicalComp* TargetPhysicalComp);
+		void HandleProjectileCollisionImpact(GProjectilePhysicalComp* TargetPhysicalComp, math::MVector3 Impulse);
+		void HandlePropCollisionImpact(GPropPhysicalComp* TargetPhysicalComp, GPhysicalComp* InstigatingPhysicalComp, math::MVector3 Impulse);
 	};
 };
 

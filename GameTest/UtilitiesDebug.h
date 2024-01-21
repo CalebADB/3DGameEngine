@@ -11,7 +11,7 @@ namespace ge
             Update,
             Physics,
             Render,
-            Always
+            Always // Used primarily for ERROR calls
         };
         static bool PRINTDEBUGINITIALIZE = true;
         static bool PRINTDEBUGUPDATE = false; 

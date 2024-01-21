@@ -90,6 +90,21 @@
     <ClCompile Include="GravityWellComp.cpp">
       <Filter>GameEngine\Comp\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="SpherePlanet.cpp">
+      <Filter>GameEngine\Actor\Planet\Planets</Filter>
+    </ClCompile>
+    <ClCompile Include="Octree.cpp">
+      <Filter>GameEngine\Comp\Managers\PhysicsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="PressureWave.cpp">
+      <Filter>GameEngine\Actor\PressureWave</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeContainerProp.cpp">
+      <Filter>GameEngine\Actor\Prop\McGuffins</Filter>
+    </ClCompile>
+    <ClCompile Include="PlanetNavigationComp.cpp">
+      <Filter>GameEngine\Comp\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -189,6 +204,21 @@
     <ClInclude Include="ShapeComp.h">
       <Filter>GameEngine\Comp\Scene\Shape</Filter>
     </ClInclude>
+    <ClInclude Include="SpherePlanet.h">
+      <Filter>GameEngine\Actor\Planet\Planets</Filter>
+    </ClInclude>
+    <ClInclude Include="Octree.h">
+      <Filter>GameEngine\Comp\Managers\PhysicsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="PressureWave.h">
+      <Filter>GameEngine\Actor\PressureWave</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeContainerProp.h">
+      <Filter>GameEngine\Actor\Prop\McGuffins</Filter>
+    </ClInclude>
+    <ClInclude Include="PlanetNavigationComp.h">
+      <Filter>GameEngine\Comp\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NextAPI">
@@ -256,6 +286,15 @@
     </Filter>
     <Filter Include="GameEngine\Comp\Scene\Shape">
       <UniqueIdentifier>{4765a8c6-2536-484e-967c-862c59fe0b1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor\Planet\Planets">
+      <UniqueIdentifier>{3b209852-8b3f-488d-812e-2a03c330174e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor\PressureWave">
+      <UniqueIdentifier>{374c13c6-28e7-452f-898a-e254eb31f92e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor\Prop\McGuffins">
+      <UniqueIdentifier>{63e1c893-6a19-4a19-90c8-b76a602e3e69}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@ namespace ge
 	{
 	private:
 		GEssentialMeshComp* MeshComp = nullptr;
-		GOrbitComp* OrbitComp= nullptr;
+		GOrbitComp* OrbitComp = nullptr;
 		
 
 	public:

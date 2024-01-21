@@ -15,7 +15,6 @@ namespace ge
 			GSceneComp(Name)
 		{}
 
-		virtual void Begin();
 	protected:
 		virtual void UpdateGlobalTransform();
 		virtual void Update(float deltaTime);

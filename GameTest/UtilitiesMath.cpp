@@ -41,6 +41,191 @@ namespace ge
             MQuaternion resQ = Q * vecAsQ * Q.Conjugate();
             return MVector3(resQ.X, resQ.Y, resQ.Z) * Magnitude();
         }
+        MVector3 MVector3::Cross(const MVector3& V2) const
+        {
+            return MVector3(
+                Y * V2.Z - Z * V2.Y,
+                Z * V2.X - X * V2.Z,
+                X * V2.Y - Y * V2.X
+            );
+        }
+
+        MMatrix4x4 MMatrix4x4::operator*(const MMatrix4x4& Other) const
+        {
+            MMatrix4x4 Result;
+
+            for (int i = 0; i < 4; ++i) {
+                for (int j = 0; j < 4; ++j) {
+                    Result.m[i][j] = m[i][0] * Other.m[0][j] +
+                        m[i][1] * Other.m[1][j] +
+                        m[i][2] * Other.m[2][j] +
+                        m[i][3] * Other.m[3][j];
+                }
+            }
+
+            return Result;
+        }
+
+        MQuaternion MQuaternion::FromAxisAngle(const MVector3& Axis, GLfloat Angle)
+        {
+            GLfloat HalfAngle = Angle / 2;
+            GLfloat S = sin(HalfAngle);
+            return MQuaternion(cos(HalfAngle), Axis.X * S, Axis.Y * S, Axis.Z * S);
+        }
+        MMatrix4x4 MQuaternion::FlipMatrix4x4()
+        {
+            MMatrix4x4 Matrix4x4;
+            Matrix4x4.m[0][0] = 1;
+            Matrix4x4.m[1][1] = -1;
+            Matrix4x4.m[2][2] = -1;
+            Matrix4x4.m[3][3] = 1;
+            return Matrix4x4;
+        }
+        MMatrix4x4 MQuaternion::ToMatrix(const MQuaternion& Q)
+        {
+            MMatrix4x4 Matrix;
+
+            Matrix.m[0][0] = 1 - 2 * Q.Y * Q.Y - 2 * Q.Z * Q.Z;
+            Matrix.m[0][1] = 2 * Q.X * Q.Y - 2 * Q.Z * Q.W;
+            Matrix.m[0][2] = 2 * Q.X * Q.Z + 2 * Q.Y * Q.W;
+            Matrix.m[0][3] = 0;
+
+            Matrix.m[1][0] = 2 * Q.X * Q.Y + 2 * Q.Z * Q.W;
+            Matrix.m[1][1] = 1 - 2 * Q.X * Q.X - 2 * Q.Z * Q.Z;
+            Matrix.m[1][2] = 2 * Q.Y * Q.Z - 2 * Q.X * Q.W;
+            Matrix.m[1][3] = 0;
+
+            Matrix.m[2][0] = 2 * Q.X * Q.Z - 2 * Q.Y * Q.W;
+            Matrix.m[2][1] = 2 * Q.Y * Q.Z + 2 * Q.X * Q.W;
+            Matrix.m[2][2] = 1 - 2 * Q.X * Q.X - 2 * Q.Y * Q.Y;
+            Matrix.m[2][3] = 0;
+
+            Matrix.m[3][0] = 0;
+            Matrix.m[3][1] = 0;
+            Matrix.m[3][2] = 0;
+            Matrix.m[3][3] = 1;
+
+            return Matrix;
+        }
+        MQuaternion MQuaternion::FromMatrix(const MMatrix4x4& Matrix)
+        {
+            GLfloat TR = Matrix.m[0][0] + Matrix.m[1][1] + Matrix.m[2][2];
+
+            if (TR > 0) {
+                GLfloat S = sqrt(TR + 1.0) * 2; // S=4*qw 
+                return MQuaternion(
+                    0.25 * S,
+                    (Matrix.m[2][1] - Matrix.m[1][2]) / S,
+                    (Matrix.m[0][2] - Matrix.m[2][0]) / S,
+                    (Matrix.m[1][0] - Matrix.m[0][1]) / S
+                );
+            }
+            else if ((Matrix.m[0][0] > Matrix.m[1][1]) & (Matrix.m[0][0] > Matrix.m[2][2])) {
+                GLfloat S = sqrt(1.0 + Matrix.m[0][0] - Matrix.m[1][1] - Matrix.m[2][2]) * 2; // S=4*qx 
+                return MQuaternion(
+                    (Matrix.m[2][1] - Matrix.m[1][2]) / S,
+                    0.25 * S,
+                    (Matrix.m[0][1] + Matrix.m[1][0]) / S,
+                    (Matrix.m[0][2] + Matrix.m[2][0]) / S
+                );
+            }
+            else if (Matrix.m[1][1] > Matrix.m[2][2]) {
+                GLfloat S = sqrt(1.0 + Matrix.m[1][1] - Matrix.m[0][0] - Matrix.m[2][2]) * 2; // S=4*qy
+                return MQuaternion(
+                    (Matrix.m[0][2] - Matrix.m[2][0]) / S,
+                    (Matrix.m[0][1] + Matrix.m[1][0]) / S,
+                    0.25 * S,
+                    (Matrix.m[1][2] + Matrix.m[2][1]) / S
+                );
+            }
+            else {
+                GLfloat S = sqrt(1.0 + Matrix.m[2][2] - Matrix.m[0][0] - Matrix.m[1][1]) * 2; // S=4*qz
+                return MQuaternion(
+                    (Matrix.m[1][0] - Matrix.m[0][1]) / S,
+                    (Matrix.m[0][2] + Matrix.m[2][0]) / S,
+                    (Matrix.m[1][2] + Matrix.m[2][1]) / S,
+                    0.25 * S
+                );
+            }
+        }
+        MVector3 MQuaternion::ToEuler(const MQuaternion& Q)
+        {
+            MVector3 Euler = MVector3::ZeroVector();
+
+            // Roll (x-axis rotation)
+            GLfloat sinr_cosp = 2 * (Q.W * Q.X + Q.Y * Q.Z);
+            GLfloat cosr_cosp = 1 - 2 * (Q.X * Q.X + Q.Y * Q.Y);
+            Euler.X = atan2(sinr_cosp, cosr_cosp);
+
+            // Pitch (y-axis rotation)
+            GLfloat sinp = 2 * (Q.W * Q.Y - Q.Z * Q.X);
+            if (abs(sinp) >= 1)
+                Euler.Y = copysign(M_PI / 2, sinp); // use 90 degrees if out of range
+            else
+                Euler.Y = asin(sinp);
+
+            // Yaw (z-axis rotation)
+            GLfloat siny_cosp = 2 * (Q.W * Q.Z + Q.X * Q.Y);
+            GLfloat cosy_cosp = 1 - 2 * (Q.Y * Q.Y + Q.Z * Q.Z);
+            Euler.Z = atan2(siny_cosp, cosy_cosp);
+
+            return Euler;
+        }
+        MQuaternion MQuaternion::FromEuler(const MVector3& Euler)
+        {
+            GLfloat Roll = Euler.X;
+            GLfloat Pitch = Euler.Y;
+            GLfloat Yaw = Euler.Z;
+
+            GLfloat CR = cos(Roll * 0.5);
+            GLfloat SR = sin(Roll * 0.5);
+            GLfloat CP = cos(Pitch * 0.5);
+            GLfloat SP = sin(Pitch * 0.5);
+            GLfloat CY = cos(Yaw * 0.5);
+            GLfloat SY = sin(Yaw * 0.5);
+
+            return MQuaternion(
+                CR * CP * CY + SR * SP * SY,
+                SR * CP * CY - CR * SP * SY,
+                CR * SP * CY + SR * CP * SY,
+                CR * CP * SY - SR * SP * CY
+            );
+        }
+
+        MQuaternion MQuaternion::RotationFromVectorToVector(const MVector3& Vector1, const MVector3& Vector2)
+        {
+            MVector3 V1 = Vector1.Normalized();
+            MVector3 V2 = Vector2.Normalized();
+
+            GLfloat Dot = MVector3::CalcDotProduct(V1, V2);
+
+            // Check if vectors are parallel or opposite
+            if (Dot > 0.999999) {
+                // Vectors are parallel
+                return MQuaternion::Identity();
+            }
+            else if (Dot < -0.999999) {
+                // Vectors are opposite, find orthogonal vector for axis
+                MVector3 axis = MVector3::UpVector().Cross(V1);
+                if (axis.Magnitude() < 0.000001) // Check if they are collinear
+                    axis = MVector3::OneVector().Cross(V1);
+
+                axis.Normalize();
+                return MQuaternion::FromAxisAngle(axis, M_DEG180);
+            }
+
+            GLfloat S = sqrt((1 + Dot) * 2);
+            GLfloat Invs = 1 / S;
+
+            MVector3 C = V1.Cross(V2);
+
+            return MQuaternion(
+                S * 0.5f,
+                C.X * Invs,
+                C.Y * Invs,
+                C.Z * Invs
+            );
+        }
 
         MQuaternion MQuaternion::Normalized() const
         {
@@ -69,32 +254,6 @@ namespace ge
                 return MQuaternion(W * invNorm, -X * invNorm, -Y * invNorm, -Z * invNorm);
             }
             return MQuaternion(0, 0, 0, 0); // Return zero quaternion if norm is zero
-        }
-        MMatrix4x4 MQuaternion::ToMatrix() const
-        {
-            MMatrix4x4 Matrix;
-
-            Matrix.m[0][0] = 1 - 2 * Y * Y - 2 * Z * Z;
-            Matrix.m[0][1] = 2 * X * Y - 2 * Z * W;
-            Matrix.m[0][2] = 2 * X * Z + 2 * Y * W;
-            Matrix.m[0][3] = 0;
-
-            Matrix.m[1][0] = 2 * X * Y + 2 * Z * W;
-            Matrix.m[1][1] = 1 - 2 * X * X - 2 * Z * Z;
-            Matrix.m[1][2] = 2 * Y * Z - 2 * X * W;
-            Matrix.m[1][3] = 0;
-
-            Matrix.m[2][0] = 2 * X * Z - 2 * Y * W;
-            Matrix.m[2][1] = 2 * Y * Z + 2 * X * W;
-            Matrix.m[2][2] = 1 - 2 * X * X - 2 * Y * Y;
-            Matrix.m[2][3] = 0;
-
-            Matrix.m[3][0] = 0;
-            Matrix.m[3][1] = 0;
-            Matrix.m[3][2] = 0;
-            Matrix.m[3][3] = 1;
-
-            return Matrix;
         }
 
         MTransformData MTransformData::TransformedBy(MTransformData TransformData)

@@ -23,6 +23,8 @@
 #include <type_traits>
 #include <fstream>
 #include <sstream>
+#include <memory>
+#include <typeinfo>
 
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -47,11 +49,21 @@
 #include "CameraComp.h"
 
 #include "Manager.h"
+#include "Octree.h"
 #include "PhysicsManager.h"
 //#include "MemoryManager.h"
 
 #include "Actor.h"
+#include "Planet.h"
+#include "PressureWave.h"
+#include "Projectile.h"
+#include "Prop.h"
 #include "Player.h"
+
+#include "SpherePlanet.h"
+#include "PlanetNavigationComp.h"
+#include "TimeContainerProp.h"
+
 #include "EssentialShape.h"
 #include "OrbitingBody.h"
 

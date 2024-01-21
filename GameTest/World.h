@@ -11,20 +11,29 @@ namespace ge
 
 	class AWorld : public AActor
 	{
+	public:
+		// World Managers
+		GPhysicsManagerComp* PhysicsManagerComp = nullptr;
+
+		// Debug Timer
+		GLfloat timer010;  // timer counting 0->1->0
+
 	protected:
 		int frame = 0;
 		gm::glShaderManager SM;
 		gm::glShader* shader;
 		GLuint ProgramObject;
 		clock_t time0, time1;
-		GLfloat timer010;  // timer counting 0->1->0
 		bool bUp;        // flag if counting up or down.
 
 		APlayer* Player;
 		std::list<GObject*> Objects;
 
 		// World Level
-		AEssentialShape* MajorBody = nullptr;
+		ASpherePlanet* SpherePlanet1 = nullptr;
+		ATimeContainerProp* Prop1 = nullptr;
+		ATimeContainerProp* Prop2 = nullptr;
+		ATimeContainerProp* Prop3 = nullptr;
 		AOrbitingBody* OrbitingBody = nullptr;
 	public:
 		AWorld(const std::string& Name) 
@@ -73,9 +82,9 @@ namespace ge
 
 			if (CompInstance == nullptr)
 			{
-			    debug::Output(debug::EOutputType::Always, "Error: NewComp created a nullptr");
-			    
-			    return nullptr;
+				debug::Output(debug::EOutputType::Always, "Error: NewComp created a nullptr");
+
+				return nullptr;
 			}
 
 			Objects.push_back(CompInstance);
@@ -85,6 +94,26 @@ namespace ge
 			return CompInstance;
 		}
 
+		template <typename GObjectSubclass>
+		GObjectSubclass* NewObject(const std::string& Name)
+		{
+			static_assert(std::is_base_of<GObject, GObjectSubclass>::value, "GObjectSubclass must be a derived class of GObject");
+
+			GObjectSubclass* ObjectInstance = new GObjectSubclass(Name);
+
+			if (ObjectInstance == nullptr)
+			{
+				debug::Output(debug::EOutputType::Always, "Error: NewObject created a nullptr");
+
+				return nullptr;
+			}
+
+			Objects.push_back(ObjectInstance);
+
+			ObjectInstance->Begin();
+
+			return ObjectInstance;
+		}
 	};
 };
 

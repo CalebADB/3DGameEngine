@@ -2,18 +2,16 @@
 
 namespace ge
 {
-    void AActor::Begin()
-    {
-        CalcGlobalTransformData();
-
-        GSceneComp::Begin();
-    }
-
     void AActor::UpdateGlobalTransform()
     {
         CalcGlobalTransformData();
 
         GSceneComp::UpdateGlobalTransform();
+
+        for (AActor* Actor : AttachedActors)
+        {
+            Actor->UpdateGlobalTransform();
+        }
     }
     void AActor::Update(float deltaTime)
     {
@@ -84,9 +82,8 @@ namespace ge
         // remove from list
         AttachedActors.remove(Actor);
 
-        // nullify Owner
-        Actor->Owner = nullptr;
-
+        // Put in global space
+        GAMEWORLD->AttachActor(Actor);
 
         return true;
     }

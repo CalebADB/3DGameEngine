@@ -3,11 +3,18 @@
 
 namespace ge
 {
+	enum struct EGravityWellType
+	{
+		Null,
+		Sphere
+	};
+
 	class GGravityWellComp : public GSceneComp
 	{
-	private:
-		GShapeComp* Shape;
-		GLfloat Strength;
+	protected:
+		EGravityWellType Type = EGravityWellType::Null;
+
+		GLfloat Strength = 0.0;
 
 	public:
 		GGravityWellComp(const std::string& Name)
@@ -15,20 +22,36 @@ namespace ge
 			GSceneComp(Name)
 		{}
 
+		virtual void Begin();
+		void Initialize(GLfloat Strength);
+
 	protected:
+		virtual void UpdateGlobalTransform();
 		virtual void Update(float deltaTime);
 
 	public:
-		virtual math::MVector3 GetGravityForceAtPosition(math::MVector3 GlobalPosition) = 0;
+		EGravityWellType GetType() { return Type; }
+
+		virtual math::MVector3 GetGravityAtPosition(math::MVector3 GlobalPosition) = 0;
 	};
 
 	class GSphereGravityWellComp : public GGravityWellComp
 	{
-	public:
-		virtual void Begin();
-		void Initialize();
+	private:
+		GSphereShapeComp* SphereShapeComp = nullptr;
 
-		virtual math::MVector3 GetGravityForceAtPosition(math::MVector3 GlobalPosition) = 0;
+	public:
+		GSphereGravityWellComp(const std::string& Name)
+			:
+			GGravityWellComp(Name)
+		{}
+
+		virtual void Begin();
+		void Initialize(GLfloat Strength, GLfloat GravityReachRadius, math::MVector3 Color);
+
+		virtual void RenderSceneData();
+
+		virtual math::MVector3 GetGravityAtPosition(math::MVector3 GlobalPosition);
 	};
 };
 

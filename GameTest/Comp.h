@@ -21,11 +21,12 @@ namespace ge
 		virtual void Render();
 
 	public:
-		bool AttachComp(GComp* RootComp, GComp* Comp);
+		virtual bool AttachComp(GComp* RootComp, GComp* Comp);
+		GComp* GetActorRoot();
 
 	public:
-		math::MTransformData GetLocalTransformData();
-		math::MTransformData GetGlobalTransformData();
+		virtual math::MTransformData GetLocalTransformData() const;
+		virtual math::MTransformData GetGlobalTransformData() const;
 
 	};
 };

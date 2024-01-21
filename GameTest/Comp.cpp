@@ -31,15 +31,26 @@ namespace ge
 			debug::Output(debug::EOutputType::Initialize, "Warning: GComp_%s attempted to attach a nullptr Comp", this->GetCharName());
 			return false;
 		}
+		RootComp->AttachedComps.push_back(Comp);
 
-		AttachedComps.push_back(Comp);		
+		Comp->Root = RootComp;
 	}
 
-	math::MTransformData GComp::GetLocalTransformData()
+	GComp* GComp::GetActorRoot()
+	{
+		if (Root != nullptr)
+		{
+			return Root->GetActorRoot();
+		}
+
+		return this;
+	}
+
+	math::MTransformData GComp::GetLocalTransformData() const
 	{
 		return Root->GetLocalTransformData();
 	}
-	math::MTransformData GComp::GetGlobalTransformData()
+	math::MTransformData GComp::GetGlobalTransformData() const
 	{
 		return Root->GetGlobalTransformData();
 	}

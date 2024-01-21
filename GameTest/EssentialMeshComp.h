@@ -6,6 +6,7 @@ namespace ge
 	enum struct EEssentialShapeType
 	{
 		Sphere,
+		SphereLP,
 		Cube,
 		Cone,
 		Torus,
@@ -30,7 +31,6 @@ namespace ge
 		{};
 
 	protected:
-		virtual void Update(float deltaTime);
 		virtual void RenderSceneData();
 
 	public:

@@ -24,7 +24,7 @@ namespace ge
         debug::Output(debug::EOutputType::Render, "ApplySceneData_%s", GetCharName());
 
         glTranslatef(LocalTransformData.Position.X, LocalTransformData.Position.Y, LocalTransformData.Position.Z);
-        glMultMatrixf(LocalTransformData.Rotation.ToMatrix().Data());
+        glMultMatrixf(math::MQuaternion::ToMatrix(LocalTransformData.Rotation).Data());
         glScalef(LocalTransformData.Scale.X, LocalTransformData.Scale.Y, LocalTransformData.Scale.Z);
     }
 

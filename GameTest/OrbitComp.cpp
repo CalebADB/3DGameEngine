@@ -23,7 +23,7 @@ namespace ge
     math::MQuaternion GOrbitComp::GetOrbitRelRotation()
     {
         math::MVector3 BaseRadialDisplacement = math::MVector3(1, 0, 0);
-        math::MQuaternion OrbitRotation = math::MQuaternion::FromAxisAngle(Axis, -(AngularDistance + (AngularSpeed > 0 ? 90 : -90)));
+        math::MQuaternion OrbitRotation = math::MQuaternion::FromAxisAngle(Axis, -(AngularDistance + (AngularSpeed > 0 ? (math::M_PI / 1.0f) : 0.0f )));
 
         return OrbitRotation;
     }

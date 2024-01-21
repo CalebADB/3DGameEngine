@@ -4,7 +4,8 @@ namespace ge
 {
 	void GObject::Begin()
 	{
-		bIsDead = true;
+		//if(!bIsBegun) debug::Output(debug::EOutputType::Always, "Error: GObject_%s attempted GObject::Begin() while begun is true", GetCharName());
+		bIsBegun = true;
 		bIsEnabled = true;
 
 		debug::Output(debug::EOutputType::Initialize, "GObject_%s created", GetCharName());
@@ -13,7 +14,7 @@ namespace ge
 	void GObject::Destroy()
 	{
 		bIsEnabled = false;
-		bIsDead = false;
+		bIsAlive = false;
 	}
 
 	std::string GObject::GetName() const
@@ -31,7 +32,7 @@ namespace ge
 
 	void GObject::SetIsEnabled(bool bIsEnabled)
 	{
-		if (bIsDead)
+		if (bIsAlive)
 		{
 			return;
 		}

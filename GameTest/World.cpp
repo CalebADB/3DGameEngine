@@ -4,7 +4,7 @@ namespace ge
 {
     void AWorld::BeginWorld()
     {
-        Begin();
+        AWorld::Begin();
 
         glClearColor(0.5f, 0.5f, 1.0f, 0.0f);
         glShadeModel(GL_SMOOTH);
@@ -85,6 +85,9 @@ namespace ge
 
         frame = -1;
 
+        PhysicsManagerComp = NewComp<GPhysicsManagerComp>("PhysicsManagerComp");
+        AttachComp(this, PhysicsManagerComp);
+
         Player = GAMEWORLD->SpawnActor<APlayer>(std::string("Player1"), this, math::MVector3::ZeroVector(), math::MQuaternion::Identity());
 
         //GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape1"), this, math::MVector3(0.0, 0.0, 0.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Cube, false);
@@ -93,12 +96,21 @@ namespace ge
         //GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape4"), this, math::MVector3(-4.0, 0.0, 0.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Torus, false);
         //GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape5"), this, math::MVector3(0.0, 0.0, -4.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Cone, false);
 
-        MajorBody = GAMEWORLD->SpawnActor<AEssentialShape>(std::string("MajorBody"), this, math::MVector3(0.0, 0.0, 0.0), math::MQuaternion::Identity());
-        MajorBody->SetEssentialShapeType(EEssentialShapeType::Sphere, false);
+        SpherePlanet1 = GAMEWORLD->SpawnActor<ASpherePlanet>(std::string("SpherePlanet1"), this, math::MVector3::ZeroVector(), math::MQuaternion::Identity());
+        SpherePlanet1->Initialize(1.0f, math::MVector3::ZeroVector(), math::MVector3::ZeroVector(), 4, 10, 24, math::MVector3(0, 0, 1));
 
-        OrbitingBody = GAMEWORLD->SpawnActor<AOrbitingBody>(std::string("Shape1"), MajorBody, math::MVector3(0.0, 0.0, 0.0), math::MQuaternion::Identity());
+        Prop1 = GAMEWORLD->SpawnActor<ATimeContainerProp>(std::string("TimeContainerProp1"), this, math::MVector3(11.0, -3.0, 0.0), math::MQuaternion::Identity());
+        Prop1->Initialize(2.222f, math::MVector3::ZeroVector(), math::MVector3(3, 2, 9), 1, 2, math::MVector3(1, 1, 0));
+        Prop2 = GAMEWORLD->SpawnActor<ATimeContainerProp>(std::string("TimeContainerProp2"), this, math::MVector3(0.0, 3.0, 13.0), math::MQuaternion::Identity());
+        Prop2->Initialize(1.111f, math::MVector3::ZeroVector(), math::MVector3(12, -2, 0), 0.5, 1, math::MVector3(1, 1, 0));
+        Prop3 = GAMEWORLD->SpawnActor<ATimeContainerProp>(std::string("TimeContainerProp3"), this, math::MVector3(6.0, 6.0, 0.0), math::MQuaternion::Identity());
+        Prop3->Initialize(1.111f, math::MVector3::ZeroVector(), math::MVector3(-5, -5, 0), 0.5, 1, math::MVector3(1, 1, 0));
+
+
+        OrbitingBody = GAMEWORLD->SpawnActor<AOrbitingBody>(std::string("Shape1"), SpherePlanet1, math::MVector3::ZeroVector(), math::MQuaternion::Identity());
         OrbitingBody->Initialize(5.0, 2.0);
         OrbitingBody->SetEssentialShapeType(EEssentialShapeType::Cone, false);
+
 
     }
 
@@ -108,16 +120,15 @@ namespace ge
 
         debug::Output(debug::EOutputType::Update, "____________");
         debug::Output(debug::EOutputType::Update, "Update_%05d ", frame);
-        math::MTransformData LocalTransformData = MajorBody->GetLocalTransformData();
-        LocalTransformData.Translate(math::MVector3(deltaTime, 0, 0));
-        MajorBody->SetLocalTransformData(LocalTransformData);
 
         //
         UpdateGlobalTransform();
         Update(deltaTime);
-        //Physics Displace;
         UpdateGlobalTransform();
-        //Physics Collision;
+        PhysicsManagerComp->HandleForces(deltaTime);
+        PhysicsManagerComp->HandleDisplacement(deltaTime);
+        UpdateGlobalTransform();
+        PhysicsManagerComp->CheckCollisions();
     }
     void AWorld::RenderWorld()
     {
@@ -138,7 +149,7 @@ namespace ge
             gluPerspective(100.0, (float)APP_VIRTUAL_WIDTH / (float)APP_VIRTUAL_HEIGHT, 0.2, 550.0);
             
             glMatrixMode(GL_MODELVIEW);
-            gluLookAt(5.0, (10.0 * 1) + 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+            gluLookAt(15.0, 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
             //gluLookAt((15.0 * 1) + 5.0, (10.0 * 1) + 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
             //gluLookAt((15.0 * timer010) + 5.0, (10.0 * timer010) + 5.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
@@ -229,7 +240,5 @@ namespace ge
     //    }
     //}
     */
-
-    
 
 };
