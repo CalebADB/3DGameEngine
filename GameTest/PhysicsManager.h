@@ -6,6 +6,7 @@ namespace ge
 	class GPhysicsManagerComp : public GManagerComp
 	{
 	private:
+		std::list<GPlayerControllerComp*> PlayerControllerComps;
 		std::list<GPhysicalComp*> PhysicalComps;
 		std::list<GPlanetNavigationComp*> PlanetNavigationComps;
 		std::list<GGravityWellComp*> GravityWellComps;
@@ -19,6 +20,7 @@ namespace ge
 
 		virtual void Begin();
 	public:
+		void AddPlayerControllerComps(GPlayerControllerComp* PlayerControllerComps);
 		void AddPhysicalComp(GPhysicalComp* PhysicalComp);
 		void AddPlanetNavigationComp(GPlanetNavigationComp* PlanetNavigationComp);
 		void AddGravityWellComp(GGravityWellComp* GravityWellComp);

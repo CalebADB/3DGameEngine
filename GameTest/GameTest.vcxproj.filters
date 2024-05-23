@@ -105,6 +105,15 @@
     <ClCompile Include="PlanetNavigationComp.cpp">
       <Filter>GameEngine\Comp\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>GameEngine\Comp\Managers\RenderManager</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerControllerComp.cpp">
+      <Filter>GameEngine\Comp\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerPlanetNavigationComp.cpp">
+      <Filter>GameEngine\Comp\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -219,6 +228,15 @@
     <ClInclude Include="PlanetNavigationComp.h">
       <Filter>GameEngine\Comp\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="RenderManager.h">
+      <Filter>GameEngine\Comp\Managers\RenderManager</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerControllerComp.h">
+      <Filter>GameEngine\Comp\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerPlanetNavigationComp.h">
+      <Filter>GameEngine\Comp\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NextAPI">
@@ -295,6 +313,12 @@
     </Filter>
     <Filter Include="GameEngine\Actor\Prop\McGuffins">
       <UniqueIdentifier>{63e1c893-6a19-4a19-90c8-b76a602e3e69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Comp\Managers\RenderManager">
+      <UniqueIdentifier>{fe076ab6-3a88-4368-bca3-fd4bd6c0f544}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Comp\Input">
+      <UniqueIdentifier>{992858bd-24b2-480e-95e4-40e1756dbdc7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

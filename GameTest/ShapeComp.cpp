@@ -2,8 +2,9 @@
 
 namespace ge
 {
-    void GShapeComp::Initialize(math::MVector3 Color)
+    void GShapeComp::Initialize(bool bIsRendered, math::MVector3 Color)
     {
+        this->bIsRendered = bIsRendered;
         this->Color = Color;
     }
 
@@ -22,13 +23,15 @@ namespace ge
         DebugShape->SetEssentialShapeType(EEssentialShapeType::SphereLP, false);
     }
 
-    void GSphereShapeComp::Initialize(GLfloat Radius, math::MVector3 Color)
+    void GSphereShapeComp::Initialize(GLfloat Radius, bool bIsRendered, math::MVector3 Color)
     {
-        GShapeComp::Initialize(Color);
+        GShapeComp::Initialize(bIsRendered, Color);
 
         this->Radius = Radius;
 
         DebugShape->SetLocalTransformData(math::MTransformData(math::MVector3(0, 0, 0), math::MQuaternion::Identity(), math::MVector3(Radius, Radius, Radius)));
+
+        GAMEWORLD->RenderManagerComp->AddShapeComp(this);
     }
 
     void GSphereShapeComp::RenderSceneData()

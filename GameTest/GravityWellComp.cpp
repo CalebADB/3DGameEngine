@@ -34,7 +34,7 @@ namespace ge
 	{
 		GGravityWellComp::Initialize(Strength);
 
-		SphereShapeComp->Initialize(GravityReachRadius, Color);
+		SphereShapeComp->Initialize(GravityReachRadius, false, Color);
 	}
 	void GSphereGravityWellComp::RenderSceneData()
 	{

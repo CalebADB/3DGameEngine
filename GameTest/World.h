@@ -14,7 +14,9 @@ namespace ge
 	public:
 		// World Managers
 		GPhysicsManagerComp* PhysicsManagerComp = nullptr;
-
+		bool bIsOpenGLTogglePressed = false;
+		bool bShouldRenderOpenGL = false;
+		GRenderManagerComp* RenderManagerComp = nullptr;
 		// Debug Timer
 		GLfloat timer010;  // timer counting 0->1->0
 
@@ -26,7 +28,8 @@ namespace ge
 		clock_t time0, time1;
 		bool bUp;        // flag if counting up or down.
 
-		APlayer* Player;
+		APlayer* Player = nullptr;
+		GCameraComp* GameCameraComp = nullptr;
 		std::list<GObject*> Objects;
 
 		// World Level
@@ -44,10 +47,7 @@ namespace ge
 		void BeginWorld();
 		void UpdateWorld(float deltaTime);
 		void RenderWorld();
-
-	protected:
-		//virtual void Begin();
-		//virtual void Destroy();
+		void RenderWorldUbisoft();
 
 	public:
 		template <typename AActorSubclass>

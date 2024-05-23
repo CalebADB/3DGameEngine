@@ -18,8 +18,6 @@ namespace ge
         PlanetSurface
     };
 
-    class GPlanetNavigationComp;
-
     // Main physics component class
     class GPhysicalComp : public GComp
     {

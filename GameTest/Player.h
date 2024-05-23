@@ -6,10 +6,15 @@ namespace ge
 	class APlayer : public AActor
 	{
 	protected:
-		GPropPhysicalComp* PhysicalComp = nullptr;
+		GPlayerPhysicalComp* PhysicalComp = nullptr;
+		GSphereShapeComp* ShapeComp = nullptr;
 
 	public:
-		GPlanetNavigationComp* PlanetNavigationComp = nullptr;
+		GCameraComp* FirstPersonCameraComp = nullptr;
+		GPlayerControllerComp* ControllerComp = nullptr;
+
+	public:
+		GPlayerPlanetNavigationComp* PlanetNavigationComp = nullptr;
 
 	public:
 		APlayer(const std::string& Name) 
@@ -18,10 +23,8 @@ namespace ge
 		{};
 
 		virtual void Begin();
-		void Initialize(GLfloat Mass, math::MVector3 Acceleration, math::MVector3 Velocity, GLfloat GroundDisplacement);
+		void Initialize(GLfloat Mass, math::MVector3 Acceleration, math::MVector3 Velocity, GLfloat GroundDisplacement, GLfloat PlayerRadius, math::MVector3 Color);
 
-	public:
-		//virtual void Begin();
 	protected:
 		virtual void Update(float deltaTime);
 		virtual void Render();

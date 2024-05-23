@@ -12,6 +12,7 @@
 #include "glew.h"
 
 // TODO: reference additional headers your program requires here
+#include "App/App.h"
 #include "App/AppSettings.h"
 
 #include <Windows.h>
@@ -39,18 +40,23 @@
 #include "Object.h"
 
 #include "Comp.h"
+
 #include "SceneComp.h"
 #include "MeshComp.h"
 #include "EssentialMeshComp.h"
 #include "ShapeComp.h"
-#include "PhysicalComp.h"
 #include "GravityWellComp.h"
+#include "PhysicalComp.h"
+#include "PlanetNavigationComp.h"
+#include "PlayerControllerComp.h"
+#include "PlayerPlanetNavigationComp.h"
 #include "OrbitComp.h"
 #include "CameraComp.h"
 
 #include "Manager.h"
 #include "Octree.h"
 #include "PhysicsManager.h"
+#include "RenderManager.h"
 //#include "MemoryManager.h"
 
 #include "Actor.h"
@@ -61,7 +67,6 @@
 #include "Player.h"
 
 #include "SpherePlanet.h"
-#include "PlanetNavigationComp.h"
 #include "TimeContainerProp.h"
 
 #include "EssentialShape.h"

@@ -3,6 +3,8 @@
 
 namespace ge
 {
+    class APlanet;
+
     // Main physics component class
     class GPlanetNavigationComp : public GComp
     {
@@ -34,8 +36,8 @@ namespace ge
 
     public:
         bool IsEmbarked() const { return PhysicalComp->GetPhysicsType() == EPhysicsType::PlanetSurface; }
-        void EmbarkOn(APlanet* Planet, math::MVector3 NavigatorVelocity);
-        void Disembark(GPhysicalComp* InstigatingPhysicalComp, math::MVector3 Impulse);
+        virtual void EmbarkOn(APlanet* Planet, math::MVector3 NavigatorVelocity);
+        virtual void Disembark(GPhysicalComp* InstigatingPhysicalComp, math::MVector3 Impulse);
         math::MTransformData GetLocalTransformData();
 
         math::MVector3 GetNavigatorUp();

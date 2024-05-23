@@ -5,14 +5,16 @@ namespace ge
 {
     namespace math
     {
+
         static GLfloat M_PI = 3.14159265;
         static GLfloat M_DEG360 = M_PI * 2;
         static GLfloat M_DEG180 = M_PI;
         static GLfloat M_DEG90 = M_PI / 2;
         static GLfloat M_DEG45 = M_PI / 4;
+        static GLfloat M_DEG_TO_RAD = M_DEG180 / 180;
 
+        class MMatrix4x4;
         class MQuaternion;
-
 
         class MVector3 
         {
@@ -29,8 +31,11 @@ namespace ge
             static MVector3 ZeroVector() { return MVector3(0, 0, 0); }
             static MVector3 OneVector() { return MVector3(1, 1, 1); }
             static MVector3 UpVector() { return MVector3(0, 1, 0); }
+            static MVector3 DownVector() { return MVector3(0, -1, 0); }
             static MVector3 RightVector() { return MVector3(1, 0, 0); }
+            static MVector3 LeftVector() { return MVector3(-1, 0, 0); }
             static MVector3 ForwardVector() { return MVector3(0, 0, 1); }
+            static MVector3 BackwardVector() { return MVector3(0, 0, -1); }
 
             static MVector3 FlipVector(MVector3 V) { return MVector3(-V.X, -V.Y, -V.Z); }
             static GLfloat CalcDotProduct(const MVector3& v1, const MVector3& v2)
@@ -62,6 +67,7 @@ namespace ge
             MVector3 Normalized() const;
             MVector3 RotatedBy(const MQuaternion& Q) const;
             MVector3 Cross(const MVector3& V2) const; 
+            void TransformPosition(const MMatrix4x4& Matrix);
         };
 
         class MMatrix4x4 
@@ -70,6 +76,9 @@ namespace ge
             GLfloat m[4][4] = { {0} };
 
             const float* Data() const { return &m[0][0]; }
+
+            static MMatrix4x4 CreateViewMatrix(const MVector3& camPosition, const MVector3& targetPosition, const MVector3& upVector);
+            static MMatrix4x4 CreatePerspectiveProjectionMatrix(float fov, float aspectRatio, float nearPlane, float farPlane);
 
             MMatrix4x4 operator*(const MMatrix4x4& other) const;
         };

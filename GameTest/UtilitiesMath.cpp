@@ -49,7 +49,76 @@ namespace ge
                 X * V2.Y - Y * V2.X
             );
         }
+        void MVector3::TransformPosition(const MMatrix4x4& Matrix)
+        {
+            // Calculate the transformed position without the perspective divide
+            float newX = X * Matrix.m[0][0] + Y * Matrix.m[1][0] + Z * Matrix.m[2][0] + Matrix.m[3][0];
+            float newY = X * Matrix.m[0][1] + Y * Matrix.m[1][1] + Z * Matrix.m[2][1] + Matrix.m[3][1];
+            float newZ = X * Matrix.m[0][2] + Y * Matrix.m[1][2] + Z * Matrix.m[2][2] + Matrix.m[3][2];
+            float newW = X * Matrix.m[0][3] + Y * Matrix.m[1][3] + Z * Matrix.m[2][3] + Matrix.m[3][3];
 
+            // Perspective divide (if w is not 0 or very close to 0)
+            if (std::abs(newW) > std::numeric_limits<float>::epsilon())
+            {
+                newX /= newW;
+                newY /= newW;
+                newZ /= newW;
+            }
+
+            // Updating the vector's components
+            X = newX;
+            Y = newY;
+            Z = newZ;
+        }
+        MMatrix4x4 MMatrix4x4::CreateViewMatrix(const MVector3& camPosition, const MVector3& targetPosition, const MVector3& upVector)
+        {
+            // Calculate the forward direction (normalized)
+            MVector3 forward = (targetPosition - camPosition).Normalized();
+
+            // Calculate the right vector (normalized)
+            MVector3 right = forward.Cross(upVector).Normalized();
+
+            // Recalculate the up vector (normalized)
+            MVector3 up = right.Cross(forward);
+
+            // Constructing the view matrix
+            MMatrix4x4 viewMatrix;
+
+            viewMatrix.m[0][0] = right.X;
+            viewMatrix.m[1][0] = right.Y;
+            viewMatrix.m[2][0] = right.Z;
+            viewMatrix.m[3][0] = -MVector3::CalcDotProduct(right, camPosition);
+
+            viewMatrix.m[0][1] = up.X;
+            viewMatrix.m[1][1] = up.Y;
+            viewMatrix.m[2][1] = up.Z;
+            viewMatrix.m[3][1] = -MVector3::CalcDotProduct(up, camPosition);
+
+            viewMatrix.m[0][2] = -forward.X;
+            viewMatrix.m[1][2] = -forward.Y;
+            viewMatrix.m[2][2] = -forward.Z;
+            viewMatrix.m[3][2] = MVector3::CalcDotProduct(forward, camPosition);
+
+            viewMatrix.m[0][3] = 0;
+            viewMatrix.m[1][3] = 0;
+            viewMatrix.m[2][3] = 0;
+            viewMatrix.m[3][3] = 1;
+
+            return viewMatrix;
+        }
+        MMatrix4x4 MMatrix4x4::CreatePerspectiveProjectionMatrix(float fov, float aspectRatio, float nearPlane, float farPlane)
+        {
+            MMatrix4x4 matrix;
+            float tanHalfFOV = tan(fov / 2.0f * M_DEG_TO_RAD);
+
+            matrix.m[0][0] = 1.0f / (aspectRatio * tanHalfFOV);
+            matrix.m[1][1] = 1.0f / tanHalfFOV;
+            matrix.m[2][2] = -(farPlane + nearPlane) / (farPlane - nearPlane);
+            matrix.m[2][3] = -1.0f;
+            matrix.m[3][2] = -(2.0f * farPlane * nearPlane) / (farPlane - nearPlane);
+
+            return matrix;
+        }
         MMatrix4x4 MMatrix4x4::operator*(const MMatrix4x4& Other) const
         {
             MMatrix4x4 Result;
@@ -256,6 +325,7 @@ namespace ge
             return MQuaternion(0, 0, 0, 0); // Return zero quaternion if norm is zero
         }
 
+
         MTransformData MTransformData::TransformedBy(MTransformData TransformData)
         {
             return MTransformData(
@@ -282,5 +352,8 @@ namespace ge
         {
             Scale = Scale * Displacement;
         }
+
+
+
 }
 };

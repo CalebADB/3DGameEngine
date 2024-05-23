@@ -19,7 +19,7 @@ namespace ge
     {
         APlanet::Initialize(Mass, Acceleration, Velocity);
 
-        ShapeComp->Initialize(SurfaceRadius, Color);
+        ShapeComp->Initialize(SurfaceRadius, true, Color);
         GravityWellComp->Initialize(GravityStrength, GravityReachRadius, Color);
     }
 

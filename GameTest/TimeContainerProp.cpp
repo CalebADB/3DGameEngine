@@ -14,7 +14,7 @@ namespace ge
     {
         AProp::Initialize(Mass, Acceleration, Velocity, GroundDisplacement);
 
-        ShapeComp->Initialize(BoxEdgeLength, Color);
+        ShapeComp->Initialize(BoxEdgeLength, true, Color);
     }
 
     void ATimeContainerProp::Update(float deltaTime)

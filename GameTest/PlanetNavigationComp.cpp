@@ -28,6 +28,10 @@ namespace ge
 			return;
 		}
 
+		if (NavigatorTangentialSpeed < 0.001f)
+		{
+			return;
+		}
 		math::MVector3 EulerDirection = math::MQuaternion::ToEuler(Direction);
 		Location = math::MQuaternion::FromEuler(EulerDirection.Normalized() * (deltaTime * NavigatorTangentialSpeed * PlanetRadius / 360) * math::M_PI) * Location;
 

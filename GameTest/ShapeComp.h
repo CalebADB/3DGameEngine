@@ -14,7 +14,7 @@ namespace ge
 	{
 	private:
 		math::MVector3 Color = math::MVector3(1,0,1);
-
+		bool bIsRendered = false;
 	protected:
 		GEssentialMeshComp* DebugShape = nullptr;
 
@@ -23,11 +23,12 @@ namespace ge
 			:
 			GSceneComp(Name)
 		{}
-		void Initialize(math::MVector3 Color);
+		void Initialize(bool bIsRendered, math::MVector3 Color);
 
 	public:
-		virtual GLfloat GetMaxSize() const = 0;
+		virtual bool IsRendered() const { return bIsRendered; }
 		math::MVector3 GetShapeColor();
+		virtual GLfloat GetMaxSize() const = 0;
 		virtual GLfloat GetSignedDistanceFrom(math::MVector3 GlobalPosition) = 0;
 	};
 
@@ -42,7 +43,7 @@ namespace ge
 			GShapeComp(Name)
 		{}
 		virtual void Begin();
-		void Initialize(GLfloat Radius, math::MVector3 Color);
+		void Initialize(GLfloat Radius, bool bIsRendered, math::MVector3 Color);
 		GLfloat GetRadius() const { return Radius; }
 
 	protected:

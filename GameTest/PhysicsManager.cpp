@@ -7,6 +7,10 @@ namespace ge
         Octree = GAMEWORLD->NewObject<GOctree>("Octree");
         Octree->Initialize(math::MVector3::ZeroVector(), 200.0f);
     }
+    void GPhysicsManagerComp::AddPlayerControllerComps(GPlayerControllerComp* PlayerControllerComp)
+    {
+        PlayerControllerComps.push_back(PlayerControllerComp);
+    }
     void GPhysicsManagerComp::AddPhysicalComp(GPhysicalComp* PhysicalComp)
     {
         PhysicalComps.push_back(PhysicalComp);
@@ -25,6 +29,13 @@ namespace ge
 
     void GPhysicsManagerComp::HandleForces(float deltaTime)
     {
+        for (GPlayerControllerComp* PlayerControllerComp : PlayerControllerComps)
+        {
+            if (PlayerControllerComp->IsJumpQueued())
+            {
+                ((APlayer*)(PlayerControllerComp->GetActorRoot()))->PlanetNavigationComp->Disembark(nullptr, PlayerControllerComp->GetJumpImpulse());
+            }
+        }
         for (GPhysicalComp* PhysicalComp : PhysicalComps)
         {
             switch (PhysicalComp->GetPhysicalType())
@@ -35,10 +46,14 @@ namespace ge
             }
             case EPhysicalType::Player:
             {
+                PhysicalComp->SetGravity(GetGravityAtPosition(PhysicalComp->GetGlobalTransformData().Position));
+
                 break;
             }
             case EPhysicalType::Projectile:
             {
+                PhysicalComp->SetGravity(GetGravityAtPosition(PhysicalComp->GetGlobalTransformData().Position));
+
                 break;
             }
             case EPhysicalType::Prop:
@@ -53,6 +68,25 @@ namespace ge
 
     void GPhysicsManagerComp::HandleDisplacement(float deltaTime)
     {
+        for (GPlayerControllerComp* PlayerControllerComp : PlayerControllerComps)
+        {
+            //Determine down based on gravity so that 
+            PlayerControllerComp->SetLocalUp(math::MVector3::FlipVector(GetGravityAtPosition(PlayerControllerComp->GetGlobalTransformData().Position)).Normalized());
+
+            math::MVector3 Displacement = PlayerControllerComp->GetLinearDisplacement(deltaTime);
+            AActor* Actor = (AActor*)PlayerControllerComp->GetActorRoot();
+            if (Actor == nullptr)
+            {
+                debug::Output(debug::EOutputType::Always, "Error: PlayerControllerComp_%s does not have a root actor", PlayerControllerComp->GetCharName());
+                continue;
+            }
+
+            math::MTransformData LocalTransformData = Actor->GetLocalTransformData();
+            LocalTransformData.Translate(Displacement);
+            Actor->SetLocalTransformData(LocalTransformData);
+
+        }
+
         for (GPhysicalComp* PhysicalComp : PhysicalComps)
         {
             if (PhysicalComp->GetPhysicsType() == EPhysicsType::PlanetSurface)
@@ -67,6 +101,7 @@ namespace ge
                 debug::Output(debug::EOutputType::Always, "Error: PhysicalComp_%s does not have a root actor", PhysicalComp->GetCharName());
                 continue;
             }
+
             math::MTransformData LocalTransformData = Actor->GetLocalTransformData();
             LocalTransformData.Translate(Displacement);
             Actor->SetLocalTransformData(LocalTransformData);

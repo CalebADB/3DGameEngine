@@ -6,14 +6,28 @@ namespace ge
     {
         AActor::Begin();
 
-        PlanetNavigationComp = GAMEWORLD->NewComp<GPlanetNavigationComp >(std::string("PlanetNavigationComp"));
+        PhysicalComp = GAMEWORLD->NewComp<GPlayerPhysicalComp>(std::string("PlayerPhysicalComp"));
+        AttachComp(this, PhysicalComp);
 
-        GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape10"), this, math::MVector3(0.0, 0.0, 0.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Teapot, false);;
+        PlanetNavigationComp = GAMEWORLD->NewComp<GPlayerPlanetNavigationComp>(std::string("PlanetNavigationComp"));
+        AttachComp(this, PlanetNavigationComp);
+
+        FirstPersonCameraComp = GAMEWORLD->NewComp<GCameraComp>(std::string("CameraComp"));
+        AttachComp(this, FirstPersonCameraComp);
+
+        ControllerComp = GAMEWORLD->NewComp<GPlayerControllerComp>(std::string("PlayerControllerComp"));
+        AttachComp(this, ControllerComp);
+
+        ShapeComp = GAMEWORLD->NewComp<GSphereShapeComp>(std::string("SphereGravityWellComp1"));
+        AttachComp(PhysicalComp, ShapeComp);
+        PhysicalComp->AddShape(ShapeComp);
     }
-    void APlayer::Initialize(GLfloat Mass, math::MVector3 Acceleration, math::MVector3 Velocity, GLfloat GroundDisplacement)
+    void APlayer::Initialize(GLfloat Mass, math::MVector3 Acceleration, math::MVector3 Velocity, GLfloat GroundDisplacement, GLfloat PlayerRadius, math::MVector3 Color)
     {
         PhysicalComp->Initialize(Mass, Acceleration, Velocity);
-        PlanetNavigationComp->Initialize(PhysicalComp, GroundDisplacement);
+        PlanetNavigationComp->Initialize(PhysicalComp, GroundDisplacement, ControllerComp);
+        ControllerComp->Initialize();
+        ShapeComp->Initialize(PlayerRadius, true, Color);
 
     }
     void APlayer::Update(float deltaTime)

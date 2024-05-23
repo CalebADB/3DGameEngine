@@ -1,3 +1,13 @@
-﻿  GameTest.vcxproj -> C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\x64\Debug\GameTest.exe
+﻿  PhysicalComp.cpp
+  PhysicsManager.cpp
+  RenderManager.cpp
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\RenderManager.cpp(136,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  (compiling source file '/RenderManager.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\RenderManager.cpp(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  (compiling source file '/RenderManager.cpp')
+  
+  Generating Code...
+  GameTest.vcxproj -> C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\x64\Debug\GameTest.exe
   C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\\GameTest\glut\bin\x64\freeglut.dll
   1 File(s) copied

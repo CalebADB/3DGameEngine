@@ -122,7 +122,7 @@ namespace ge
 			return;
 		}
 
-		OngoingCollidingPhysicalComps.push_back(InstigatingPhysicalComp);
+		if(InstigatingPhysicalComp != nullptr) OngoingCollidingPhysicalComps.push_back(InstigatingPhysicalComp);
 		Impulses.push_back(Impulse);
 	}
 
