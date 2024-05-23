@@ -1,5 +1,413 @@
-﻿  PhysicalComp.cpp
+﻿  stdafx.cpp
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(117,31): warning C4273: '__glewCreateProgram': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9105,42):
+  see previous definition of '__glewCreateProgram'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(118,30): warning C4273: '__glewDetachShader': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9109,41):
+  see previous definition of '__glewDetachShader'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(119,30): warning C4273: '__glewDeleteShader': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9108,41):
+  see previous definition of '__glewDeleteShader'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(120,30): warning C4273: '__glewAttachShader': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9101,41):
+  see previous definition of '__glewAttachShader'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(121,38): warning C4273: '__glewProgramParameteriEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9681,49):
+  see previous definition of '__glewProgramParameteriEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(122,29): warning C4273: '__glewLinkProgram': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9131,40):
+  see previous definition of '__glewLinkProgram'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(123,30): warning C4273: '__glewGetProgramiv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9118,41):
+  see previous definition of '__glewGetProgramiv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(124,35): warning C4273: '__glewGetProgramInfoLog': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9117,46):
+  see previous definition of '__glewGetProgramInfoLog'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(125,28): warning C4273: '__glewUseProgram': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9155,39):
+  see previous definition of '__glewUseProgram'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(126,27): warning C4273: '__glewUniform1f': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9136,38):
+  see previous definition of '__glewUniform1f'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(127,27): warning C4273: '__glewUniform2f': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9140,38):
+  see previous definition of '__glewUniform2f'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(128,27): warning C4273: '__glewUniform3f': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9144,38):
+  see previous definition of '__glewUniform3f'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(129,27): warning C4273: '__glewUniform4f': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9148,38):
+  see previous definition of '__glewUniform4f'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(130,27): warning C4273: '__glewUniform1i': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9138,38):
+  see previous definition of '__glewUniform1i'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(131,27): warning C4273: '__glewUniform2i': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9142,38):
+  see previous definition of '__glewUniform2i'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(132,27): warning C4273: '__glewUniform3i': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9146,38):
+  see previous definition of '__glewUniform3i'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(133,27): warning C4273: '__glewUniform4i': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9150,38):
+  see previous definition of '__glewUniform4i'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(134,31): warning C4273: '__glewUniform1uiEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9688,42):
+  see previous definition of '__glewUniform1uiEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(135,31): warning C4273: '__glewUniform2uiEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9690,42):
+  see previous definition of '__glewUniform2uiEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(136,31): warning C4273: '__glewUniform3uiEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9692,42):
+  see previous definition of '__glewUniform3uiEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(137,31): warning C4273: '__glewUniform4uiEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9694,42):
+  see previous definition of '__glewUniform4uiEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(138,28): warning C4273: '__glewUniform1fv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9137,39):
+  see previous definition of '__glewUniform1fv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(139,28): warning C4273: '__glewUniform2fv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9141,39):
+  see previous definition of '__glewUniform2fv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(140,28): warning C4273: '__glewUniform3fv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9145,39):
+  see previous definition of '__glewUniform3fv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(141,28): warning C4273: '__glewUniform4fv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9149,39):
+  see previous definition of '__glewUniform4fv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(142,28): warning C4273: '__glewUniform1iv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9139,39):
+  see previous definition of '__glewUniform1iv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(143,28): warning C4273: '__glewUniform2iv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9143,39):
+  see previous definition of '__glewUniform2iv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(144,28): warning C4273: '__glewUniform3iv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9147,39):
+  see previous definition of '__glewUniform3iv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(145,28): warning C4273: '__glewUniform4iv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9151,39):
+  see previous definition of '__glewUniform4iv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(146,32): warning C4273: '__glewUniform1uivEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9689,43):
+  see previous definition of '__glewUniform1uivEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(147,32): warning C4273: '__glewUniform2uivEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9691,43):
+  see previous definition of '__glewUniform2uivEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(148,32): warning C4273: '__glewUniform3uivEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9693,43):
+  see previous definition of '__glewUniform3uivEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(149,32): warning C4273: '__glewUniform4uivEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9695,43):
+  see previous definition of '__glewUniform4uivEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(150,34): warning C4273: '__glewUniformMatrix2fv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9152,45):
+  see previous definition of '__glewUniformMatrix2fv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(151,34): warning C4273: '__glewUniformMatrix3fv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9153,45):
+  see previous definition of '__glewUniformMatrix3fv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(152,34): warning C4273: '__glewUniformMatrix4fv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9154,45):
+  see previous definition of '__glewUniformMatrix4fv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(153,36): warning C4273: '__glewGetUniformLocation': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9122,47):
+  see previous definition of '__glewGetUniformLocation'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(154,30): warning C4273: '__glewGetUniformfv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9123,41):
+  see previous definition of '__glewGetUniformfv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(155,30): warning C4273: '__glewGetUniformiv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9124,41):
+  see previous definition of '__glewGetUniformiv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(156,34): warning C4273: '__glewGetUniformuivEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9685,45):
+  see previous definition of '__glewGetUniformuivEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(157,36): warning C4273: '__glewBindAttribLocation': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9102,47):
+  see previous definition of '__glewBindAttribLocation'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(158,32): warning C4273: '__glewVertexAttrib1f': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9159,43):
+  see previous definition of '__glewVertexAttrib1f'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(159,32): warning C4273: '__glewVertexAttrib2f': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9165,43):
+  see previous definition of '__glewVertexAttrib2f'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(160,32): warning C4273: '__glewVertexAttrib3f': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9171,43):
+  see previous definition of '__glewVertexAttrib3f'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(161,32): warning C4273: '__glewVertexAttrib4f': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9185,43):
+  see previous definition of '__glewVertexAttrib4f'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(162,32): warning C4273: '__glewVertexAttrib1d': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9157,43):
+  see previous definition of '__glewVertexAttrib1d'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(163,32): warning C4273: '__glewVertexAttrib2d': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9163,43):
+  see previous definition of '__glewVertexAttrib2d'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(164,32): warning C4273: '__glewVertexAttrib3d': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9169,43):
+  see previous definition of '__glewVertexAttrib3d'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(165,32): warning C4273: '__glewVertexAttrib4d': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9183,43):
+  see previous definition of '__glewVertexAttrib4d'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(166,32): warning C4273: '__glewVertexAttrib1s': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9161,43):
+  see previous definition of '__glewVertexAttrib1s'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(167,32): warning C4273: '__glewVertexAttrib2s': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9167,43):
+  see previous definition of '__glewVertexAttrib2s'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(168,32): warning C4273: '__glewVertexAttrib3s': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9173,43):
+  see previous definition of '__glewVertexAttrib3s'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(169,32): warning C4273: '__glewVertexAttrib4s': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9188,43):
+  see previous definition of '__glewVertexAttrib4s'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(170,34): warning C4273: '__glewVertexAttrib4Nub': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9178,45):
+  see previous definition of '__glewVertexAttrib4Nub'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(171,36): warning C4273: '__glewVertexAttribI1iEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9696,47):
+  see previous definition of '__glewVertexAttribI1iEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(172,36): warning C4273: '__glewVertexAttribI2iEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9700,47):
+  see previous definition of '__glewVertexAttribI2iEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(173,36): warning C4273: '__glewVertexAttribI3iEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9704,47):
+  see previous definition of '__glewVertexAttribI3iEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(174,36): warning C4273: '__glewVertexAttribI4iEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9709,47):
+  see previous definition of '__glewVertexAttribI4iEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(175,37): warning C4273: '__glewVertexAttribI1uiEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9698,48):
+  see previous definition of '__glewVertexAttribI1uiEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(176,37): warning C4273: '__glewVertexAttribI2uiEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9702,48):
+  see previous definition of '__glewVertexAttribI2uiEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(177,37): warning C4273: '__glewVertexAttribI3uiEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9706,48):
+  see previous definition of '__glewVertexAttribI3uiEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(178,37): warning C4273: '__glewVertexAttribI4uiEXT': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9713,48):
+  see previous definition of '__glewVertexAttribI4uiEXT'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(179,29): warning C4273: '__glewGetShaderiv': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9121,40):
+  see previous definition of '__glewGetShaderiv'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(180,33): warning C4273: '__glewDeleteObjectARB': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9327,44):
+  see previous definition of '__glewDeleteObjectARB'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(181,31): warning C4273: '__glewGetInfoLogARB': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9332,42):
+  see previous definition of '__glewGetInfoLogARB'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(182,33): warning C4273: '__glewShaderSourceARB': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9340,44):
+  see previous definition of '__glewShaderSourceARB'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(183,34): warning C4273: '__glewCompileShaderARB': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9324,45):
+  see previous definition of '__glewCompileShaderARB'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(184,41): warning C4273: '__glewGetObjectParameterivARB': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9334,52):
+  see previous definition of '__glewGetObjectParameterivARB'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(185,38): warning C4273: '__glewGetAttribLocationARB': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9464,49):
+  see previous definition of '__glewGetAttribLocationARB'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(186,39): warning C4273: '__glewCreateShaderObjectARB': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9326,50):
+  see previous definition of '__glewCreateShaderObjectARB'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(191,28): warning C4273: '__glewGenBuffers': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9088,39):
+  see previous definition of '__glewGenBuffers'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(192,28): warning C4273: '__glewBindBuffer': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9082,39):
+  see previous definition of '__glewBindBuffer'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(193,28): warning C4273: '__glewBufferData': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9083,39):
+  see previous definition of '__glewBufferData'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(194,37): warning C4273: '__glewVertexAttribPointer': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9193,48):
+  see previous definition of '__glewVertexAttribPointer'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glTape.h(195,41): warning C4273: '__glewEnableVertexAttribArray': inconsistent dll linkage
+  (compiling source file 'stdafx.cpp')
+  C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glew.h(9112,52):
+  see previous definition of '__glewEnableVertexAttribArray'
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.h(9,29): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+  (compiling source file 'stdafx.cpp')
+  
+  Actor.cpp
+  SimpleController.cpp
+  SimpleSound.cpp
+  SimpleSprite.cpp
+  app.cpp
+  main.cpp
+  CameraComp.cpp
+  Comp.cpp
+  EssentialMeshComp.cpp
+  EssentialShape.cpp
+  GameTest.cpp
+  GravityWellComp.cpp
+  Manager.cpp
+  MeshComp.cpp
+  Object.cpp
+  Octree.cpp
+  OrbitComp.cpp
+  OrbitingBody.cpp
+  PhysicalComp.cpp
   PhysicsManager.cpp
+  Generating Code...
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\Comp.cpp(37): warning C4715: 'ge::GComp::AttachComp': not all control paths return a value
+  Compiling...
+  Planet.cpp
+  PlanetNavigationComp.cpp
+  Player.cpp
+  PlayerControllerComp.cpp
+  PlayerPlanetNavigationComp.cpp
+  PressureWave.cpp
+  Projectile.cpp
+  Prop.cpp
   RenderManager.cpp
 C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\RenderManager.cpp(136,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file '/RenderManager.cpp')
@@ -7,7 +415,68 @@ C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\RenderManager.cpp
 C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\RenderManager.cpp(137,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file '/RenderManager.cpp')
   
+  SceneComp.cpp
+  ShapeComp.cpp
+  SpherePlanet.cpp
+  TimeContainerProp.cpp
+  UtilitiesMath.cpp
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(184,27): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(186,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(193,27): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(196,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(202,27): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(206,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(211,27): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(216,26): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(249,24): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(250,24): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(251,24): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(252,24): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(253,24): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(254,24): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\UtilitiesMath.cpp(322,33): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+  (compiling source file '/UtilitiesMath.cpp')
+  
+  World.cpp
+  glTape.cpp
+  glsl.cpp
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glsl.cpp(1289,23): warning C4244: 'initializing': conversion from 'std::streamoff' to 'unsigned long', possible loss of data
+  (compiling source file '/glsl.cpp')
+  
+C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\GameTest\glsl.cpp(1291,23): warning C4244: 'initializing': conversion from 'std::streamoff' to 'unsigned long', possible loss of data
+  (compiling source file '/glsl.cpp')
+  
+  stb_image.cpp
   Generating Code...
+     Creating library C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\x64\Debug\GameTest.lib and object C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\x64\Debug\GameTest.exp
   GameTest.vcxproj -> C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\x64\Debug\GameTest.exe
   C:\Users\TN-2019\Desktop\Work\Ubisoft-Competition-API\\GameTest\glut\bin\x64\freeglut.dll
   1 File(s) copied

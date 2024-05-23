@@ -50,7 +50,7 @@ namespace ge
         math::MMatrix4x4 ViewMatrix = math::MMatrix4x4::CreateViewMatrix(CamPosition, CamTarget, CamUp);
 
         // Parameters for the perspective projection
-        float FOV = 90.0f; // Field of View, in degrees
+        float FOV = 100.0f; // Field of View, in degrees
         float AspectRatio = static_cast<float>(APP_VIRTUAL_WIDTH) / APP_VIRTUAL_HEIGHT; // Aspect ratio of the viewport
         float NearPlane = 0.1f; // Near clipping plane
         float FarPlane = 1000.0f; // Far clipping plane

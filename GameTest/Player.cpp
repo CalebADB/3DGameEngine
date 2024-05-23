@@ -27,7 +27,7 @@ namespace ge
         PhysicalComp->Initialize(Mass, Acceleration, Velocity);
         PlanetNavigationComp->Initialize(PhysicalComp, GroundDisplacement, ControllerComp);
         ControllerComp->Initialize();
-        ShapeComp->Initialize(PlayerRadius, true, Color);
+        ShapeComp->Initialize(PlayerRadius, false, Color);
 
     }
     void APlayer::Update(float deltaTime)

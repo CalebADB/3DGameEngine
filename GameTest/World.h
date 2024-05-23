@@ -15,7 +15,7 @@ namespace ge
 		// World Managers
 		GPhysicsManagerComp* PhysicsManagerComp = nullptr;
 		bool bIsOpenGLTogglePressed = false;
-		bool bShouldRenderOpenGL = false;
+		bool bShouldRenderWithUbisoftAPI = true;
 		GRenderManagerComp* RenderManagerComp = nullptr;
 		// Debug Timer
 		GLfloat timer010;  // timer counting 0->1->0
@@ -45,9 +45,14 @@ namespace ge
 		{}
 
 		void BeginWorld();
+		void UndoInitializeOpenGLRender();
+		void InitializeOpenGLRender();
+
 		void UpdateWorld(float deltaTime);
 		void RenderWorld();
-		void RenderWorldUbisoft();
+
+		void RenderWorldUbisoftAPI();
+		void RenderWorldOpenGL();
 
 	public:
 		template <typename AActorSubclass>

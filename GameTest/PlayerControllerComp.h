@@ -12,7 +12,7 @@ namespace ge
 
         GLfloat SurfaceSpeed = 40;
         GLfloat SpaceSpeed = 20;
-        math::MVector3 Velocity = math::MVector3::ZeroVector();
+        math::MVector3 Impulse = math::MVector3::ZeroVector();
         math::MVector3 LocalUp = math::MVector3::ZeroVector();
 
         bool bIsJumpQueued = false;
@@ -35,6 +35,8 @@ namespace ge
         math::MVector3 GetLinearDisplacement(float deltaTime);
         math::MVector3 GetJumpImpulse();
 
+    private:
+        void UpdateFrameImpulse(float deltaTime);
     };
 
 }

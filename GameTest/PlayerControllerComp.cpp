@@ -12,55 +12,8 @@ namespace ge
 	void GPlayerControllerComp::Update(float deltaTime)
 	{
 		GComp::Update(deltaTime);
-		Velocity = math::MVector3::ZeroVector();
 
-		if (App::IsKeyPressed(0x41)) // A Key
-		{
-			Velocity = Velocity + math::MVector3::LeftVector();
-		}
-		if (App::IsKeyPressed(0x57)) // W Key
-		{
-			Velocity = Velocity + math::MVector3::ForwardVector();
-		}
-		if (App::IsKeyPressed(0x44)) // D Key
-		{
-			Velocity = Velocity + math::MVector3::RightVector();
-
-		}
-		if (App::IsKeyPressed(0x53)) // S Key
-		{
-			Velocity = Velocity + math::MVector3::BackwardVector();
-		}
-
-		
-		switch (PhysicsType)
-		{
-		case EPhysicsType::Space:
-		{
-			if (App::IsKeyPressed(0x51)) // Q Key
-			{
-				Velocity = Velocity + math::MVector3::UpVector();
-			}
-			if (App::IsKeyPressed(0x45)) // E Key
-			{
-				Velocity = Velocity + math::MVector3::DownVector();
-			}
-
-			Velocity = Velocity * SpaceSpeed;
-			break;
-		}
-		case EPhysicsType::PlanetSurface:
-		{
-			if (App::IsKeyPressed(VK_SPACE)) // Space Key
-			{
-				Velocity = Velocity + math::MVector3::BackwardVector();
-			}
-
-			Velocity = Velocity * SurfaceSpeed;
-			break;
-		}
-		}
-
+		UpdateFrameImpulse(deltaTime);
 
 	}
 
@@ -91,7 +44,7 @@ namespace ge
 	math::MVector3 GPlayerControllerComp::GetLinearDisplacement(float deltaTime)
 	{
 		//this will ideally handle a rotated camera but its 9 on sunday and the projection matrix is still wack
-		return Velocity * deltaTime;
+		return Impulse * deltaTime;
 	}
 
 	math::MVector3 GPlayerControllerComp::GetJumpImpulse()
@@ -99,5 +52,57 @@ namespace ge
 		bIsJumpQueued = false;
 
 		return LocalUp * bIsJumpImpulseFactor;
+	}
+
+	void GPlayerControllerComp::UpdateFrameImpulse(float deltaTime)
+	{
+		Impulse = math::MVector3::ZeroVector();
+
+		if (App::IsKeyPressed(0x41)) // A Key
+		{
+			Impulse = Impulse + math::MVector3::LeftVector();
+		}
+		if (App::IsKeyPressed(0x57)) // W Key
+		{
+			Impulse = Impulse + math::MVector3::ForwardVector();
+		}
+		if (App::IsKeyPressed(0x44)) // D Key
+		{
+			Impulse = Impulse + math::MVector3::RightVector();
+
+		}
+		if (App::IsKeyPressed(0x53)) // S Key
+		{
+			Impulse = Impulse + math::MVector3::BackwardVector();
+		}
+
+
+		switch (PhysicsType)
+		{
+		case EPhysicsType::Space:
+		{
+			if (App::IsKeyPressed(0x51)) // Q Key
+			{
+				Impulse = Impulse + math::MVector3::UpVector();
+			}
+			if (App::IsKeyPressed(0x45)) // E Key
+			{
+				Impulse = Impulse + math::MVector3::DownVector();
+			}
+
+			Impulse = Impulse * SpaceSpeed;
+			break;
+		}
+		case EPhysicsType::PlanetSurface:
+		{
+			if (App::IsKeyPressed(VK_SPACE)) // Space Key
+			{
+				Impulse = Impulse + math::MVector3::BackwardVector();
+			}
+
+			Impulse = Impulse * SurfaceSpeed;
+			break;
+		}
+		}
 	}
 };
