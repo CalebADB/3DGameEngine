@@ -15,6 +15,8 @@ namespace ge
 		// World Managers
 		GPhysicsManagerComp* PhysicsManagerComp = nullptr;
 		bool bIsOpenGLTogglePressed = false;
+		bool bIsPausedPressed = false;
+		bool bIsPaused = false;
 		bool bShouldRenderWithUbisoftAPI = true;
 		GRenderManagerComp* RenderManagerComp = nullptr;
 		// Debug Timer

@@ -31,6 +31,8 @@ namespace ge
 		void Render();
 
 	private:
+		math::MMatrix4x4 ProjectionMatrix1();
+		math::MMatrix4x4 ProjectionMatrix2();
 		void DrawXAtPosition(float x, float y);
 		void DrawCircle(float centerX, float centerY, float radius, int edges, float r = 1.0f, float g = 1.0f, float b = 1.0f);
 		float CalculateCrossSectionRadius(float sphereRadius, float zDepth);

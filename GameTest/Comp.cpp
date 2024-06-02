@@ -45,6 +45,22 @@ namespace ge
 
 		return this;
 	}
+	
+	template<typename T>
+	T* ge::GComp::GetChildComponent()
+	{
+		for (GComp* Comp : AttachedComps)
+		{
+			if ((T)Comp != nullptr)
+			{
+				return (T)Comp;
+			}
+
+			Comp->GetChildComponent<T>();
+		}
+
+		return nullptr;
+	}
 
 	math::MTransformData GComp::GetLocalTransformData() const
 	{

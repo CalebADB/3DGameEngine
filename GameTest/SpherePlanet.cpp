@@ -20,7 +20,7 @@ namespace ge
         APlanet::Initialize(Mass, Acceleration, Velocity);
 
         ShapeComp->Initialize(SurfaceRadius, true, Color);
-        GravityWellComp->Initialize(GravityStrength, GravityReachRadius, Color);
+        GravityWellComp->Initialize(GravityStrength, GravityReachRadius, math::MVector3(0.1,0.1,0.3));
     }
 
     void ASpherePlanet::Update(float deltaTime)

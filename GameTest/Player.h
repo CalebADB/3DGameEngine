@@ -14,7 +14,7 @@ namespace ge
 		GPlayerControllerComp* ControllerComp = nullptr;
 
 	public:
-		GPlayerPlanetNavigationComp* PlanetNavigationComp = nullptr;
+		GPlanetNavigationComp* PlanetNavigationComp = nullptr;
 
 	public:
 		APlayer(const std::string& Name) 

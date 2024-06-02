@@ -79,6 +79,7 @@ namespace ge
 
             static MMatrix4x4 CreateViewMatrix(const MVector3& camPosition, const MVector3& targetPosition, const MVector3& upVector);
             static MMatrix4x4 CreatePerspectiveProjectionMatrix(float fov, float aspectRatio, float nearPlane, float farPlane);
+            static MMatrix4x4 CreateOrthographicProjectionMatrix(float left, float right, float bottom, float top, float nearPlane, float farPlane);
 
             MMatrix4x4 operator*(const MMatrix4x4& other) const;
         };
@@ -101,7 +102,7 @@ namespace ge
             static MMatrix4x4 FlipMatrix4x4();
             static MMatrix4x4 ToMatrix(const MQuaternion& Q);
             static MQuaternion FromMatrix(const MMatrix4x4& Matrix);
-            static MVector3 MQuaternion::ToEuler(const MQuaternion& Q);
+            static MVector3 ToEuler(const MQuaternion& Q);
             static MQuaternion FromEuler(const MVector3& euler);
             static MQuaternion RotationFromVectorToVector(const MVector3& vector1, const MVector3& vector2);
 

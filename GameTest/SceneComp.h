@@ -10,6 +10,7 @@ namespace ge
 		math::MTransformData LocalTransformData = math::MTransformData::Identity();
 		math::MTransformData GlobalTransformData = math::MTransformData::Identity();
 
+
 	public:
 		GSceneComp(const std::string& Name) 
 			: 

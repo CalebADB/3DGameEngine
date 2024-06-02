@@ -9,7 +9,7 @@ namespace ge
         PhysicalComp = GAMEWORLD->NewComp<GPlayerPhysicalComp>(std::string("PlayerPhysicalComp"));
         AttachComp(this, PhysicalComp);
 
-        PlanetNavigationComp = GAMEWORLD->NewComp<GPlayerPlanetNavigationComp>(std::string("PlanetNavigationComp"));
+        PlanetNavigationComp = GAMEWORLD->NewComp<GPlanetNavigationComp>(std::string("PlanetNavigationComp"));
         AttachComp(this, PlanetNavigationComp);
 
         FirstPersonCameraComp = GAMEWORLD->NewComp<GCameraComp>(std::string("CameraComp"));
@@ -18,17 +18,16 @@ namespace ge
         ControllerComp = GAMEWORLD->NewComp<GPlayerControllerComp>(std::string("PlayerControllerComp"));
         AttachComp(this, ControllerComp);
 
-        ShapeComp = GAMEWORLD->NewComp<GSphereShapeComp>(std::string("SphereGravityWellComp1"));
+        ShapeComp = GAMEWORLD->NewComp<GSphereShapeComp>(std::string("PlayerShapeComp"));
         AttachComp(PhysicalComp, ShapeComp);
         PhysicalComp->AddShape(ShapeComp);
     }
     void APlayer::Initialize(GLfloat Mass, math::MVector3 Acceleration, math::MVector3 Velocity, GLfloat GroundDisplacement, GLfloat PlayerRadius, math::MVector3 Color)
     {
         PhysicalComp->Initialize(Mass, Acceleration, Velocity);
-        PlanetNavigationComp->Initialize(PhysicalComp, GroundDisplacement, ControllerComp);
-        ControllerComp->Initialize();
-        ShapeComp->Initialize(PlayerRadius, false, Color);
-
+        PlanetNavigationComp->Initialize(PhysicalComp, GroundDisplacement);
+        ControllerComp->Initialize(PhysicalComp);
+        ShapeComp->Initialize(PlayerRadius, true, Color);
     }
     void APlayer::Update(float deltaTime)
     {

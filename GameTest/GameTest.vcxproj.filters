@@ -111,9 +111,6 @@
     <ClCompile Include="PlayerControllerComp.cpp">
       <Filter>GameEngine\Comp\Input</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerPlanetNavigationComp.cpp">
-      <Filter>GameEngine\Comp\Physics</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -233,9 +230,6 @@
     </ClInclude>
     <ClInclude Include="PlayerControllerComp.h">
       <Filter>GameEngine\Comp\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerPlanetNavigationComp.h">
-      <Filter>GameEngine\Comp\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

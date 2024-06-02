@@ -106,6 +106,7 @@ namespace ge
 
             return viewMatrix;
         }
+
         MMatrix4x4 MMatrix4x4::CreatePerspectiveProjectionMatrix(float fov, float aspectRatio, float nearPlane, float farPlane)
         {
             MMatrix4x4 matrix;
@@ -116,6 +117,30 @@ namespace ge
             matrix.m[2][2] = -(farPlane + nearPlane) / (farPlane - nearPlane);
             matrix.m[2][3] = -1.0f;
             matrix.m[3][2] = -(2.0f * farPlane * nearPlane) / (farPlane - nearPlane);
+
+            return matrix;
+        }
+        MMatrix4x4 MMatrix4x4::CreateOrthographicProjectionMatrix(float left, float right, float bottom, float top, float nearPlane, float farPlane)
+        {
+            MMatrix4x4 matrix;
+
+            // Set the diagonal elements based on the orthographic projection formula
+            matrix.m[0][0] = 2.0f / (right - left);
+            matrix.m[1][1] = 2.0f / (top - bottom);
+            matrix.m[2][2] = -2.0f / (farPlane - nearPlane);
+
+            // Set the translation components
+            matrix.m[3][0] = -(right + left) / (right - left);
+            matrix.m[3][1] = -(top + bottom) / (top - bottom);
+            matrix.m[3][2] = -(farPlane + nearPlane) / (farPlane - nearPlane);
+
+            // Set the last diagonal element to 1
+            matrix.m[3][3] = 1.0f;
+
+            // Zero out the rest for safety (not strictly necessary as they should already be zero)
+            matrix.m[0][1] = matrix.m[0][2] = matrix.m[0][3] = 0.0f;
+            matrix.m[1][0] = matrix.m[1][2] = matrix.m[1][3] = 0.0f;
+            matrix.m[2][0] = matrix.m[2][1] = matrix.m[2][3] = 0.0f;
 
             return matrix;
         }
@@ -352,8 +377,5 @@ namespace ge
         {
             Scale = Scale * Displacement;
         }
-
-
-
-}
+    }
 };

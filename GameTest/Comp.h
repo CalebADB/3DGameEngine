@@ -1,6 +1,10 @@
 #ifndef _GCOMP_H
 #define _GCOMP_H
 
+#include <string>
+#include <list>
+#include <concepts>
+
 namespace ge
 {
 	class GComp : public GObject
@@ -10,7 +14,7 @@ namespace ge
 		std::list<GComp*> AttachedComps;
 
 	public:
-		GComp::GComp(const std::string& Name)
+		GComp(const std::string& Name)
 			:
 			GObject(Name)
 		{}
@@ -23,6 +27,9 @@ namespace ge
 	public:
 		virtual bool AttachComp(GComp* RootComp, GComp* Comp);
 		GComp* GetActorRoot();
+		
+		template<typename T>
+		T* GetChildComponent();
 
 	public:
 		virtual math::MTransformData GetLocalTransformData() const;

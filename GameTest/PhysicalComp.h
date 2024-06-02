@@ -25,6 +25,7 @@ namespace ge
         GLfloat MaxCollisionBound = 0.0;
         std::list<GShapeComp*> Shapes;
         std::vector<GPhysicalComp*> OngoingCollidingPhysicalComps;
+        std::map<GPhysicalComp*, int> OngoingCollidingPhysicalCompBufferFrames;
 
         EPhysicalType PhysicalType = EPhysicalType::Null;
         EPhysicsType PhysicsType = EPhysicsType::Space;
@@ -59,7 +60,9 @@ namespace ge
         void SetGravity(math::MVector3 Gravity);
         math::MVector3 GetLinearDisplacement(float deltaTime);
         void AddLinearImpulse(GPhysicalComp* InstigatingPhysicalComp, math::MVector3 Impulse);
+        void AddOngoingCollisionBufferFrames(GPhysicalComp* InstigatingPhysicalComp, int BufferFrames);
         bool CheckOngoingCollision(GPhysicalComp* InstigatingPhysicalComp);
+        bool CheckOngoingCollisionBufferFrames(GPhysicalComp* InstigatingPhysicalComp);
         void HandleOngoingCollisions();
 
 

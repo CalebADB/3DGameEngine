@@ -20,8 +20,8 @@ namespace ge
         RenderManagerComp = NewComp<GRenderManagerComp>("RenderManagerComp");
         AttachComp(this, RenderManagerComp);
         
-        Player = GAMEWORLD->SpawnActor<APlayer>(std::string("Player1"), this, math::MVector3(-10, 0, 0), math::MQuaternion::Identity());
-        Player->Initialize(1.0f, math::MVector3::ZeroVector(), math::MVector3(0, 0, 10), 1, 1, math::MVector3(1, 1, 0));
+        Player = GAMEWORLD->SpawnActor<APlayer>(std::string("Player1"), this, math::MVector3(-10, 0, 0), math::MQuaternion::FromEuler(math::MVector3(0, -math::M_PI / 2, 0)));
+        Player->Initialize(1.0f, math::MVector3::ZeroVector(), math::MVector3(0, 0, 10), 1, 1, math::MVector3(0, 1, 0));
         RenderManagerComp->AssignGameCamera(Player->FirstPersonCameraComp);
         GameCameraComp = Player->FirstPersonCameraComp;
 
@@ -152,14 +152,31 @@ namespace ge
             }
         }
             
-            
+        if (bIsPausedPressed)
+        {
+            if (!App::IsKeyPressed(VK_F3))
+            {
+                bIsPausedPressed = false;
+                bIsPaused = !bIsPaused;
+            }
+        }
+        else
+        {
+            if (App::IsKeyPressed(VK_F3))
+            {
+                bIsPausedPressed = true;
+            }
+        }
 
         //
         UpdateGlobalTransform();
         Update(deltaTime);
         UpdateGlobalTransform();
-        PhysicsManagerComp->HandleForces(deltaTime);
-        PhysicsManagerComp->HandleDisplacement(deltaTime);
+        if (!bIsPaused)
+        {
+            PhysicsManagerComp->HandleForces(deltaTime);
+            PhysicsManagerComp->HandleDisplacement(deltaTime);
+        }
         UpdateGlobalTransform();
         PhysicsManagerComp->CheckCollisions();
     }
@@ -181,7 +198,9 @@ namespace ge
         glPushMatrix();  // Save the current projection matrix
         {
             glLoadIdentity();
-            gluPerspective(100.0, (float)APP_VIRTUAL_WIDTH / (float)APP_VIRTUAL_HEIGHT, 0.1, 1000.0);
+
+            //gluPerspective(100.0, (float)APP_VIRTUAL_WIDTH / (float)APP_VIRTUAL_HEIGHT, 0.1, 1000.0);
+            glOrtho(-20.0f, 20.0f, -20.0f * APP_VIRTUAL_HEIGHT / APP_VIRTUAL_WIDTH, 20.0f * APP_VIRTUAL_HEIGHT / APP_VIRTUAL_WIDTH, -100.1f, 50.f);
 
             glMatrixMode(GL_MODELVIEW);
             if (GameCameraComp)

@@ -49,7 +49,6 @@
 #include "PhysicalComp.h"
 #include "PlanetNavigationComp.h"
 #include "PlayerControllerComp.h"
-#include "PlayerPlanetNavigationComp.h"
 #include "OrbitComp.h"
 #include "CameraComp.h"
 

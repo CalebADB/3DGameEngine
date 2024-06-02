@@ -6,6 +6,7 @@
 *.lo
 *.o
 *.obj
+*.objenc
 
 # Precompiled Headers
 *.gch
@@ -31,3 +32,30 @@
 *.out
 *.app
 *.ipch
+
+# Visual Studio
+.vscode/
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.suo
+*.user
+*.tlog
+*.lastbuildstate
+*.log
+*.pdb
+*.exp
+*.ilk
+*.vsidx
+
+# Debug and Release directories
+[Dd]ebug/
+[Rr]elease/
+x64/
+bin/
+obj/
+
+# Build directories
+_build/
+build/

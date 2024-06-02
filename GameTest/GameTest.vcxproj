@@ -119,6 +119,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <LanguageStandard>Default</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -207,7 +208,6 @@
     <ClInclude Include="PlanetNavigationComp.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerControllerComp.h" />
-    <ClInclude Include="PlayerPlanetNavigationComp.h" />
     <ClInclude Include="PressureWave.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Prop.h" />
@@ -251,7 +251,6 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="EssentialMeshComp.cpp" />
     <ClCompile Include="PlayerControllerComp.cpp" />
-    <ClCompile Include="PlayerPlanetNavigationComp.cpp" />
     <ClCompile Include="PressureWave.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Prop.cpp" />

@@ -12,7 +12,7 @@ namespace ge
 		ShapeComps.push_back(ShapeComp);
 	}
 
-	void GRenderManagerComp::AssignGameCamera(GCameraComp* CameraComp)
+    void GRenderManagerComp::AssignGameCamera(GCameraComp* CameraComp)
 	{
 		this->GameCameraComp = CameraComp;
 	}
@@ -20,13 +20,6 @@ namespace ge
     void GRenderManagerComp::Update(float deltaTime)
     {
         GComp::Update(deltaTime);
-        
-        //Pulse1 += PulseSpeed * deltaTime;
-        //if (Pulse1 > PulseInterval)
-        //{
-        //    Pulse1 - PulseInterval;
-        //}
-        
     }
 	void GRenderManagerComp::Render()
     {
@@ -49,15 +42,8 @@ namespace ge
         // Compute view matrix
         math::MMatrix4x4 ViewMatrix = math::MMatrix4x4::CreateViewMatrix(CamPosition, CamTarget, CamUp);
 
-        // Parameters for the perspective projection
-        float FOV = 100.0f; // Field of View, in degrees
-        float AspectRatio = static_cast<float>(APP_VIRTUAL_WIDTH) / APP_VIRTUAL_HEIGHT; // Aspect ratio of the viewport
-        float NearPlane = 0.1f; // Near clipping plane
-        float FarPlane = 1000.0f; // Far clipping plane
+        math::MMatrix4x4 ProjectionMatrix = ProjectionMatrix2();
 
-        // Compute the perspective projection matrix
-        math::MMatrix4x4 ProjectionMatrix = math::MMatrix4x4::CreatePerspectiveProjectionMatrix(FOV, AspectRatio, NearPlane, FarPlane);
-        
         // Iterate over each sphere
         for (GShapeComp* ShapeComp : ShapeComps)
         {
@@ -91,19 +77,19 @@ namespace ge
                 SphereCenter.Y /= SphereCenter.Z;
             }
             // Calculate scale factor based on depth
-            float ScaleFactor = 33 * SphereShapeComp->GetRadius() / SphereCenter.Z; // Adjust this formula as needed
+            float ScaleFactor = 25 * SphereShapeComp->GetRadius() / SphereCenter.Z; // Adjust this formula as needed
 
             // Map from NDC to screen coordinates
             float ScreenX = (SphereCenter.X + 1) * APP_VIRTUAL_WIDTH * 0.5f;
             float ScreenY = (1 - SphereCenter.Y) * APP_VIRTUAL_HEIGHT * 0.5f;
 
             // Adjust the size of the sphere for drawing
-            float SphereSize = 1 * ScaleFactor; // BaseSphereSize is the size of the sphere at depth 1
+            float SphereSize = ScaleFactor; // BaseSphereSize is the size of the sphere at depth 1
 
             // Draw the cross mark
             DrawXAtPosition(ScreenX, ScreenY);
 
-            DrawCircle(ScreenX, ScreenY, SphereSize, 20,0,0,1);
+            DrawCircle(ScreenX, ScreenY, SphereSize, 20, ShapeComp->GetShapeColor().X, ShapeComp->GetShapeColor().Y, ShapeComp->GetShapeColor().Z);
 
             float SD = SphereShapeComp->GetSignedDistanceFrom(CamPosition);
 
@@ -117,6 +103,31 @@ namespace ge
             //}
         }
     }
+    math::MMatrix4x4 GRenderManagerComp::ProjectionMatrix1()
+    {
+        // Parameters for the perspective projection
+        float FOV = 100.0f; // Field of View, in degrees
+        float AspectRatio = static_cast<float>(APP_VIRTUAL_WIDTH) / APP_VIRTUAL_HEIGHT; // Aspect ratio of the viewport
+        float NearPlane = 0.1f; // Near clipping plane
+        float FarPlane = 1000.0f; // Far clipping plane
+
+        // Compute the perspective projection matrix
+        return math::MMatrix4x4::CreatePerspectiveProjectionMatrix(FOV, AspectRatio, NearPlane, FarPlane);
+    }
+    math::MMatrix4x4 GRenderManagerComp::ProjectionMatrix2()
+    {
+        // Define orthographic projection parameters
+        float left = -20.0f;
+        float right = 20.0f;
+        float bottom = -20.0f * APP_VIRTUAL_HEIGHT / APP_VIRTUAL_WIDTH;
+        float top = 20.0f * APP_VIRTUAL_HEIGHT / APP_VIRTUAL_WIDTH;
+        float nearPlane = 0.1f;
+        float farPlane = 1000.0f;
+
+        // Compute the orthographic projection matrix
+        return math::MMatrix4x4::CreateOrthographicProjectionMatrix(left, right, bottom, top, nearPlane, farPlane);
+    }
+
 	void GRenderManagerComp::DrawXAtPosition(float x, float y)
 	{
 		// Adjust these values as necessary for the size of the 'X'

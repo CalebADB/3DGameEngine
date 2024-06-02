@@ -41,6 +41,7 @@ namespace ge
         math::MTransformData GetLocalTransformData();
 
         math::MVector3 GetNavigatorUp();
+        APlanet* GetEmbarkedPlanet() const;
     };
 }
 

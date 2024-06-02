@@ -8,6 +8,13 @@ namespace ge
         this->Color = Color;
     }
 
+    void GShapeComp::RenderSceneData()
+    {
+        GSceneComp::RenderSceneData();
+
+        glColor3f(Color.X, Color.Y, Color.Z);
+    }
+
     math::MVector3 GShapeComp::GetShapeColor()
     {
         return Color;

@@ -25,6 +25,9 @@ namespace ge
 		{}
 		void Initialize(bool bIsRendered, math::MVector3 Color);
 
+	protected:
+		virtual void RenderSceneData();
+
 	public:
 		virtual bool IsRendered() const { return bIsRendered; }
 		math::MVector3 GetShapeColor();
@@ -37,6 +40,7 @@ namespace ge
 	private:
 		// Shape Params
 		GLfloat Radius = 0;
+
 	public:
 		GSphereShapeComp(const std::string& Name)
 			:

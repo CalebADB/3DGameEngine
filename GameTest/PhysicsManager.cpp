@@ -33,7 +33,8 @@ namespace ge
         {
             if (PlayerControllerComp->IsJumpQueued())
             {
-                ((APlayer*)(PlayerControllerComp->GetActorRoot()))->PlanetNavigationComp->Disembark(nullptr, PlayerControllerComp->GetJumpImpulse());
+                GPlanetNavigationComp* PlanetNavigationComp = ((APlayer*)(PlayerControllerComp->GetActorRoot()))->PlanetNavigationComp;
+                PlanetNavigationComp->Disembark(PlanetNavigationComp->GetEmbarkedPlanet()->GetPhysicalComp(), PlayerControllerComp->GetJumpImpulse());
             }
         }
         for (GPhysicalComp* PhysicalComp : PhysicalComps)
@@ -221,7 +222,16 @@ namespace ge
 
             switch (TargetPhysicalComp->GetPhysicsType())
             {
-            case EPhysicsType::Space: Player->PlanetNavigationComp->EmbarkOn(Planet, TargetPhysicalComp->GetVelocity()); break;
+            case EPhysicsType::Space:
+            {
+                if (TargetPhysicalComp->CheckOngoingCollision(Planet->GetPhysicalComp()))
+                {
+                    return;
+                }
+
+                Player->PlanetNavigationComp->EmbarkOn(Planet, TargetPhysicalComp->GetVelocity()); break;
+                break;
+            }
             }
 
             break;

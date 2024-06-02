@@ -38,6 +38,11 @@ namespace ge
 	}
 	void GPlanetNavigationComp::EmbarkOn(APlanet* Planet, math::MVector3 NavigatorVelocity)
 	{		
+		if (PhysicalComp->CheckOngoingCollision(Planet->GetPhysicalComp()))
+		{
+			return;
+		}
+
 		ASpherePlanet* SpherePlanet = (ASpherePlanet*)Planet;
 		if (SpherePlanet == nullptr)
 		{
@@ -77,6 +82,9 @@ namespace ge
 		Impulse = Impulse + (TangentDirection * NavigatorTangentialSpeed * PhysicalComp->GetMass());
 		PhysicalComp->AddLinearImpulse(InstigatingPhysicalComp, Impulse);
 
+		// Force planet to not trap disembarking body 
+		//PhysicalComp->AddOngoingCollisionBufferFrames(Planet->GetPhysicalComp(), 1);
+
 		
 		PlanetNorthPole = math::MVector3::UpVector();
 		Location = math::MQuaternion::Identity();
@@ -88,9 +96,8 @@ namespace ge
 
 		Planet->DettachActor(Navigator);
 		this->Planet = Planet;
-
-
 	}
+
 	math::MTransformData GPlanetNavigationComp::GetLocalTransformData()
 	{		
 		math::MTransformData LocalTransformData = math::MTransformData::Identity();
@@ -99,6 +106,12 @@ namespace ge
 		math::MVector3 EulerRotation = math::MQuaternion::ToEuler(Location);
 		return LocalTransformData;
 	}
+
+	APlanet* GPlanetNavigationComp::GetEmbarkedPlanet() const
+	{
+		return Planet;
+	}
+
 	math::MVector3 GPlanetNavigationComp::GetNavigatorUp()
 	{
 		return PlanetNorthPole.RotatedBy(Location);

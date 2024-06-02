@@ -18,6 +18,8 @@ namespace ge
 		virtual void Begin();
 		void Initialize(GLfloat Mass, math::MVector3 Velocity, math::MVector3 Acceleration);
 		
+		GPlanetPhysicalComp* GetPhysicalComp() { return PhysicalComp; }
+
 	protected:
 		virtual void Update(float deltaTime);
 		virtual void Render();

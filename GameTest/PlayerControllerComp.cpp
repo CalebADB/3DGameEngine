@@ -4,9 +4,11 @@
 
 namespace ge
 {
-	void GPlayerControllerComp::Initialize()
+	void GPlayerControllerComp::Initialize(GPhysicalComp* PhysicalComp)
 	{
 		GAMEWORLD->PhysicsManagerComp->AddPlayerControllerComps(this);
+
+		this->PhysicalComp = PhysicalComp;
 	}
 
 	void GPlayerControllerComp::Update(float deltaTime)
@@ -15,25 +17,6 @@ namespace ge
 
 		UpdateFrameImpulse(deltaTime);
 
-	}
-
-	void GPlayerControllerComp::SetPhysicsType(const EPhysicsType PhysicsType)
-	{
-		this->PhysicsType = PhysicsType;
-
-		switch (PhysicsType)
-		{
-		case EPhysicsType::Space:
-		{
-
-			break;
-		}
-		case EPhysicsType::PlanetSurface:
-		{
-
-			break;
-		}
-		}
 	}
 
 	void GPlayerControllerComp::SetLocalUp(math::MVector3 LocalUp)
@@ -59,35 +42,33 @@ namespace ge
 		Impulse = math::MVector3::ZeroVector();
 
 		if (App::IsKeyPressed(0x41)) // A Key
-		{
-			Impulse = Impulse + math::MVector3::LeftVector();
+		{			
+			Impulse = Impulse + math::MVector3::LeftVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
 		}
 		if (App::IsKeyPressed(0x57)) // W Key
 		{
-			Impulse = Impulse + math::MVector3::ForwardVector();
+			Impulse = Impulse + math::MVector3::BackwardVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
 		}
 		if (App::IsKeyPressed(0x44)) // D Key
 		{
-			Impulse = Impulse + math::MVector3::RightVector();
-
+			Impulse = Impulse + math::MVector3::RightVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
 		}
 		if (App::IsKeyPressed(0x53)) // S Key
 		{
-			Impulse = Impulse + math::MVector3::BackwardVector();
+			Impulse = Impulse + math::MVector3::ForwardVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
 		}
 
-
-		switch (PhysicsType)
+		switch (PhysicalComp->GetPhysicsType())
 		{
 		case EPhysicsType::Space:
 		{
 			if (App::IsKeyPressed(0x51)) // Q Key
 			{
-				Impulse = Impulse + math::MVector3::UpVector();
+				Impulse = Impulse + math::MVector3::UpVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
 			}
 			if (App::IsKeyPressed(0x45)) // E Key
 			{
-				Impulse = Impulse + math::MVector3::DownVector();
+				Impulse = Impulse + math::MVector3::DownVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
 			}
 
 			Impulse = Impulse * SpaceSpeed;
@@ -97,7 +78,7 @@ namespace ge
 		{
 			if (App::IsKeyPressed(VK_SPACE)) // Space Key
 			{
-				Impulse = Impulse + math::MVector3::BackwardVector();
+				bIsJumpQueued = true;
 			}
 
 			Impulse = Impulse * SurfaceSpeed;
