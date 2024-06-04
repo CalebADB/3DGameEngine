@@ -111,6 +111,12 @@
     <ClCompile Include="PlayerControllerComp.cpp">
       <Filter>GameEngine\Comp\Input</Filter>
     </ClCompile>
+    <ClCompile Include="ParticleEffect.cpp">
+      <Filter>GameEngine\Actor\Effects</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>GameEngine\Actor\Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -231,6 +237,12 @@
     <ClInclude Include="PlayerControllerComp.h">
       <Filter>GameEngine\Comp\Input</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleEffect.h">
+      <Filter>GameEngine\Actor\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>GameEngine\Actor\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="NextAPI">
@@ -313,6 +325,9 @@
     </Filter>
     <Filter Include="GameEngine\Comp\Input">
       <UniqueIdentifier>{992858bd-24b2-480e-95e4-40e1756dbdc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\Actor\Effects">
+      <UniqueIdentifier>{6468d455-8450-4428-953c-04561758f67a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

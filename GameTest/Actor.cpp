@@ -8,8 +8,12 @@ namespace ge
 
         GSceneComp::UpdateGlobalTransform();
 
-        for (AActor* Actor : AttachedActors)
+        auto ActorIter = AttachedActors.begin();
+        while (ActorIter != AttachedActors.end())
         {
+            AActor* Actor = *ActorIter;
+            ActorIter++;
+
             Actor->UpdateGlobalTransform();
         }
     }
@@ -17,8 +21,12 @@ namespace ge
     {
         GSceneComp::Update(deltaTime);
 
-        for (AActor* Actor : AttachedActors)
+        auto ActorIter = AttachedActors.begin();
+        while (ActorIter != AttachedActors.end())
         {
+            AActor* Actor = *ActorIter;
+            ActorIter++;
+
             Actor->Update(deltaTime);
         }
     }
@@ -32,14 +40,26 @@ namespace ge
             debug::Output(debug::EOutputType::Render, "%s: Attached actors:", GetCharName());
             RenderSceneData();
 
-            for (AActor* Actor : AttachedActors)
+            auto ActorIter = AttachedActors.begin();
+            while (ActorIter != AttachedActors.end())
             {
-                debug::Output(debug::EOutputType::Render, "%s: Render Begins: ", Actor->GetCharName());
+                AActor* Actor = *ActorIter;
+                ActorIter++;
+
                 Actor->Render();
+                debug::Output(debug::EOutputType::Render, "%s: Render Begins: ", Actor->GetCharName());
             }
+
             debug::Output(debug::EOutputType::Render, "%s: Render Ends: ", GetCharName());
         }
         glPopMatrix();
+    }
+
+    void AActor::Destroy()
+    {
+        Owner->DettachActor(this);
+
+        GSceneComp::Destroy();
     }
 
     bool AActor::AttachActor(AActor* Actor)
@@ -55,6 +75,9 @@ namespace ge
             debug::Output(debug::EOutputType::Always, "Error: %s is already owned by %s", Actor->GetCharName(), this->GetCharName());
             return false;
         }
+
+        //math::MTransformData ActorTransformData = Actor->GetGlobalTransformData();
+        //math::MTransformData OwnerTransformData = Owner->GetGlobalTransformData();
 
         // set Owner
         Actor->Owner = this;

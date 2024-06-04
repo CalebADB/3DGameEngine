@@ -7,9 +7,10 @@ namespace ge
     {
     protected:
         GPhysicalComp* PhysicalComp = nullptr;
+        AParticleEffect* ParticleEffect = nullptr;
 
-        GLfloat SurfaceSpeed = 40;
-        GLfloat SpaceSpeed = 20;
+        GLfloat SurfaceSpeed = 4;
+        GLfloat SpaceSpeed = 2;
         math::MVector3 Impulse = math::MVector3::ZeroVector();
         math::MVector3 LocalUp = math::MVector3::ZeroVector();
 
@@ -22,10 +23,11 @@ namespace ge
             GComp(Name)
         {}
 
-        void Initialize(GPhysicalComp* PhysicalComp);
+        void Initialize(AParticleEffect* ParticleEffect, GPhysicalComp* PhysicalComp);
     protected:
         virtual void Update(float deltaTime);
 
+        virtual void Destroy();
     public:
         bool IsJumpQueued() const { return bIsJumpQueued; }
         void SetLocalUp(math::MVector3 LocalUp);

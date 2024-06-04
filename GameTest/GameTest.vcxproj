@@ -202,6 +202,8 @@
     <ClInclude Include="Octree.h" />
     <ClInclude Include="OrbitComp.h" />
     <ClInclude Include="OrbitingBody.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleEffect.h" />
     <ClInclude Include="PhysicalComp.h" />
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="Planet.h" />
@@ -244,6 +246,8 @@
     <ClCompile Include="Octree.cpp" />
     <ClCompile Include="OrbitComp.cpp" />
     <ClCompile Include="OrbitingBody.cpp" />
+    <ClCompile Include="Particle.cpp" />
+    <ClCompile Include="ParticleEffect.cpp" />
     <ClCompile Include="PhysicalComp.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="Planet.cpp" />

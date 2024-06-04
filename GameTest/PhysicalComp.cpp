@@ -105,7 +105,20 @@ namespace ge
 		{
 			Velocity = Velocity + (Impulse / Mass);
 		}
+
+		if (Velocity.Magnitude() > MAX_SPEED)
+		{
+			Velocity = (Velocity / Velocity.Magnitude()) * MAX_SPEED;
+		}
+
 		Impulses.clear();
+	}
+
+	void GPhysicalComp::Destroy()
+	{
+		GAMEWORLD->PhysicsManagerComp->RemovePhysicalComp(this);
+
+		GComp::Destroy();
 	}
 
 	void GPhysicalComp::SetPhysicsType(const EPhysicsType PhysicsType)
@@ -124,7 +137,7 @@ namespace ge
 			Acceleration = math::MVector3::ZeroVector();
 			break;
 		}
-		}
+		} 
 	}
 
 	void GPhysicalComp::AddShape(GShapeComp* Shape)

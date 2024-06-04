@@ -1,5 +1,5 @@
-#ifndef _GSPHEREPLANET_h
-#define _GSPHEREPLANET_h
+#ifndef _ASPHEREPLANET_h
+#define _ASPHEREPLANET_h
 
 namespace ge
 {
@@ -26,4 +26,4 @@ namespace ge
 	};
 };
 
-#endif //_GPLANET_h
+#endif //_APLANET_h

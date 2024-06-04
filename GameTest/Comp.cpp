@@ -24,6 +24,18 @@ namespace ge
 		}
 	}
 
+	void GComp::Destroy()
+	{
+		for (GComp* Comp : AttachedComps)
+		{
+			Comp->Destroy();
+		}
+
+		AttachedComps.clear();
+
+		GObject::Destroy();
+	}
+
 	bool GComp::AttachComp(GComp* RootComp, GComp* Comp)
 	{
 		if (Comp == nullptr)

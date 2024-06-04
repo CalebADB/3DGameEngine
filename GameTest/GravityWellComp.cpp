@@ -12,13 +12,17 @@ namespace ge
 	{
 		this->Strength = Strength;
 	}
-	void GGravityWellComp::UpdateGlobalTransform()
-	{
-		GSceneComp::UpdateGlobalTransform();
-	}
+
 	void GGravityWellComp::Update(float deltaTime)
 	{
 		GSceneComp::Update(deltaTime);
+	}
+
+	void GGravityWellComp::Destroy()
+	{
+		GAMEWORLD->PhysicsManagerComp->RemoveGravityWellComp(this);
+
+		GSceneComp::Destroy();
 	}
 
 	void GSphereGravityWellComp::Begin()

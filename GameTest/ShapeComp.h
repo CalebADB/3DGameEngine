@@ -28,6 +28,8 @@ namespace ge
 	protected:
 		virtual void RenderSceneData();
 
+		virtual void Destroy();
+
 	public:
 		virtual bool IsRendered() const { return bIsRendered; }
 		math::MVector3 GetShapeColor();
@@ -48,12 +50,9 @@ namespace ge
 		{}
 		virtual void Begin();
 		void Initialize(GLfloat Radius, bool bIsRendered, math::MVector3 Color);
-		GLfloat GetRadius() const { return Radius; }
-
-	protected:
-		virtual void RenderSceneData();
 		
 	public:
+		GLfloat GetRadius() const { return Radius; }
 		GLfloat GetMaxSize() const { return Radius; }
 		virtual GLfloat GetSignedDistanceFrom(math::MVector3 GlobalPosition);
 	};

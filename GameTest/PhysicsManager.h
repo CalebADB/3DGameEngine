@@ -20,10 +20,16 @@ namespace ge
 
 		virtual void Begin();
 	public:
-		void AddPlayerControllerComps(GPlayerControllerComp* PlayerControllerComps);
+		void AddPlayerControllerComp(GPlayerControllerComp* PlayerControllerComp);
 		void AddPhysicalComp(GPhysicalComp* PhysicalComp);
 		void AddPlanetNavigationComp(GPlanetNavigationComp* PlanetNavigationComp);
 		void AddGravityWellComp(GGravityWellComp* GravityWellComp);
+		
+		void RemovePlayerControllerComp(GPlayerControllerComp* PlayerControllerComp);
+		void RemovePhysicalComp(GPhysicalComp* PhysicalComp);
+		void RemovePlanetNavigationComp(GPlanetNavigationComp* PlanetNavigationComp);
+		void RemoveGravityWellComp(GGravityWellComp* GravityWellComp);
+
 		void HandleForces(float deltaTime);
 		void HandleDisplacement(float deltaTime);
 

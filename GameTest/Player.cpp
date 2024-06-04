@@ -6,6 +6,8 @@ namespace ge
     {
         AActor::Begin();
 
+        ParticleEffect = GAMEWORLD->SpawnActor<AParticleEffect>("ParticleEffect", this, GetGlobalTransformData().Position, GetGlobalTransformData().Rotation);
+
         PhysicalComp = GAMEWORLD->NewComp<GPlayerPhysicalComp>(std::string("PlayerPhysicalComp"));
         AttachComp(this, PhysicalComp);
 
@@ -26,7 +28,7 @@ namespace ge
     {
         PhysicalComp->Initialize(Mass, Acceleration, Velocity);
         PlanetNavigationComp->Initialize(PhysicalComp, GroundDisplacement);
-        ControllerComp->Initialize(PhysicalComp);
+        ControllerComp->Initialize(ParticleEffect, PhysicalComp);
         ShapeComp->Initialize(PlayerRadius, true, Color);
     }
     void APlayer::Update(float deltaTime)

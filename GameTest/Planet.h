@@ -1,5 +1,5 @@
-#ifndef _GPLANET_h
-#define _GPLANET_h
+#ifndef _APLANET_h
+#define _APLANET_h
 
 namespace ge
 {
@@ -18,7 +18,7 @@ namespace ge
 		virtual void Begin();
 		void Initialize(GLfloat Mass, math::MVector3 Velocity, math::MVector3 Acceleration);
 		
-		GPlanetPhysicalComp* GetPhysicalComp() { return PhysicalComp; }
+		GPlanetPhysicalComp* GetPhysicalComp() const { return PhysicalComp; }
 
 	protected:
 		virtual void Update(float deltaTime);
@@ -26,4 +26,4 @@ namespace ge
 	};
 };
 
-#endif //_GPLANET_h
+#endif //_APLANET_h

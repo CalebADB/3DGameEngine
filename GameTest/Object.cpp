@@ -15,6 +15,8 @@ namespace ge
 	{
 		bIsEnabled = false;
 		bIsAlive = false;
+
+		GAMEWORLD->GarbageObject(this);
 	}
 
 	std::string GObject::GetName() const

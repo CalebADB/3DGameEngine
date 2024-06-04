@@ -25,8 +25,10 @@ namespace ge
 	protected:
 		virtual void Update(float deltaTime);
 	public:
-		void AddShapeComp(GShapeComp* ShapeComp);
 		void AssignGameCamera(GCameraComp* CameraComp);
+
+		void AddShapeComp(GShapeComp* ShapeComp);
+		void RemoveShapeComp(GShapeComp* ShapeComp);
 
 		void Render();
 

@@ -26,8 +26,9 @@ namespace ge
 		void Initialize(GLfloat Strength);
 
 	protected:
-		virtual void UpdateGlobalTransform();
 		virtual void Update(float deltaTime);
+
+		virtual void Destroy();
 
 	public:
 		EGravityWellType GetType() { return Type; }

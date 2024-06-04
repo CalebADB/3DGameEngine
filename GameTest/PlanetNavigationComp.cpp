@@ -33,8 +33,14 @@ namespace ge
 			return;
 		}
 		math::MVector3 EulerDirection = math::MQuaternion::ToEuler(Direction);
-		Location = math::MQuaternion::FromEuler(EulerDirection.Normalized() * (deltaTime * NavigatorTangentialSpeed * PlanetRadius / 360) * math::M_PI) * Location;
+		SphericalLocation = math::MQuaternion::FromEuler(EulerDirection.Normalized() * (deltaTime * NavigatorTangentialSpeed * PlanetRadius / 360) * math::M_PI) * SphericalLocation;
 
+	}
+	void GPlanetNavigationComp::Destroy()
+	{
+		GAMEWORLD->PhysicsManagerComp->RemovePlanetNavigationComp(this);
+
+		GComp::Destroy();
 	}
 	void GPlanetNavigationComp::EmbarkOn(APlanet* Planet, math::MVector3 NavigatorVelocity)
 	{		
@@ -60,7 +66,7 @@ namespace ge
 		math::MVector3 NavigatorUp = NavigatorTransformData.Position - PlanetTransformData.Position;
 		math::MVector3 NavigatorTangentialVelocity = math::MVector3::ProjectOntoPlane(NavigatorVelocity, NavigatorUp);
 		PlanetNorthPole = math::MVector3::UpVector().RotatedBy(PlanetTransformData.Rotation).Normalized();
-		Location = math::MQuaternion::RotationFromVectorToVector(PlanetNorthPole, NavigatorUp).Normalized();
+		SphericalLocation = math::MQuaternion::RotationFromVectorToVector(PlanetNorthPole, NavigatorUp).Normalized();
 		Direction = math::MQuaternion::RotationFromVectorToVector(NavigatorUp, NavigatorUp + NavigatorTangentialVelocity.Normalized()).Normalized();
 		PlanetRadius = SpherePlanet->GetRadius();
 		NavigatorTangentialSpeed = NavigatorTangentialVelocity.Magnitude();
@@ -84,10 +90,9 @@ namespace ge
 
 		// Force planet to not trap disembarking body 
 		//PhysicalComp->AddOngoingCollisionBufferFrames(Planet->GetPhysicalComp(), 1);
-
 		
 		PlanetNorthPole = math::MVector3::UpVector();
-		Location = math::MQuaternion::Identity();
+		SphericalLocation = math::MQuaternion::Identity();
 		Direction = math::MQuaternion::Identity();
 		PlanetRadius = 0.0f;
 		NavigatorTangentialSpeed = 0.0f;
@@ -101,9 +106,9 @@ namespace ge
 	math::MTransformData GPlanetNavigationComp::GetLocalTransformData()
 	{		
 		math::MTransformData LocalTransformData = math::MTransformData::Identity();
-		LocalTransformData.Position = (math::MVector3(0,1,0) * (PlanetRadius + GroundDisplacement)).RotatedBy(Location.Normalized());
-		LocalTransformData.Rotation = Location.Normalized();
-		math::MVector3 EulerRotation = math::MQuaternion::ToEuler(Location);
+		LocalTransformData.Position = (math::MVector3(0,1,0) * (PlanetRadius + GroundDisplacement)).RotatedBy(SphericalLocation.Normalized());
+		LocalTransformData.Rotation = SphericalLocation.Normalized();
+		math::MVector3 EulerRotation = math::MQuaternion::ToEuler(SphericalLocation);
 		return LocalTransformData;
 	}
 
@@ -114,6 +119,6 @@ namespace ge
 
 	math::MVector3 GPlanetNavigationComp::GetNavigatorUp()
 	{
-		return PlanetNorthPole.RotatedBy(Location);
+		return PlanetNorthPole.RotatedBy(SphericalLocation);
 	}
 };

@@ -45,6 +45,11 @@
 #include "MeshComp.h"
 #include "EssentialMeshComp.h"
 #include "ShapeComp.h"
+
+#include "Actor.h"
+#include "Particle.h"
+#include "ParticleEffect.h"
+
 #include "GravityWellComp.h"
 #include "PhysicalComp.h"
 #include "PlanetNavigationComp.h"
@@ -58,7 +63,6 @@
 #include "RenderManager.h"
 //#include "MemoryManager.h"
 
-#include "Actor.h"
 #include "Planet.h"
 #include "PressureWave.h"
 #include "Projectile.h"

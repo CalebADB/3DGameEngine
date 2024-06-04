@@ -4,9 +4,11 @@
 
 namespace ge
 {
-	void GPlayerControllerComp::Initialize(GPhysicalComp* PhysicalComp)
+	void GPlayerControllerComp::Initialize(AParticleEffect* ParticleEffect, GPhysicalComp* PhysicalComp)
 	{
-		GAMEWORLD->PhysicsManagerComp->AddPlayerControllerComps(this);
+		this->ParticleEffect = ParticleEffect;
+
+		GAMEWORLD->PhysicsManagerComp->AddPlayerControllerComp(this);
 
 		this->PhysicalComp = PhysicalComp;
 	}
@@ -16,7 +18,13 @@ namespace ge
 		GComp::Update(deltaTime);
 
 		UpdateFrameImpulse(deltaTime);
+	}
 
+	void GPlayerControllerComp::Destroy()
+	{
+		GAMEWORLD->PhysicsManagerComp->RemovePlayerControllerComp(this);
+
+		GComp::Destroy();
 	}
 
 	void GPlayerControllerComp::SetLocalUp(math::MVector3 LocalUp)
@@ -26,6 +34,8 @@ namespace ge
 
 	math::MVector3 GPlayerControllerComp::GetLinearDisplacement(float deltaTime)
 	{
+		ParticleEffect->DriveEffect(Impulse.Magnitude(), Impulse * -1);
+
 		//this will ideally handle a rotated camera but its 9 on sunday and the projection matrix is still wack
 		return Impulse * deltaTime;
 	}
@@ -85,5 +95,7 @@ namespace ge
 			break;
 		}
 		}
+
+		PhysicalComp->AddLinearImpulse(nullptr, Impulse);
 	}
 };

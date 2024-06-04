@@ -41,9 +41,11 @@ namespace ge
         GAMEWORLD->RenderManagerComp->AddShapeComp(this);
     }
 
-    void GSphereShapeComp::RenderSceneData()
+    void GShapeComp::Destroy()
     {
-        GShapeComp::RenderSceneData();
+        GAMEWORLD->RenderManagerComp->RemoveShapeComp(this);
+
+        GSceneComp::Destroy();
     }
 
     GLfloat GSphereShapeComp::GetSignedDistanceFrom(math::MVector3 GlobalPosition)

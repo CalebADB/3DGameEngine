@@ -21,6 +21,9 @@ namespace ge
     // Main physics component class
     class GPhysicalComp : public GComp
     {
+    public:
+        const float MAX_SPEED = 15.0f;
+
     protected:
         GLfloat MaxCollisionBound = 0.0;
         std::list<GShapeComp*> Shapes;
@@ -49,6 +52,7 @@ namespace ge
     protected:
         virtual void Update(float deltaTime);
 
+        virtual void Destroy();
     public:
         EPhysicalType GetPhysicalType() const { return PhysicalType; }
         EPhysicsType GetPhysicsType() const { return PhysicsType; }

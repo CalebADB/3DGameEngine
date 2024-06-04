@@ -10,7 +10,7 @@ namespace ge
     {
     protected:
         // Navigator Propertied
-        AActor* Navigator = nullptr;;
+        AActor* Navigator = nullptr;
         GPhysicalComp* PhysicalComp = nullptr;
         GLfloat GroundDisplacement = 0.0;
 
@@ -18,7 +18,7 @@ namespace ge
         APlanet* Planet = nullptr;
 
         math::MVector3 PlanetNorthPole = math::MVector3::UpVector();
-        math::MQuaternion Location = math::MQuaternion::Identity();
+        math::MQuaternion SphericalLocation = math::MQuaternion::Identity();
         math::MQuaternion Direction = math::MQuaternion::Identity();
         GLfloat PlanetRadius = 0.0f;
         GLfloat NavigatorTangentialSpeed = 0.0f;
@@ -33,6 +33,8 @@ namespace ge
         void Initialize(GPhysicalComp* PhysicalComp, GLfloat GroundDisplacement);
     protected:
         virtual void Update(float deltaTime);
+
+        virtual void Destroy();
 
     public:
         bool IsEmbarked() const { return PhysicalComp->GetPhysicsType() == EPhysicsType::PlanetSurface; }

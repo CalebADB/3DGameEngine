@@ -1,11 +1,13 @@
-#ifndef _GPLAYER_H
-#define _GPLAYER_H
+#ifndef _APLAYER_H
+#define _APLAYER_H
 
 namespace ge
 {
 	class APlayer : public AActor
 	{
 	protected:
+		AParticleEffect* ParticleEffect = nullptr;
+
 		GPlayerPhysicalComp* PhysicalComp = nullptr;
 		GSphereShapeComp* ShapeComp = nullptr;
 
@@ -31,4 +33,4 @@ namespace ge
 	};
 };
 
-#endif //_GPLAYER_H
+#endif //_APLAYER_H

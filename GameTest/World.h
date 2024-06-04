@@ -33,9 +33,11 @@ namespace ge
 		APlayer* Player = nullptr;
 		GCameraComp* GameCameraComp = nullptr;
 		std::list<GObject*> Objects;
+		std::list<GObject*> Garbage;
 
 		// World Level
 		ASpherePlanet* SpherePlanet1 = nullptr;
+		ASpherePlanet* SpherePlanet2 = nullptr;
 		ATimeContainerProp* Prop1 = nullptr;
 		ATimeContainerProp* Prop2 = nullptr;
 		ATimeContainerProp* Prop3 = nullptr;
@@ -121,6 +123,9 @@ namespace ge
 
 			return ObjectInstance;
 		}
+
+		void GarbageObject(GObject* Object);
+		void EmptyGarbage();
 	};
 };
 

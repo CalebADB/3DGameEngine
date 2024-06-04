@@ -7,7 +7,7 @@ namespace ge
         Octree = GAMEWORLD->NewObject<GOctree>("Octree");
         Octree->Initialize(math::MVector3::ZeroVector(), 200.0f);
     }
-    void GPhysicsManagerComp::AddPlayerControllerComps(GPlayerControllerComp* PlayerControllerComp)
+    void GPhysicsManagerComp::AddPlayerControllerComp(GPlayerControllerComp* PlayerControllerComp)
     {
         PlayerControllerComps.push_back(PlayerControllerComp);
     }
@@ -27,10 +27,90 @@ namespace ge
         GravityWellComps.push_back(GravityWellComp);
     }
 
+    void GPhysicsManagerComp::RemovePlayerControllerComp(GPlayerControllerComp* PlayerControllerComp)
+    {
+        // Iterator for the vector
+        auto it = PlayerControllerComps.begin();
+
+        // Iterate through the vector
+        while (it != PlayerControllerComps.end())
+        {
+            if (*it == PlayerControllerComp)
+            {
+                PlayerControllerComps.erase(it);
+
+                return;
+            }
+            it++;
+        }
+
+        debug::Output(debug::EOutputType::Always, "ERROR: PlayerControllerComp_%s was not in PlayerControllerComps", PlayerControllerComp->GetCharName());
+    }
+
+    void GPhysicsManagerComp::RemovePhysicalComp(GPhysicalComp* PhysicalComp)
+    {
+        // Iterator for the vector
+        auto it = PhysicalComps.begin();
+
+        // Iterate through the vector
+        while (it != PhysicalComps.end())
+        {
+            if (*it == PhysicalComp)
+            {
+                Octree->Remove(PhysicalComp);
+                PhysicalComps.erase(it);
+                return;
+            }
+            it++;
+        }
+
+        debug::Output(debug::EOutputType::Always, "ERROR: PhysicalComp_%s was not in PhysicalComps", PhysicalComp->GetCharName());
+    }
+
+    void GPhysicsManagerComp::RemovePlanetNavigationComp(GPlanetNavigationComp* PlanetNavigationComp)
+    {
+        // Iterator for the vector
+        auto it = PlanetNavigationComps.begin();
+
+        // Iterate through the vector
+        while (it != PlanetNavigationComps.end())
+        {
+            if (*it == PlanetNavigationComp)
+            {
+                PlanetNavigationComps.erase(it);
+
+                return;
+            }
+            it++;
+        }
+
+        debug::Output(debug::EOutputType::Always, "ERROR: PlanetNavigationComp_%s was not in PlanetNavigationComps", PlanetNavigationComp->GetCharName());
+    }
+
+    void GPhysicsManagerComp::RemoveGravityWellComp(GGravityWellComp* GravityWellComp)
+    {
+
+    }
+
     void GPhysicsManagerComp::HandleForces(float deltaTime)
     {
         for (GPlayerControllerComp* PlayerControllerComp : PlayerControllerComps)
         {
+            //Determine down based on gravity so that 
+            PlayerControllerComp->SetLocalUp(math::MVector3::FlipVector(GetGravityAtPosition(PlayerControllerComp->GetGlobalTransformData().Position)).Normalized());
+
+            math::MVector3 Displacement = PlayerControllerComp->GetLinearDisplacement(deltaTime);
+            AActor* Actor = (AActor*)PlayerControllerComp->GetActorRoot();
+            if (Actor == nullptr)
+            {
+                debug::Output(debug::EOutputType::Always, "Error: PlayerControllerComp_%s does not have a root actor", PlayerControllerComp->GetCharName());
+                continue;
+            }
+
+            math::MTransformData LocalTransformData = Actor->GetLocalTransformData();
+            LocalTransformData.Translate(Displacement);
+            Actor->SetLocalTransformData(LocalTransformData);
+
             if (PlayerControllerComp->IsJumpQueued())
             {
                 GPlanetNavigationComp* PlanetNavigationComp = ((APlayer*)(PlayerControllerComp->GetActorRoot()))->PlanetNavigationComp;
@@ -69,24 +149,6 @@ namespace ge
 
     void GPhysicsManagerComp::HandleDisplacement(float deltaTime)
     {
-        for (GPlayerControllerComp* PlayerControllerComp : PlayerControllerComps)
-        {
-            //Determine down based on gravity so that 
-            PlayerControllerComp->SetLocalUp(math::MVector3::FlipVector(GetGravityAtPosition(PlayerControllerComp->GetGlobalTransformData().Position)).Normalized());
-
-            math::MVector3 Displacement = PlayerControllerComp->GetLinearDisplacement(deltaTime);
-            AActor* Actor = (AActor*)PlayerControllerComp->GetActorRoot();
-            if (Actor == nullptr)
-            {
-                debug::Output(debug::EOutputType::Always, "Error: PlayerControllerComp_%s does not have a root actor", PlayerControllerComp->GetCharName());
-                continue;
-            }
-
-            math::MTransformData LocalTransformData = Actor->GetLocalTransformData();
-            LocalTransformData.Translate(Displacement);
-            Actor->SetLocalTransformData(LocalTransformData);
-
-        }
 
         for (GPhysicalComp* PhysicalComp : PhysicalComps)
         {

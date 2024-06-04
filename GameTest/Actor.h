@@ -1,10 +1,11 @@
-#ifndef _GACTOR_H
-#define _GACTOR_H
+#ifndef _AACTOR_H
+#define _AACTOR_H
 
 namespace ge
 {
 	class AActor : public GSceneComp
 	{
+		friend class AWorld;
 	private:
 		AActor* Owner = nullptr;
 		std::list<AActor*> AttachedActors;
@@ -20,6 +21,8 @@ namespace ge
 		virtual void Update(float deltaTime);
 		virtual void Render();
 
+		virtual void Destroy();
+
 	public:
 		bool AttachActor(AActor* Actor);
 		bool DettachActor(AActor* Actor);
@@ -30,4 +33,4 @@ namespace ge
 	};
 };
 
-#endif //_GACTOR_H
+#endif //_AACTOR_H

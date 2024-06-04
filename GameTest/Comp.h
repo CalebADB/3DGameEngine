@@ -24,6 +24,8 @@ namespace ge
 		virtual void Update(float deltaTime);
 		virtual void Render();
 
+		virtual void Destroy();
+
 	public:
 		virtual bool AttachComp(GComp* RootComp, GComp* Comp);
 		GComp* GetActorRoot();

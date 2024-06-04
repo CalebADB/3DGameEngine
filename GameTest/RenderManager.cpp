@@ -7,15 +7,35 @@ namespace ge
 		GManagerComp::Begin();
 	}
 
-	void GRenderManagerComp::AddShapeComp(GShapeComp* ShapeComp)
-	{
-		ShapeComps.push_back(ShapeComp);
-	}
-
     void GRenderManagerComp::AssignGameCamera(GCameraComp* CameraComp)
 	{
 		this->GameCameraComp = CameraComp;
 	}
+
+    void GRenderManagerComp::AddShapeComp(GShapeComp* ShapeComp)
+    {
+        ShapeComps.push_back(ShapeComp);
+    }
+
+    void GRenderManagerComp::RemoveShapeComp(GShapeComp* ShapeComp)
+    {
+        // Iterator for the vector
+        auto ShapeCompIter = ShapeComps.begin();
+
+        // Iterate through the vector
+        while (ShapeCompIter != ShapeComps.end())
+        {
+            if (*ShapeCompIter == ShapeComp)
+            {
+                ShapeComps.erase(ShapeCompIter);
+                return;
+            }
+            ShapeCompIter++;
+        }
+
+        debug::Output(debug::EOutputType::Always, "ERROR: PhysicalComp_%s was not in PhysicalComps", ShapeComp->GetCharName());
+    }
+
 
     void GRenderManagerComp::Update(float deltaTime)
     {
