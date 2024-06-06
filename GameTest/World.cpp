@@ -20,7 +20,7 @@ namespace ge
         RenderManagerComp = NewComp<GRenderManagerComp>("RenderManagerComp");
         AttachComp(this, RenderManagerComp);
         
-        Player = GAMEWORLD->SpawnActor<APlayer>(std::string("Player1"), this, math::MVector3(-10, 0, 0), math::MQuaternion::FromEuler(math::MVector3(0, -math::M_PI / 2, 0)));
+        Player = GAMEWORLD->SpawnActor<APlayer>(std::string("Player1"), this, math::MVector3(-10, 0, 10), math::MQuaternion::FromEuler(math::MVector3(0, -math::M_PI / 2, 0)));
         Player->Initialize(1.0f, math::MVector3::ZeroVector(), math::MVector3(0, 0, 10), 1, 1, math::MVector3(0, 1, 0));
         RenderManagerComp->AssignGameCamera(Player->FirstPersonCameraComp);
         GameCameraComp = Player->FirstPersonCameraComp;
@@ -31,17 +31,17 @@ namespace ge
         //GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape4"), this, math::MVector3(-4.0, 0.0, 0.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Torus, false);
         //GAMEWORLD->SpawnActor<AEssentialShape>(std::string("Shape5"), this, math::MVector3(0.0, 0.0, -4.0), math::MQuaternion::Identity())->SetEssentialShapeType(EEssentialShapeType::Cone, false);
 
-        SpherePlanet1 = GAMEWORLD->SpawnActor<ASpherePlanet>(std::string("SpherePlanet1"), this, math::MVector3(0, 0, 0), math::MQuaternion::Identity());
+        SpherePlanet1 = GAMEWORLD->SpawnActor<ASpherePlanet>(std::string("SpherePlanet1"), this, math::MVector3(0, 0, 10), math::MQuaternion::Identity());
         SpherePlanet1->Initialize(1.0f, math::MVector3::ZeroVector(), math::MVector3::ZeroVector(), 4, 10, 24, math::MVector3(0, 0, 1));
 
-        Prop1 = GAMEWORLD->SpawnActor<ATimeContainerProp>(std::string("TimeContainerProp1"), this, math::MVector3(11.0, -3.0, 0), math::MQuaternion::Identity());
+        Prop1 = GAMEWORLD->SpawnActor<ATimeContainerProp>(std::string("TimeContainerProp1"), this, math::MVector3(11.0, -3.0, 10), math::MQuaternion::Identity());
         Prop1->Initialize(2.222f, math::MVector3::ZeroVector(), math::MVector3(3, 2, 9), 1, 2, math::MVector3(1, 1, 0));
 
-        //SpherePlanet2 = GAMEWORLD->SpawnActor<ASpherePlanet>(std::string("SpherePlanet2"), this, math::MVector3(40.0, -3.0, 0.0), math::MQuaternion::Identity());
-        //SpherePlanet2->Initialize(1.0f, math::MVector3::ZeroVector(), math::MVector3::ZeroVector(), 4, 10, 24, math::MVector3(0, 0, 1));
+        SpherePlanet2 = GAMEWORLD->SpawnActor<ASpherePlanet>(std::string("SpherePlanet2"), this, math::MVector3(40.0, -3.0, 0.0), math::MQuaternion::Identity());
+        SpherePlanet2->Initialize(1.0f, math::MVector3::ZeroVector(), math::MVector3::ZeroVector(), 4, 10, 24, math::MVector3(0, 0, 1));
 
-        //Prop2 = GAMEWORLD->SpawnActor<ATimeContainerProp>(std::string("TimeContainerProp2"), this, math::MVector3(61.0, -3.0, 0.0), math::MQuaternion::Identity());
-        //Prop2->Initialize(2.222f, math::MVector3::ZeroVector(), math::MVector3(3, 2, 0), 1, 2, math::MVector3(1, 1, 0));
+        Prop2 = GAMEWORLD->SpawnActor<ATimeContainerProp>(std::string("TimeContainerProp2"), this, math::MVector3(61.0, -3.0, 0.0), math::MQuaternion::Identity());
+        Prop2->Initialize(2.222f, math::MVector3::ZeroVector(), math::MVector3(3, 2, 9), 1, 2, math::MVector3(1, 1, 0));
 
 
         //Prop2 = GAMEWORLD->SpawnActor<ATimeContainerProp>(std::string("TimeContainerProp2"), this, math::MVector3(0.0, 3.0, 13.0), math::MQuaternion::Identity());
@@ -187,7 +187,6 @@ namespace ge
         }
         UpdateGlobalTransform();
         PhysicsManagerComp->CheckCollisions();
-
         EmptyGarbage();
     }
     void AWorld::RenderWorld()
@@ -274,6 +273,11 @@ namespace ge
                 if (timer010 <= 0.0f) { timer010 = 0.0f; bUp = true; }
             }
         }
+    }
+
+    void AWorld::RemoveActorFromWorld(AActor* Actor)
+    {
+        AttachedActors.remove(Actor);
     }
 
     void AWorld::GarbageObject(GObject* Object)

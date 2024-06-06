@@ -28,7 +28,7 @@ namespace ge
     {
         PhysicalComp->Initialize(Mass, Acceleration, Velocity);
         PlanetNavigationComp->Initialize(PhysicalComp, GroundDisplacement);
-        ControllerComp->Initialize(ParticleEffect, PhysicalComp);
+        ControllerComp->Initialize(ParticleEffect, PhysicalComp, FirstPersonCameraComp);
         ShapeComp->Initialize(PlayerRadius, true, Color);
     }
     void APlayer::Update(float deltaTime)

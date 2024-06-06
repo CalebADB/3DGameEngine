@@ -13,7 +13,7 @@ namespace ge
             Render,
             Always // Used primarily for ERROR calls
         };
-        static bool PRINTDEBUGINITIALIZE = true;
+        static bool PRINTDEBUGINITIALIZE = false;
         static bool PRINTDEBUGUPDATE = false; 
         static bool PRINTDEBUGPHYSICS = true;
         static bool PRINTDEBUGRENDER = false;

@@ -4,13 +4,14 @@
 
 namespace ge
 {
-	void GPlayerControllerComp::Initialize(AParticleEffect* ParticleEffect, GPhysicalComp* PhysicalComp)
+	void GPlayerControllerComp::Initialize(AParticleEffect* ParticleEffect, GPhysicalComp* PhysicalComp, GCameraComp* CameraComp)
 	{
 		this->ParticleEffect = ParticleEffect;
 
 		GAMEWORLD->PhysicsManagerComp->AddPlayerControllerComp(this);
 
 		this->PhysicalComp = PhysicalComp;
+		this->CameraComp = CameraComp;
 	}
 
 	void GPlayerControllerComp::Update(float deltaTime)
@@ -52,20 +53,20 @@ namespace ge
 		Impulse = math::MVector3::ZeroVector();
 
 		if (App::IsKeyPressed(0x41)) // A Key
-		{			
-			Impulse = Impulse + math::MVector3::LeftVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
+		{			 
+			Impulse = Impulse + math::MVector3::LeftVector();//.RotatedBy(CameraComp->GetCameraOrientation().Inverse());
 		}
 		if (App::IsKeyPressed(0x57)) // W Key
 		{
-			Impulse = Impulse + math::MVector3::BackwardVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
+			Impulse = Impulse + math::MVector3::BackwardVector();//.RotatedBy(CameraComp->GetCameraOrientation().Inverse());
 		}
 		if (App::IsKeyPressed(0x44)) // D Key
 		{
-			Impulse = Impulse + math::MVector3::RightVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
+			Impulse = Impulse + math::MVector3::RightVector();//.RotatedBy(CameraComp->GetCameraOrientation().Inverse());
 		}
 		if (App::IsKeyPressed(0x53)) // S Key
 		{
-			Impulse = Impulse + math::MVector3::ForwardVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
+			Impulse = Impulse + math::MVector3::ForwardVector();//.RotatedBy(CameraComp->GetCameraOrientation().Inverse());
 		}
 
 		switch (PhysicalComp->GetPhysicsType())
@@ -74,11 +75,11 @@ namespace ge
 		{
 			if (App::IsKeyPressed(0x51)) // Q Key
 			{
-				Impulse = Impulse + math::MVector3::UpVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
+				Impulse = Impulse + math::MVector3::DownVector();//.RotatedBy(CameraComp->GetCameraOrientation().Inverse());
 			}
 			if (App::IsKeyPressed(0x45)) // E Key
 			{
-				Impulse = Impulse + math::MVector3::DownVector().RotatedBy(GetActorRoot()->GetGlobalTransformData().Rotation);
+				Impulse = Impulse + math::MVector3::UpVector();//.RotatedBy(CameraComp->GetCameraOrientation().Inverse());
 			}
 
 			Impulse = Impulse * SpaceSpeed;

@@ -6,7 +6,7 @@ namespace ge
     {
         AProp::Begin();
 
-        ShapeComp = GAMEWORLD->NewComp<GSphereShapeComp>(std::string("SphereGravityWellComp1"));
+        ShapeComp = GAMEWORLD->NewComp<GSphereShapeComp>(std::string("TimeContainerPropShapeComp"));
         AttachComp(PhysicalComp, ShapeComp);
         PhysicalComp->AddShape(ShapeComp);
     }

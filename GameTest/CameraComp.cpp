@@ -29,7 +29,9 @@ namespace ge
         // Apply rotation to the camera using the utility function
        
         math::MTransformData TransformData = GetLocalTransformData();
-        TransformData.Rotation = CalcCameraOrientation(deltaTime, MouseDeltaX, MouseDeltaY, Sensitivity);
+        UpdateCameraOrientation(deltaTime, MouseDeltaX, MouseDeltaY, Sensitivity);
+
+        TransformData.Rotation = CameraOrientation;
 
         SetLocalTransformData(TransformData);
     }
@@ -49,7 +51,7 @@ namespace ge
                 bIsMouseCaptured = true;
             }
         }
-}
+    }
 
     void GCameraComp::ReleaseMouse()
     {
@@ -60,7 +62,7 @@ namespace ge
         }
     }
 
-    math::MQuaternion GCameraComp::CalcCameraOrientation(GLfloat deltaTime, GLfloat MouseDeltaX, GLfloat MouseDeltaY, GLfloat Sensitivity)
+    void GCameraComp::UpdateCameraOrientation(GLfloat deltaTime, GLfloat MouseDeltaX, GLfloat MouseDeltaY, GLfloat Sensitivity)
     {
         CameraYaw += -MouseDeltaX * deltaTime * Sensitivity;
         while (CameraYaw > math::M_DEG360) CameraYaw -= math::M_DEG360;
@@ -70,7 +72,7 @@ namespace ge
         if (CameraPitch > math::M_DEG90) CameraPitch = math::M_DEG90;
         if (CameraPitch < -math::M_DEG90) CameraPitch = -math::M_DEG90;
 
-        return math::MQuaternion::Identity()
+        CameraOrientation = math::MQuaternion::Identity()
             * math::MQuaternion::FromAxisAngle(math::MVector3::UpVector(), CameraYaw)
             * math::MQuaternion::FromAxisAngle(math::MVector3::RightVector(), CameraPitch);
     }

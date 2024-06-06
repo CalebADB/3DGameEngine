@@ -2,16 +2,6 @@
 
 namespace ge
 {
-	void GPlanetNavigationComp::Begin()
-	{
-		GComp::Begin();
-
-		Navigator = (AActor*)GetActorRoot();
-		if (Navigator == nullptr)
-		{
-			debug::Output(debug::EOutputType::Always, "Error: Root_%s does not evaluate to an actor", GetActorRoot()->GetCharName());
-		}
-	}
 	void GPlanetNavigationComp::Initialize(GPhysicalComp* PhysicalComp, GLfloat GroundDisplacement)
 	{
 		this->PhysicalComp = PhysicalComp;
@@ -57,6 +47,7 @@ namespace ge
 		}
 
 		this->Planet = Planet;
+		AActor* Navigator = (AActor*)GetActorRoot();
 		Planet->AttachActor(Navigator);
 		
 		PhysicalComp->SetPhysicsType(EPhysicsType::PlanetSurface);
@@ -89,7 +80,7 @@ namespace ge
 		PhysicalComp->AddLinearImpulse(InstigatingPhysicalComp, Impulse);
 
 		// Force planet to not trap disembarking body 
-		//PhysicalComp->AddOngoingCollisionBufferFrames(Planet->GetPhysicalComp(), 1);
+		PhysicalComp->AddOngoingCollisionBufferFrames(Planet->GetPhysicalComp(), 1);
 		
 		PlanetNorthPole = math::MVector3::UpVector();
 		SphericalLocation = math::MQuaternion::Identity();
@@ -99,8 +90,8 @@ namespace ge
 
 		PhysicalComp->SetPhysicsType(EPhysicsType::Space);
 
-		Planet->DettachActor(Navigator);
-		this->Planet = Planet;
+		Planet->DettachActor((AActor*)GetActorRoot());
+		Planet = nullptr;
 	}
 
 	math::MTransformData GPlanetNavigationComp::GetLocalTransformData()

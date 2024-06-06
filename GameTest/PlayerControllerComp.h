@@ -8,6 +8,7 @@ namespace ge
     protected:
         GPhysicalComp* PhysicalComp = nullptr;
         AParticleEffect* ParticleEffect = nullptr;
+        GCameraComp* CameraComp = nullptr;
 
         GLfloat SurfaceSpeed = 4;
         GLfloat SpaceSpeed = 2;
@@ -23,7 +24,7 @@ namespace ge
             GComp(Name)
         {}
 
-        void Initialize(AParticleEffect* ParticleEffect, GPhysicalComp* PhysicalComp);
+        void Initialize(AParticleEffect* ParticleEffect, GPhysicalComp* PhysicalComp, GCameraComp* CameraComp);
     protected:
         virtual void Update(float deltaTime);
 

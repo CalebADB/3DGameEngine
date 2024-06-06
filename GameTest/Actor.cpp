@@ -70,14 +70,24 @@ namespace ge
             return false;
         }
 
-        if (Actor->GetOwner() != nullptr)
+        if (Actor->GetOwner() == nullptr)
         {
-            debug::Output(debug::EOutputType::Always, "Error: %s is already owned by %s", Actor->GetCharName(), this->GetCharName());
-            return false;
+ 
+        }
+        else if (Actor->GetOwner() != GAMEWORLD)
+        {
+            Actor->GetOwner()->DettachActor(Actor);
         }
 
-        //math::MTransformData ActorTransformData = Actor->GetGlobalTransformData();
-        //math::MTransformData OwnerTransformData = Owner->GetGlobalTransformData();
+        math::MTransformData OwnerTransformData = GetGlobalTransformData();
+
+        math::MTransformData NewLocalTransformData = Actor->GetGlobalTransformData();
+        NewLocalTransformData.Translate(OwnerTransformData.Position);
+
+        Actor->SetLocalTransformData(NewLocalTransformData);
+
+        // Briefly disconnect from world
+        GAMEWORLD->RemoveActorFromWorld(Actor);
 
         // set Owner
         Actor->Owner = this;

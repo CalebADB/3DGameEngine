@@ -6,7 +6,6 @@ namespace ge
 	class GCameraComp : public GSceneComp
 	{
 	private:
-		GEssentialMeshComp* EssentialMeshComp = nullptr;
 		math::MVector3 CameraUp = math::MVector3::UpVector();
 
 		float Sensitivity = 0.25;
@@ -35,7 +34,7 @@ namespace ge
 	private:
 		void CaptureMouse();
 		void ReleaseMouse();
-		math::MQuaternion CalcCameraOrientation(GLfloat deltaTime, GLfloat MouseDeltaX, GLfloat MouseDeltaY, GLfloat Sensitivity);
+		void UpdateCameraOrientation(GLfloat deltaTime, GLfloat MouseDeltaX, GLfloat MouseDeltaY, GLfloat Sensitivity);
 		void GetMouseDelta(float& MouseDeltaX, float& MouseDeltaY);
 
 	};

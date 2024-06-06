@@ -16,8 +16,6 @@ namespace ge
     {
         PhysicalComp->Initialize(Mass, Acceleration, Velocity);
         PlanetNavigationComp->Initialize(PhysicalComp, GroundDisplacement);
-            
-
     }
 
     void AProp::Update(float deltaTime)

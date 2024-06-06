@@ -10,7 +10,6 @@ namespace ge
     {
     protected:
         // Navigator Propertied
-        AActor* Navigator = nullptr;
         GPhysicalComp* PhysicalComp = nullptr;
         GLfloat GroundDisplacement = 0.0;
 
@@ -29,7 +28,6 @@ namespace ge
             GComp(Name)
         {};
 
-        virtual void Begin();
         void Initialize(GPhysicalComp* PhysicalComp, GLfloat GroundDisplacement);
     protected:
         virtual void Update(float deltaTime);

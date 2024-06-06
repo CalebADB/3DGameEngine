@@ -52,10 +52,10 @@
 
 #include "GravityWellComp.h"
 #include "PhysicalComp.h"
-#include "PlanetNavigationComp.h"
-#include "PlayerControllerComp.h"
 #include "OrbitComp.h"
 #include "CameraComp.h"
+#include "PlanetNavigationComp.h"
+#include "PlayerControllerComp.h"
 
 #include "Manager.h"
 #include "Octree.h"

@@ -28,7 +28,7 @@ namespace ge
 		math::MTransformData GetLocalTransformData() const;
 		math::MTransformData GetGlobalTransformData() const;
 
-		void SetLocalTransformData(math::MTransformData TransformData);
+		void SetLocalTransformData(const math::MTransformData TransformData);
 
 	protected:
 		void CalcGlobalTransformData();

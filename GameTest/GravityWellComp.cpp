@@ -31,7 +31,7 @@ namespace ge
 
 		Type = EGravityWellType::Sphere;
 
-		SphereShapeComp = GAMEWORLD->NewComp<GSphereShapeComp>(std::string("SphereGravityWellComp"));
+		SphereShapeComp = GAMEWORLD->NewComp<GSphereShapeComp>(std::string("SphereGravityWellShapeComp"));
 		AttachComp(this, SphereShapeComp);
 	}
 	void GSphereGravityWellComp::Initialize(GLfloat Strength, GLfloat GravityReachRadius, math::MVector3 Color)

@@ -6,11 +6,11 @@ namespace ge
     {
         APlanet::Begin();
 
-        GravityWellComp = GAMEWORLD->NewComp<GSphereGravityWellComp>(std::string("SphereGravityWellComp1"));
+        GravityWellComp = GAMEWORLD->NewComp<GSphereGravityWellComp>(std::string("SpherePlanetGravityWellComp"));
         AttachComp(this, GravityWellComp);
         GravityWellComps.push_back(GravityWellComp);
 
-        ShapeComp = GAMEWORLD->NewComp<GSphereShapeComp>(std::string("SphereGravityWellComp1"));
+        ShapeComp = GAMEWORLD->NewComp<GSphereShapeComp>(std::string("SpherePlanetShapeComp"));
         AttachComp(PhysicalComp, ShapeComp);
         PhysicalComp->AddShape(ShapeComp);
     }

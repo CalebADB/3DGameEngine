@@ -18,7 +18,7 @@ namespace ge
     math::MVector3 GShapeComp::GetShapeColor()
     {
         return Color;
-    }
+     }
 
 
     void GSphereShapeComp::Begin()

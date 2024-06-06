@@ -7,7 +7,7 @@ namespace ge
 	{
 	private:
 		std::vector<AParticle*> Particles;
-		float ParticleLifetime = 0.5;
+		float ParticleLifetime = 1.0;
 		float ParticleSpeed = 10;
 		float ParticleSpawnRadius = 1;
 		float EmissionDirectionVariance = 0.1;

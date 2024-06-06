@@ -58,6 +58,8 @@ namespace ge
 		void RenderWorldUbisoftAPI();
 		void RenderWorldOpenGL();
 
+		void RemoveActorFromWorld(AActor* Actor);
+
 	public:
 		template <typename AActorSubclass>
 		AActorSubclass* SpawnActor(const std::string& Name, AActor* Owner, math::MVector3 LocalPosition, math::MQuaternion LocalRotation)

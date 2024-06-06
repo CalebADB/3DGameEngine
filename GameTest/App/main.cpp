@@ -135,7 +135,7 @@ void Idle()
 		CSimpleControllers::GetInstance().Update();
 
 		gUserUpdateProfiler.Start();
-		Update((float)deltaTime);				// Call user defined update.
+		Update((float)deltaTime); // Call user defined update.
 		gUserUpdateProfiler.Stop();
 		
 		gLastTime = currentTime;		

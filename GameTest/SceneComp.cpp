@@ -37,7 +37,7 @@ namespace ge
         return GlobalTransformData;
     }
 
-    void GSceneComp::SetLocalTransformData(math::MTransformData LocalTransformData)
+    void GSceneComp::SetLocalTransformData(const math::MTransformData LocalTransformData)
     {
         this->LocalTransformData = LocalTransformData;
     }
