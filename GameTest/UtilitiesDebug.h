@@ -15,7 +15,7 @@ namespace ge
         };
         static bool PRINTDEBUGINITIALIZE = false;
         static bool PRINTDEBUGUPDATE = false; 
-        static bool PRINTDEBUGPHYSICS = true;
+        static bool PRINTDEBUGPHYSICS = false;
         static bool PRINTDEBUGRENDER = false;
         static bool PRINTDEBUGALWAYS = true;
 

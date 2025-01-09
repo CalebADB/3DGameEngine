@@ -162,6 +162,13 @@ namespace ge
 
         MQuaternion MQuaternion::FromAxisAngle(const MVector3& Axis, GLfloat Angle)
         {
+            if (Axis.Magnitude() > 1.01f
+                ||
+                Axis.Magnitude() < 0.99f)
+            {
+                debug::Output(debug::EOutputType::Render, "FromAxisAngle not normalized: (%.2f, %.2f, %.2f)", Axis.X, Axis.Y, Axis.Z);
+
+            }
             GLfloat HalfAngle = Angle / 2;
             GLfloat S = sin(HalfAngle);
             return MQuaternion(cos(HalfAngle), Axis.X * S, Axis.Y * S, Axis.Z * S);

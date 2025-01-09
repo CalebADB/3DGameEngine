@@ -20,6 +20,11 @@ namespace ge
         return Color;
      }
 
+    GSphereVertexMesh* GShapeComp::GetSphereVertexMesh()
+    {
+        return DebugShape->GetSphereVertexMesh();
+    }
+
 
     void GSphereShapeComp::Begin()
     {

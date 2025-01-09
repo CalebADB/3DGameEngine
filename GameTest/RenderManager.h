@@ -13,6 +13,9 @@ namespace ge
 		float PulseInterval = 2;
 		float Pulse1 = 0;
 
+		math::MVector3 NorthPole = math::MVector3::UpVector() * 150.0f;
+		math::MQuaternion PlanetRotation = math::MQuaternion::Identity();
+
 
 	public:
 		GRenderManagerComp(const std::string& Name)

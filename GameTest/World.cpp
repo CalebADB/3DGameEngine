@@ -280,6 +280,11 @@ namespace ge
         AttachedActors.remove(Actor);
     }
 
+    APlayer* AWorld::GetPlayer()
+    {
+        return Player;
+    }
+
     void AWorld::GarbageObject(GObject* Object)
     {
         auto AttachedActorIter = AttachedActors.begin();

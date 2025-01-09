@@ -60,6 +60,8 @@ namespace ge
 
 		void RemoveActorFromWorld(AActor* Actor);
 
+		APlayer* GetPlayer();
+
 	public:
 		template <typename AActorSubclass>
 		AActorSubclass* SpawnActor(const std::string& Name, AActor* Owner, math::MVector3 LocalPosition, math::MQuaternion LocalRotation)

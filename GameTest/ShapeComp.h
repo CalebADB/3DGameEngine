@@ -35,6 +35,7 @@ namespace ge
 		math::MVector3 GetShapeColor();
 		virtual GLfloat GetMaxSize() const = 0;
 		virtual GLfloat GetSignedDistanceFrom(math::MVector3 GlobalPosition) = 0;
+		GSphereVertexMesh* GetSphereVertexMesh();
 	};
 
 	class GSphereShapeComp : public GShapeComp
